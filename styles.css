@@ -264,23 +264,23 @@ body {
 .card-front__tp--city {
   background: linear-gradient(
     to bottom,
-    #ff73b9,
-    #ff40a1
+    #000000,
+    #a3a807
   );
 }
 
 .card-front__tp--ski {
   background: linear-gradient(
     to bottom,
-    #47c2d7,
-    #279eb2
+    #000000,
+      ##a3a807
   );
 }
 
 .card-front__tp--beach {
   background: linear-gradient(
     to bottom,
-    #fb9b88,
+    #000000,
     #f86647
   );
 }
@@ -288,7 +288,7 @@ body {
 .card-front__tp--camping {
   background: linear-gradient(
     to bottom,
-    #00db93,
+    #000000,
     #00b97d
   );
 }

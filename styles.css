@@ -263,32 +263,32 @@ background: linear-gradient(to bottom, #C06C84, #6C5B7B, #355C7D); /* W3C, IE 10
 .card-front__tp--city {
   background: linear-gradient(
     to bottom,
-    #000000,
-    #a3a807
+    #3300ff,
+    #a305cb
   );
 }
 
 .card-front__tp--ski {
   background: linear-gradient(
     to bottom,
-    #000000,
-    #a3a807
+    #3300ff,
+    #a305cb
   );
 }
 
 .card-front__tp--beach {
   background: linear-gradient(
     to bottom,
-    #000000,
-    #a3a807
+    #3300ff,
+    #a305cb
   );
 }
 
 .card-front__tp--camping {
   background: linear-gradient(
     to bottom,
-    #000000,
-    #a3a807
+    #3300ff,
+    #a305cb
   );
 }
 

@@ -157,7 +157,7 @@ body {
       background-color: #55B7A8; /* Couleur de départ (bleu) */
   }
   100% {
-      background-color: #2980b9; /* Couleur finale (bleu foncé) */
+      background-color: #35776dff; /* Couleur finale (bleu foncé) */
   }
 }
 /* Container to hold all cards in one place */

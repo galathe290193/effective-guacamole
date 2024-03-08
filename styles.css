@@ -144,7 +144,7 @@ body {
 
 .main {
   background-color: #55B7A8;
-
+  animation: changeColor 5s infinite alternate; /* Animation avec un cycle de 5 secondes */;
 
   display: flex;
   flex-direction: column;
@@ -152,7 +152,14 @@ body {
   height: 100vh;
   width: 100%;
 }
-
+@keyframes changeColor {
+  0% {
+      background-color: #55B7A8; /* Couleur de départ (bleu) */
+  }
+  100% {
+      background-color: #2980b9; /* Couleur finale (bleu foncé) */
+  }
+}
 /* Container to hold all cards in one place */
 .card-area {
   align-items: center;

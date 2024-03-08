@@ -53,10 +53,6 @@ body {
 .inside-page__heading--camping,
 .card-front__text-view--camping { color: #000000; }
 
-/* Front cover */
-
-.card-front__tp { color: #fafbfa; }
-
 /* For pricing text on card front cover */
 .card-front__text-price {
   font-size: 1.2rem;

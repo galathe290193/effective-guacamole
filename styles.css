@@ -144,7 +144,7 @@ body {
 
 .main {
   background-color: #55B7A8;
-  animation: changeColor 5s infinite alternate; /* Animation avec un cycle de 5 secondes */;
+  animation: changeColor 3s infinite alternate; /* Animation avec un cycle de 5 secondes */;
 
   display: flex;
   flex-direction: column;
@@ -157,10 +157,10 @@ body {
       background-color: #55B7A8; /* Couleur de départ (bleu) */
   }
   50% {
-      background-color: #35776dff; /* Couleur finale (bleu foncé) */
+      background-color: rgb(43, 176, 154); /* Couleur finale (bleu foncé) */
   }
   100% {
-    background-color: rgb(35, 76, 70); /* Couleur finale (bleu foncé) */
+    background-color: rgb(5, 79, 68); /* Couleur finale (bleu foncé) */
 }
 }
 /* Container to hold all cards in one place */

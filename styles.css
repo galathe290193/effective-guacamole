@@ -156,9 +156,12 @@ body {
   0% {
       background-color: #55B7A8; /* Couleur de départ (bleu) */
   }
-  100% {
+  50% {
       background-color: #35776dff; /* Couleur finale (bleu foncé) */
   }
+  100% {
+    background-color: rgb(35, 76, 70); /* Couleur finale (bleu foncé) */
+}
 }
 /* Container to hold all cards in one place */
 .card-area {

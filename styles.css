@@ -250,7 +250,7 @@ background: linear-gradient(to bottom, #C06C84, #6C5B7B, #355C7D); /* W3C, IE 10
   background: linear-gradient(
     to bottom,
     #ffffff,
-    #ffffff
+    #EBB866
   );
 }
 
@@ -258,7 +258,7 @@ background: linear-gradient(to bottom, #C06C84, #6C5B7B, #355C7D); /* W3C, IE 10
   background: linear-gradient(
     to bottom,
     #ffffff,
-    #fffeff
+    #EBB866
   );
 }
 
@@ -266,15 +266,15 @@ background: linear-gradient(to bottom, #C06C84, #6C5B7B, #355C7D); /* W3C, IE 10
   background: linear-gradient(
     to bottom,
     #ffffff,
-    #ffffff
+    #EBB866
   );
 }
 
 .card-front__tp--camping {
   background: linear-gradient(
     to bottom,
-    #f5f5f5,
-    #fcfcfc
+    #ffffff,
+    #EBB866
   );
 }
 

@@ -144,7 +144,7 @@ body {
 
 .main {
   background-color: #55B7A8;
-  animation: changeColor 3s infinite alternate; /* Animation avec un cycle de 5 secondes */;
+  animation: changeColor 4s infinite alternate; /* Animation avec un cycle de 5 secondes */;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -154,9 +154,6 @@ body {
 @keyframes changeColor {
   0% {
       background-color: #55B7A8; /* Couleur de départ (bleu) */
-  }
-  50% {
-      background-color: rgb(230, 209, 24); /* Couleur finale (bleu foncé) */
   }
   100% {
     background-color: rgb(155, 163, 162); /* Couleur finale (bleu foncé) */

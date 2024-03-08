@@ -263,32 +263,32 @@ background: linear-gradient(to bottom, #C06C84, #6C5B7B, #355C7D); /* W3C, IE 10
 .card-front__tp--city {
   background: linear-gradient(
     to bottom,
-    #3300ff,
-    #a305cb
+    #ffffff,
+    #5b585c
   );
 }
 
 .card-front__tp--ski {
   background: linear-gradient(
     to bottom,
-    #3300ff,
-    #a305cb
+    #ffffff,
+    #5b585c
   );
 }
 
 .card-front__tp--beach {
   background: linear-gradient(
     to bottom,
-    #3300ff,
-    #a305cb
+    #ffffff,
+    #5b585c
   );
 }
 
 .card-front__tp--camping {
   background: linear-gradient(
     to bottom,
-    #3300ff,
-    #a305cb
+    #f5f5f5,
+    #5b585c
   );
 }
 
@@ -355,19 +355,4 @@ background: linear-gradient(to bottom, #C06C84, #6C5B7B, #355C7D); /* W3C, IE 10
 /* When the card is hovered, the shadow on the inside page will shrink to the left */
 .card:hover .inside-page {
   box-shadow: inset 1rem 0px 5rem -2.5rem rgba(0,0,0,0.1);
-}
-
-/* Footer ====================================*/
-
-.footer {
-  background-color: #333;
-   margin-top: 3rem;
-  padding: 1rem 0;
-  width: 100%;
-}
-
-.footer-text {
-  color: #fff;
-  font-size: 1.2rem;
-  text-align: center;
 }

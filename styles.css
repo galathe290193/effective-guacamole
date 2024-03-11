@@ -25,15 +25,15 @@ body {
 .p1 {
   text-transform: uppercase;
   letter-spacing: 0.5em;
-  display: inline-block;
   border: 4px double rgba(255, 255, 255, 0.25);
   border-width: 4px 0;
   padding: 1.5em 0em;
   position: absolute;
-  top: 18%;
-  left: 50%;
+  top: 50%; /* Déplacez l'élément à 50% de la hauteur de la fenêtre */
+  left: 50%; /* Déplacez l'élément à 50% de la largeur de la fenêtre */
+  transform: translate(-50%, -50%); /* Décalez l'élément de -50% de sa propre largeur et hauteur */
   width: 40em;
-  margin: 0 0 0 -20em;
+  margin: 0;
 }
   span {
     font: 700 4em/1 "Oswald", sans-serif;

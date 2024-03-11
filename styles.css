@@ -14,7 +14,15 @@ body {
   font-family: 'Open Sans', sans-serif;
   position: relative;
 }
-
+.main {
+  background-color: #55B7A8;
+  animation: changeColor 4s infinite alternate; /* Animation avec un cycle de 5 secondes */;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
 p {
   text-transform: uppercase;
   letter-spacing: 0.5em;

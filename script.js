@@ -2,6 +2,7 @@
 Spanizer
 - Wraps letters with spans, for css animations
 -----*/
+
 (function($) {
   var s,
   spanizeLetters = {

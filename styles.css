@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -713,4 +714,16 @@ body {
     opacity: 0.7;
     text-shadow: 0px 0px 20px rgba(255, 255, 255, 0);
   }
+}
+.container {
+  display: flex;
+  justify-content: flex-end; /* Aligner les éléments au centre-droite */
+  background-color: blue; /* Fond bleu pour le conteneur */
+  padding: 20px; /* Ajouter un peu d'espacement autour du contenu */
+}
+
+.card {
+  width: 200px; /* Largeur de chaque carte */
+  margin-left: 20px; /* Espace entre chaque carte */
+  background-color: #f5f5f5; /* Nuance de gris pour chaque carte */
 }/*# sourceMappingURL=styles.css.map */

@@ -149,15 +149,18 @@ body {
   77%   { opacity: 1;  }
   100% { opacity:0.7; text-shadow: 0px 0px 20px rgba(255,255,255,0.0)}
 }
+.mast {
+  display: flex;
+}
+
 .container {
   display: flex;
-  justify-content: flex-end; /* Aligner les éléments au centre-droite */
-  background-color: blue; /* Fond bleu pour le conteneur */
-  padding: 20px; /* Ajouter un peu d'espacement autour du contenu */
+  flex-direction: column;
+  align-items: flex-end; /* Aligner les cartes à droite */
 }
 
 .card {
-  width: 200px; /* Largeur de chaque carte */
-  margin-left: 20px; /* Espace entre chaque carte */
-  background-color: #f5f5f5; /* Nuance de gris pour chaque carte */
+  width: 200px;
+  margin-top: 10px; /* Espacement entre les cartes si nécessaire */
+  background-color: #f5f5f5;
 }

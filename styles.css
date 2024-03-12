@@ -67,10 +67,6 @@ body {
   font-weight: 400;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 .mast__title span {
   animation: letter-glow 0.7s 0s ease both;

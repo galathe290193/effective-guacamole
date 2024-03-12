@@ -112,20 +112,13 @@ body {
     font-weight: 400;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    // Dégradé de couleur pour le texte
-    background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
-    // Mettre à jour le background-clip pour que le dégradé de couleur ne soit visible que sur le texte
-    -webkit-background-clip: text;
-    background-clip: text;
-    // Assurez-vous que le texte est transparent pour que le dégradé de couleur soit visible à travers
-    color: transparent;
   }
   // Letter animation
   &__title span{
     animation: letter-glow 0.7s 0s ease both;
     @include nth-ani-delay(25, 0.05s);
   }
-  // Letter animation
+  //Letter animation
   &__text{
     font-family: $font-mono;
     font-size: 1em;
@@ -139,6 +132,7 @@ body {
     @include nth-ani-delay(180, 0.05s);
   }
 }
+
 
 // Letter Glow
 @keyframes letter-glow{

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -67,6 +68,20 @@ body {
   font-weight: 400;
   letter-spacing: 0.3em;
   text-transform: uppercase;
+}
+.mast .mast__title {
+  font-family: "Cutive Mono", monospace;
+  font-size: 1em;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  /* Dégradé de couleur pour le texte */
+  background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+  /* Mettre à jour le background-clip pour que le dégradé de couleur ne soit visible que sur le texte */
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* Assurez-vous que le texte est transparent pour que le dégradé de couleur soit visible à travers */
+  color: transparent;
 }
 .mast__title span {
   animation: letter-glow 0.7s 0s ease both;

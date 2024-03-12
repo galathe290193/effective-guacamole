@@ -20,7 +20,7 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  width: 200px;
+  width: 50%;
   height: 100%;
   /* Retirer le fond */
   background: none;
@@ -28,6 +28,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
 }
 
 .card-container {

@@ -32,8 +32,8 @@ body {
 }
 
 .card-container {
-  width: 50%;
-  height: 50%;
+  width: 40%;
+  height: 40%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -60,17 +60,18 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.card button:hover {
-  background-color: #0056b3;
-}
-
 .card:hover {
   transform: scale(1.2); /* Ajuste la mise à l'échelle selon tes besoins */
   z-index: 2; /* Assure que la carte survolée est au-dessus des autres */
 }
 
 .card:hover ~ .card {
-  display: none; /* Cache les autres cartes */
+  opacity: 0; /* Cache les autres cartes */
+  pointer-events: none; /* Désactive les événements de souris pour les autres cartes */
+}
+
+.card-container:hover {
+  display: flex; /* Assure que toutes les cartes sont visibles lorsque le conteneur est survolé */
 }
 
 .sep {

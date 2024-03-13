@@ -135,15 +135,15 @@ html { font-size: 62.5%; }
 
 /* Container to hold all cards in one place */
 .card-area {
-  position: relative;
-  display: flex;
-  align-items: center;
-  color: #fff;
-  flex-wrap: nowrap;
-  width: 50%;
-  height: 100vh;
-  justify-content: space-evenly;
-  padding: 1rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #fff;
+    flex-wrap: wrap;
+    width: 50%;
+    height: 100vh;
+    padding: 1rem;
 }
 
 /* Card ============================================*/

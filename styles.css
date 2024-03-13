@@ -16,63 +16,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.side-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  /* Retirer le fond */
-  background: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  
-}
-
-.card-container {
-  width: 40%;
-  height: 40%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-}
-
-.card {
-  width: 80px; /* Ajuste la taille des cartes selon tes besoins */
-  height: 80px; /* Ajuste la taille des cartes selon tes besoins */
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin: 20px; /* Espace entre les cartes */
-}
-
-.card button {
-  padding: 5px 10px; /* Ajuste le padding du bouton selon tes besoins */
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.card:hover {
-  transform: scale(1.2); /* Ajuste la mise à l'échelle selon tes besoins */
-  z-index: 2; /* Assure que la carte survolée est au-dessus des autres */
-}
-
-.card:hover ~ .card {
-  opacity: 0; /* Cache les autres cartes */
-  pointer-events: none; /* Désactive les événements de souris pour les autres cartes */
-}
-
-.card-container:hover {
-  display: flex; /* Assure que toutes les cartes sont visibles lorsque le conteneur est survolé */
-}
 
 .sep {
   border: 0;

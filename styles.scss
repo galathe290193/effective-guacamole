@@ -144,7 +144,27 @@ body {
     height: 100vh; // Ensure cards take up full height
   }
 }
+.card {
+  width: 200px; // Largeur de la carte
+  height: 150px; // Hauteur de la carte
+  background-color: #ccc; // Couleur de fond grise
+  border-radius: 8px; // Coins arrondis
+  margin-bottom: 20px; // Marge en bas pour l'espace entre les cartes
 
+  // Positionnement à droite
+  margin-left: auto;
+
+  // Effet d'ombre pour simuler la profondeur
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  // Transition de l'ombre
+  transition: box-shadow 0.3s ease;
+
+  // Ajout d'une légère élévation au survol
+  &:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+}
 // Letter Glow
 @keyframes letter-glow {
   0%   { opacity: 0; text-shadow: 0px 0px 1px rgba(255,255,255,0.1)}

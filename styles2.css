@@ -8,23 +8,6 @@
 }
 
 html { font-size: 62.5%; }
-
-/* Typography =======================*/
-
-/* Headings */
-
-/* Main heading for card's front cover */
-.card-front__heading {
-  font-size: 1.5rem;
-  margin-top: .25rem;
-}
-
-/* Main heading for inside page */
-.inside-page__heading { 
-  padding-bottom: 1rem; 
-  width: 100%;
-}
-
 /* Mixed */
 
 /* For both inside page's main heading and 'view me' text on card front cover */
@@ -152,10 +135,13 @@ html { font-size: 62.5%; }
 
 /* Container to hold all cards in one place */
 .card-area {
-  align-items: center;
+  position: relative;
   display: flex;
+  align-items: center;
+  color: #fff;
   flex-wrap: nowrap;
-  height: 100%;
+  width: 50%;
+  height: 100vh;
   justify-content: space-evenly;
   padding: 1rem;
 }

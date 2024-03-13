@@ -146,17 +146,6 @@ html { font-size: 62.5%; }
     padding: 1rem;
 }
 
-/* Card ============================================*/
-
-/* Area to hold an individual card */
-.card-section {
-  align-items: center;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  width: 100%;
-}
-
 /* A container to hold the flip card and the inside page */
 .card {
   background-color: rgba(0,0,0, .05);

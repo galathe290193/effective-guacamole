@@ -13,6 +13,15 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  animation: rotateBackground 20s linear infinite; // Ajoutez cette ligne pour l'animation
+}
+@keyframes rotateBackground {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 $color_white: #fff;

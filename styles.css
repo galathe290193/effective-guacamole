@@ -696,6 +696,29 @@ body {
 .mast__text span:nth-child(180) {
   animation-delay: 9s;
 }
+.mast__cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 25%;
+  padding-right: 20px;
+  height: 100vh;
+}
+
+.card {
+  width: 200px;
+  height: 150px;
+  background-color: #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
 
 @keyframes letter-glow {
   0% {
@@ -713,5 +736,4 @@ body {
     opacity: 0.7;
     text-shadow: 0px 0px 20px rgba(255, 255, 255, 0);
   }
- 
 }/*# sourceMappingURL=styles.css.map */

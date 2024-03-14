@@ -1,7 +1,8 @@
 // Config: fonts
 $font-mono: "Cutive Mono", monospace;
+
 // Config: Ease
-$ease-cb: cubic-bezier(.19,1,.22,1);
+$ease-cb: cubic-bezier(.19, 1, .22, 1);
 
 //--------------------------
 //  nth-trans-delay()
@@ -30,9 +31,10 @@ $ease-cb: cubic-bezier(.19,1,.22,1);
     }
   }
 }
+
 //--------------------------
 //  bg-overlay()
-//  @description:pseduo overlay element  
+//  @description: Pseudo overlay element  
 //  @param: $bg_hex: [$color-dark] - hex value for rgba conversion
 //  @param: $bg_opacity:[0.6] - alpha transparency level
 //  @param: $top_layer: element or class name for higher z-index layer
@@ -50,7 +52,7 @@ $ease-cb: cubic-bezier(.19,1,.22,1);
   }
   
   // Layer atop overlay
-  & > #{$top_layer}{
+  & > #{$top_layer} {
     z-index: 2;
     position: relative;
   }
@@ -60,6 +62,7 @@ $ease-cb: cubic-bezier(.19,1,.22,1);
 *, *:before, *:after {
   box-sizing: border-box; 
 }
+
 // Body
 body {
   margin: 0;
@@ -75,16 +78,17 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.sep{
+.sep {
   border: 0;
   width: 3em;
   height: 1px;
   margin: 1em 0;
-  background-color: rgba(255,255,255,0.4);
+  background-color: rgba(255, 255, 255, 0.4);
 }
-.mast{
+
+.mast {
   position: relative;
-  display:flex;
+  display: flex;
   align-items: center;
   width: 100%;
   height: 100vh;
@@ -92,7 +96,7 @@ body {
   background-color: #111;
   @include bg-overlay(#111, 0.9);  
   
-  &__bg{
+  &__bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -104,23 +108,26 @@ body {
     background-position: 50%;
   }
   
-  &__header{
+  &__header {
     padding: 5%;
   }
-  &__title{
+  
+  &__title {
     font-family: $font-mono;
     font-size: 1em;
     font-weight: 400;
     letter-spacing: 0.3em;
     text-transform: uppercase;
   }
+
   // Letter animation
-  &__title span{
+  &__title span {
     animation: letter-glow 0.7s 0s ease both;
     @include nth-ani-delay(25, 0.05s);
   }
+
   //Letter animation
-  &__text{
+  &__text {
     font-family: $font-mono;
     font-size: 1em;
     margin: 0 0 0.5em;
@@ -128,10 +135,11 @@ body {
     white-space: pre;
   }
   
-  &__text span{
+  &__text span {
     animation: letter-glow 0.7s 0s ease both;
     @include nth-ani-delay(180, 0.05s);
   }
+  
   // New section for the cards
   &__cards {
     display: flex;
@@ -166,19 +174,28 @@ body {
   }
 }
 
-  
 // Letter Glow
 @keyframes letter-glow {
-  0%   { opacity: 0; text-shadow: 0px 0px 1px rgba(255,255,255,0.1)}
-  66%  { opacity: 1; text-shadow: 
-           0px 0px 20px rgba(255, 0, 0, 0.9), 
-           0px 0px 20px rgba(255, 165, 0, 0.9), 
-           0px 0px 20px rgba(255, 255, 0, 0.9), 
-           0px 0px 20px rgba(0, 128, 0, 0.9), 
-           0px 0px 20px rgba(0, 0, 255, 0.9), 
-           0px 0px 20px rgba(75, 0, 130, 0.9), 
-           0px 0px 20px rgba(238, 130, 238, 0.9);
-         }
-  77%   { opacity: 1;  }
-  100% { opacity:0.7; text-shadow: 0px 0px 20px rgba(255,255,255,0.0)}
+  0% { 
+    opacity: 0; 
+    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.1);
+  }
+  66% { 
+    opacity: 1; 
+    text-shadow: 
+      0px 0px 20px rgba(255, 0, 0, 0.9), 
+      0px 0px 20px rgba(255, 165, 0, 0.9), 
+      0px 0px 20px rgba(255, 255, 0, 0.9), 
+      0px 0px 20px rgba(0, 128, 0, 0.9), 
+      0px 0px 20px rgba(0, 0, 255, 0.9), 
+      0px 0px 20px rgba(75, 0, 130, 0.9), 
+      0px 0px 20px rgba(238, 130, 238, 0.9);
+  }
+  77% { 
+    opacity: 1;  
+  }
+  100% { 
+    opacity: 0.7; 
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.0);
+  }
 }

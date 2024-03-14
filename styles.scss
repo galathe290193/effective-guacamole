@@ -139,17 +139,17 @@ body {
     animation: letter-glow 0.7s 0s ease both;
     @include nth-ani-delay(180, 0.05s);
   }
-  
-  // New section for the cards
-  &__cards {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-end;
-    width: 25%;
-    padding-right: 20px; // Adjust as needed
-    height: 100vh; // Ensure cards take up full height
-  }
+}
+
+// New section for the cards
+.mast__cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 25%;
+  padding-right: 20px; // Adjust as needed
+  height: 100vh; // Ensure cards take up full height
 }
 
 .card {
@@ -173,6 +173,7 @@ body {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   }
 }
+
 
 // Letter Glow
 @keyframes letter-glow {

@@ -1,202 +1,212 @@
-// Config: fonts
-$font-mono: "Cutive Mono", monospace;
+/*PEN STYLES*/
 
-// Config: Ease
-$ease-cb: cubic-bezier(.19, 1, .22, 1);
-
-//--------------------------
-//  nth-trans-delay()
-//  @description: Transition Delay on nth-childs
-//  @param: $delay_items: [7]    - number of nth-of-type items to create
-//  @param: $delay_time:[1.5s]   - transition-dealy value
-//--------------------------
-@mixin nth-trans-delay($delay_items: 7, $delay_time: 0.2s){
-  @for $i from 1 through $delay_items {
-    &:nth-child(#{$i}) {   
-      transition-delay: $delay_time * $i; 
-    }
-  }
+* {
+  box-sizing: border-box;
 }
 
-//--------------------------
-//  nth-ani-delay()
-//  @description: Animation Delay on nth-childs
-//  @param: $delay_items: [7] - number of nth-of-type items to create
-//  @param: $delay_time:[1.5s] - transition-dealy value
-//--------------------------
-@mixin nth-ani-delay($delay_items: 7, $delay_time: 0.2s){
-  @for $i from 1 through $delay_items {
-    &:nth-child(#{$i}) {   
-      animation-delay: $delay_time * $i; 
-    }
-  }
-}
-
-//--------------------------
-//  bg-overlay()
-//  @description: Pseudo overlay element  
-//  @param: $bg_hex: [$color-dark] - hex value for rgba conversion
-//  @param: $bg_opacity:[0.6] - alpha transparency level
-//  @param: $top_layer: element or class name for higher z-index layer
-//--------------------------
-@mixin bg-overlay($bg_hex: #111, $bg_opacity: 0.6, $top_layer: 'header') {
-  &:after {
-    z-index: 0;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: rgba($bg_hex, $bg_opacity);
-  }
-  
-  // Layer atop overlay
-  & > #{$top_layer} {
-    z-index: 2;
-    position: relative;
-  }
-}
-
-//Setups
-*, *:before, *:after {
-  box-sizing: border-box; 
-}
-
-// Body
 body {
-  margin: 0;
-  width: 100%;
-  font-family: $font-mono;
-  line-height: 1.5;
-  font-weight: 400;
-  font-style: normal;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; 
-  text-rendering: optimizeLegibility;
-}
-
-.sep {
-  border: 0;
-  width: 3em;
-  height: 1px;
-  margin: 1em 0;
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
-.mast {
-  position: relative;
+  background: #f1f1f1;
   display: flex;
+  flex-direction:column;
+  font-size: 1rem;
+  justify-content: center;
   align-items: center;
-  width: 100%;
   height: 100vh;
-  color: #fff;
-  background-color: #111;
-  @include bg-overlay(#111, 0.9);  
-  
-  &__bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    background-size: cover;
-    background-position: 50%;
-  }
-  
-  &__header {
-    padding: 5%;
-  }
-  
-  &__title {
-    font-family: $font-mono;
-    font-size: 1em;
-    font-weight: 400;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-  }
-
-  // Letter animation
-  &__title span {
-    animation: letter-glow 0.7s 0s ease both;
-    @include nth-ani-delay(25, 0.05s);
-  }
-
-  //Letter animation
-  &__text {
-    font-family: $font-mono;
-    font-size: 1em;
-    margin: 0 0 0.5em;
-    line-height: 1.5;
-    white-space: pre;
-  }
-  
-  &__text span {
-    animation: letter-glow 0.7s 0s ease both;
-    @include nth-ani-delay(180, 0.05s);
-  }
 }
 
-// New section for the cards
-.mast__cards {
+$color_white: #fff;
+$color_prime: #5ad67d;
+$color_grey: #e2e2e2;
+$color_grey_dark: #a2a2a2;
+
+.blog-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-end;
-  width: 25%;
-  padding-right: 20px; // Adjust as needed
-  height: 100vh; // Ensure cards take up full height
-}
-
-.card {
-  width: 200px; // Largeur de la carte
-  height: 150px; // Hauteur de la carte
-  background-color: #ccc; // Couleur de fond grise
-  border-radius: 8px; // Coins arrondis
-  margin-bottom: 20px; // Marge en bas pour l'espace entre les cartes
-
-  // Positionnement à droite
-  margin-left: auto;
-
-  // Effet d'ombre pour simuler la profondeur
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-
-  // Transition de l'ombre
-  transition: box-shadow 0.3s ease;
-
-  // Ajout d'une légère élévation au survol
+  margin: 1rem auto;
+  box-shadow: 0 3px 7px -1px rgba(#000, .1);
+  margin-bottom: 1.6%;
+  background: $color_white;
+  line-height: 1.4;
+  font-family: sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 0;
+  a {
+    color: inherit;
+    &:hover {
+      color: $color_prime;
+    }
+  }
   &:hover {
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    .photo {
+      transform: scale(1.3) rotate(3deg);
+    }
   }
-}
+  .meta {
+    position: relative;
+    z-index: 0;
+    height: 200px;
+  }
+  .photo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform .2s;
+  }
+  .details,
+  .details ul {
+    margin: auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .details {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    margin: auto;
+    transition: left .2s;
+    background: rgba(#000, .6);
+    color: $color_white;
+    padding: 10px;
+    width: 100%;
+    font-size: .9rem;
+    a {
+      text-decoration: dotted underline
+    }
+    ul li {
+      display: inline-block;
+    }
+    .author:before {
+      font-family: FontAwesome;
+      margin-right: 10px;
+      content: "\f007";
+    }
+
+    .date:before {
+      font-family: FontAwesome;
+      margin-right: 10px;
+      content: "\f133";
+    }
+
+    .tags {
+      ul:before {
+        font-family: FontAwesome;
+        content: "\f02b";
+        margin-right: 10px;
+      }
+      li {
+        margin-right: 2px;
+        &:first-child {
+          margin-left: -4px;
+        }
+      }
+    }
+  }
+  .description {
+    padding: 1rem;
+    background: $color_white;
+    position: relative;
+    z-index: 1;
+    h1,
+    h2 {
+      font-family: Poppins, sans-serif;
+    }
+    h1 {
+      line-height: 1;
+      margin: 0;
+      font-size: 1.7rem;
+    }
+    h2 {
+      font-size: 1rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      color: $color_grey_dark;
+      margin-top: 5px;
+    }
+    .read-more {
+      text-align: right;
+      a {
+        color: $color_prime;
+        display: inline-block;
+        position: relative;
+        &:after {
+          content: "\f061";
+          font-family: FontAwesome;
+          margin-left: -10px;
+          opacity: 0;
+          vertical-align: middle;
+          transition: margin .3s, opacity .3s;
+        }
+
+        &:hover:after {
+          margin-left: 5px;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  p {
+    position: relative;
+    margin: 1rem 0 0;
+    &:first-of-type {
+      margin-top: 1.25rem;
+      &:before {
+        content: "";
+        position: absolute;
+        height: 5px;
+        background: $color_prime;
+        width: 35px;
+        top: -0.75rem;
+        border-radius: 3px;
+      }
+    }
+  }
+  &:hover {
+    .details {
+      left: 0%;
+    }
+  }
 
 
-// Letter Glow
-@keyframes letter-glow {
-  0% { 
-    opacity: 0; 
-    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.1);
-  }
-  66% { 
-    opacity: 1; 
-    text-shadow: 
-      0px 0px 20px rgba(255, 0, 0, 0.9), 
-      0px 0px 20px rgba(255, 165, 0, 0.9), 
-      0px 0px 20px rgba(255, 255, 0, 0.9), 
-      0px 0px 20px rgba(0, 128, 0, 0.9), 
-      0px 0px 20px rgba(0, 0, 255, 0.9), 
-      0px 0px 20px rgba(75, 0, 130, 0.9), 
-      0px 0px 20px rgba(238, 130, 238, 0.9);
-  }
-  77% { 
-    opacity: 1;  
-  }
-  100% { 
-    opacity: 0.7; 
-    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.0);
+  @media (min-width: 640px) {
+    flex-direction: row;
+    max-width: 700px;
+    .meta {
+      flex-basis: 40%;
+      height: auto;
+    }
+    .description {
+      flex-basis: 60%;
+      &:before {
+        transform: skewX(-3deg);
+        content: "";
+        background: #fff;
+        width: 30px;
+        position: absolute;
+        left: -10px;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+      }
+    }
+    &.alt {
+      flex-direction: row-reverse;
+      .description {
+        &:before {
+          left: inherit;
+          right: -10px;
+          transform: skew(3deg)
+        }
+      }
+      .details {
+        padding-left: 25px;
+      }
+    }
   }
 }

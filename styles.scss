@@ -132,9 +132,9 @@ body {
     animation: letter-glow 0.7s 0s ease both;
     @include nth-ani-delay(180, 0.05s);
   }
-  
+}
   // New section for the cards
-  &__cards {
+  .mast__cards {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -143,7 +143,7 @@ body {
     padding-right: 20px; // Adjust as needed
     height: 100vh; // Ensure cards take up full height
   }
-}
+
 .card {
   width: 200px; // Largeur de la carte
   height: 150px; // Hauteur de la carte

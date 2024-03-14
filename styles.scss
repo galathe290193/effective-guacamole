@@ -5,7 +5,6 @@
 }
 
 body {
-  background-image: url(depositphotos_576469634-stock-illustration-modern-simple-dark-green-black.jpg);
   display: flex;
   flex-direction:column;
   font-size: 1rem;
@@ -13,6 +12,12 @@ body {
   align-items: center;
   height: 100vh;
   animation: rotateBackground 20s linear infinite; // Ajoutez cette ligne pour l'animation
+}
+.background-container {
+  background-image: url(depositphotos_576469634-stock-illustration-modern-simple-dark-green-black.jpg);
+  background-size: cover; // Ajustez selon vos besoins
+  background-repeat: no-repeat; // Assurez-vous que l'image de fond ne se répète pas
+  animation: rotateBackground 20s linear infinite; // Définissez l'animation pour faire tourner l'image
 }
 @keyframes rotateBackground {
   from {

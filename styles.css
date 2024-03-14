@@ -13,6 +13,20 @@ body {
   height: 100vh;
 }
 
+body{
+  overflow: hidden;
+  margin: 0;
+}
+#word{
+  font-family: Megrim, cursive;
+  font-size: 20vh;
+  position: absolute;
+  margin: 10;
+  /*bottom: 0;*/
+  color: #fc0;
+  -webkit-text-stroke: 0.15vh #c0f;
+}
+
 .blog-card {
   display: flex;
   flex-direction: column;

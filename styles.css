@@ -17,16 +17,12 @@ body{
   overflow: hidden;
   margin: 0;
 }
-#word{
-  font-family: Megrim, cursive;
-  font-size: 20vh;
+canvas {
   position: absolute;
-  margin: 10;
-  /*bottom: 0;*/
-  color: #fc0;
-  -webkit-text-stroke: 0.15vh #c0f;
+  top: 0;
+  left: 0;
+  z-index: -1; /* pour s'assurer qu'il se trouve en arrière-plan */
 }
-
 .blog-card {
   display: flex;
   flex-direction: column;

@@ -1,0 +1,5 @@
+# Ignorer les fichiers de configuration locaux
+.vscode/
+.idea/
+# Ignorer les dépendances Node.js
+node_modules/

@@ -13,6 +13,7 @@ body {
   height: 100vh;
 }
 .background-container {
+  position: relative; // Ajoutez cette ligne pour positionner l'élément
   background-image: url(depositphotos_576469634-stock-illustration-modern-simple-dark-green-black.jpg);
   background-size: cover; // Ajustez selon vos besoins
   background-repeat: no-repeat; // Assurez-vous que l'image de fond ne se répète pas

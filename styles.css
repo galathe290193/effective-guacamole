@@ -13,6 +13,7 @@ body {
 }
 
 .background-container {
+  position: relative;
   background-image: url(depositphotos_576469634-stock-illustration-modern-simple-dark-green-black.jpg);
   background-size: cover;
   background-repeat: no-repeat;

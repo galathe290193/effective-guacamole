@@ -132,9 +132,8 @@ body {
     animation: letter-glow 0.7s 0s ease both;
     @include nth-ani-delay(180, 0.05s);
   }
-}
   // New section for the cards
-  .mast__cards {
+  &__cards {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -143,6 +142,7 @@ body {
     padding-right: 20px; // Adjust as needed
     height: 100vh; // Ensure cards take up full height
   }
+}
 
 .card {
   width: 200px; // Largeur de la carte
@@ -165,6 +165,8 @@ body {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   }
 }
+
+  
 // Letter Glow
 @keyframes letter-glow {
   0%   { opacity: 0; text-shadow: 0px 0px 1px rgba(255,255,255,0.1)}

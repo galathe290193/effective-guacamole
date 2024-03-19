@@ -10,9 +10,9 @@ body {
   font-size: 1rem;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: rgb(255,255,255);
-  background: radial-gradient(circle, rgba(255,255,255,1) 5%, rgba(124,119,125,1) 20%, rgba(136,131,137,1) 33%, rgba(34,45,82,1) 53%);
+  height: 100vh ;
+  background: rgb(177,212,154);
+  background: radial-gradient(circle, rgba(177,212,154,1) 3%, rgba(53,161,85,1) 5%, rgba(3,3,3,1) 45%);
 }
 #background-canvas {
   position: fixed;

@@ -29,3 +29,18 @@ document.getElementById("reject-cookies").addEventListener("click", function() {
 if (document.cookie.indexOf("cookie_consent=true") !== -1) {
     hideCookieBanner(); // Masquer le bandeau de cookie si l'utilisateur a déjà accepté les cookies
 }
+
+// Récupérer le canvas et son contexte
+var canvas = document.getElementById('background-canvas');
+var ctx = canvas.getContext('2d');
+
+// Définir la taille du canvas en fonction de la taille de la fenêtre
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Dessiner quelque chose sur le canvas (par exemple, un dégradé de couleur)
+var gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+gradient.addColorStop(0, 'red');
+gradient.addColorStop(1, 'blue');
+ctx.fillStyle = gradient;
+ctx.fillRect(0, 0, canvas.width, canvas.height);

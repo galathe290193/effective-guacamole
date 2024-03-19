@@ -14,11 +14,13 @@ body {
   background: #060e1b;
   overflow: hidden;
 }
+
 #background-canvas {
   position: fixed;
   top: 0;
   left: 0;
   z-index: -1; // Placez le canvas en arrière-plan
+  opacity: 0.5;
 }
 
 // Styles de base pour la bannière de cookie

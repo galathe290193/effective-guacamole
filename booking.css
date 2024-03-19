@@ -357,3 +357,21 @@ button.button-big {
 	position: absolute;
 	left: 59px;
 }
+
+#book-now {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #555; /* Couleur sombre */
+    color: #fff; /* Texte en blanc */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#book-now:hover {
+    background-color: #333; /* Lorsque survolé, couleur un peu plus foncée */
+}

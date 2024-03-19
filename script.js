@@ -36,8 +36,7 @@ function incrementVisitCounter() {
 
 // Masquer le bandeau de cookie
 function hideCookieBanner() {
-    var banner = document.getElementById("cookie-banner");
-    banner.parentNode.removeChild(banner);
+    document.getElementById("cookie-banner").style.display = "none";
 }
 
 // Vérifie si le cookie de consentement existe déjà
@@ -45,20 +44,21 @@ if (!getCookie("cookie_consent")) {
     // Affiche le bandeau de cookie
     document.getElementById("cookie-banner").style.display = "block";
 
-    // Écouteurs d'événements pour le clic sur les boutons d'acceptation et de refus des cookies
+    // Écouteur d'événement pour le clic sur le bouton d'acceptation des cookies
     document.getElementById("accept-cookies").addEventListener("click", function() {
         setCookie("cookie_consent", true, 365); // Stocke le consentement pendant 1 an
         hideCookieBanner();
         incrementVisitCounter();
     });
 
+    // Écouteur d'événement pour le clic sur le bouton de refus des cookies
     document.getElementById("reject-cookies").addEventListener("click", function() {
         deleteCookie("cookie_consent"); // Supprime le cookie de consentement
         hideCookieBanner();
     });
-}
-
-// Incrémente le compteur de visites à chaque chargement de la page
-window.onload = function() {
+} else {
+    // Si l'utilisateur a déjà accepté les cookies, masquer le bandeau de cookie
+    hideCookieBanner();
+    // Si l'utilisateur a accepté les cookies, incrémenter le compteur de visites
     incrementVisitCounter();
-};
+}

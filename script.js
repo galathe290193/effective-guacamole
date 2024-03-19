@@ -30,9 +30,10 @@ function createMeteor() {
   
   var radius = Math.random() * 3 + 1; // Taille aléatoire pour la météorite
   var speed = Math.random() * 2 + 1; // Vitesse aléatoire pour la météorite
+  var color = getRandomNeonColor(); // Couleur néon aléatoire pour la météorite
   
   // Ajouter la météorite au tableau
-  meteors.push({ x: x, y: y, radius: radius, speed: speed });
+  meteors.push({ x: x, y: y, radius: radius, speed: speed, color: color });
 }
 
 // Créer une fonction pour dessiner les météorites
@@ -44,7 +45,7 @@ function drawMeteors() {
   meteors.forEach(function(meteor) {
     ctx.beginPath();
     ctx.arc(meteor.x, meteor.y, meteor.radius, 0, Math.PI * 2);
-    ctx.fillStyle = getRandomNeonColor(); // Couleur néon aléatoire pour la météorite
+    ctx.fillStyle = meteor.color; // Couleur néon de la météorite
     ctx.fill();
     
     // Calculer la direction de la météorite par rapport au centre du canvas

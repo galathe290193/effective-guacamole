@@ -47,20 +47,16 @@ function drawMeteors() {
     ctx.fillStyle = '#ffffff'; // Couleur blanche pour la météorite
     ctx.fill();
     
-    // Mettre à jour la position de la météorite pour la faire descendre ou monter
-    if (meteor.x < canvas.width / 2) {
-      meteor.x += meteor.speed;
-    } else {
-      meteor.x -= meteor.speed;
-    }
+    // Calculer la direction de la météorite par rapport au centre du canvas
+    var centerX = canvas.width / 2;
+    var centerY = canvas.height / 2;
+    var angle = Math.atan2(centerY - meteor.y, centerX - meteor.x);
     
-    if (meteor.y < canvas.height / 2) {
-      meteor.y += meteor.speed;
-    } else {
-      meteor.y -= meteor.speed;
-    }
+    // Mettre à jour la position de la météorite pour la faire suivre une orbite
+    meteor.x += Math.cos(angle) * meteor.speed;
+    meteor.y += Math.sin(angle) * meteor.speed;
     
-    // Réinitialiser la position de la météorite une fois qu'elle atteint le bas du canvas
+    // Réinitialiser la position de la météorite une fois qu'elle sort du canvas
     if (meteor.x < -50 || meteor.x > canvas.width + 50 || meteor.y < -50 || meteor.y > canvas.height + 50) {
       var index = meteors.indexOf(meteor);
       meteors.splice(index, 1);
@@ -74,7 +70,7 @@ function animateMeteors() {
   requestAnimationFrame(animateMeteors);
   
   // Générer une nouvelle météorite à intervalles réguliers
-  if (Math.random() < 0.05) {
+  if (Math.random() < 0.02) { // Réduire la fréquence d'apparition pour ralentir l'animation
     createMeteor();
   }
   

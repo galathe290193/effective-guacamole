@@ -357,3 +357,6 @@ button.button-big {
 	position: absolute;
 	left: 59px;
 }
+#book-now {
+    display: none;
+}

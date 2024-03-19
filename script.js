@@ -11,28 +11,14 @@ var meteors = [];
 // Créer une fonction pour générer une météorite
 function createMeteor() {
   // Générer des coordonnées aléatoires pour la météorite
-  var side = Math.floor(Math.random() * 4); // Déterminer si la météorite apparaît sur le haut, le bas, la gauche ou la droite
-  var x, y;
-  
-  if (side === 0) { // Haut
-    x = Math.random() * canvas.width;
-    y = -50;
-  } else if (side === 1) { // Bas
-    x = Math.random() * canvas.width;
-    y = canvas.height + 50;
-  } else if (side === 2) { // Gauche
-    x = -50;
-    y = Math.random() * canvas.height;
-  } else { // Droite
-    x = canvas.width + 50;
-    y = Math.random() * canvas.height;
-  }
-  
+  var x = Math.random() * canvas.width;
+  var y = -50; // Commencer depuis le haut du canvas
   var radius = Math.random() * 3 + 1; // Taille aléatoire pour la météorite
   var speed = Math.random() * 2 + 1; // Vitesse aléatoire pour la météorite
+  var angle = Math.random() * Math.PI * 2; // Angle aléatoire pour la spirale
   
   // Ajouter la météorite au tableau
-  meteors.push({ x: x, y: y, radius: radius, speed: speed });
+  meteors.push({ x: x, y: y, radius: radius, speed: speed, angle: angle });
 }
 
 // Créer une fonction pour dessiner les météorites
@@ -44,17 +30,13 @@ function drawMeteors() {
   meteors.forEach(function(meteor) {
     ctx.beginPath();
     ctx.arc(meteor.x, meteor.y, meteor.radius, 0, Math.PI * 2);
-    ctx.fillStyle = '#ffffff'; // Couleur blanche pour la météorite
+    ctx.fillStyle = getRandomNeonColor(); // Couleur néon aléatoire pour la météorite
     ctx.fill();
     
-    // Calculer la direction de la météorite par rapport au centre du canvas
-    var centerX = canvas.width / 2;
-    var centerY = canvas.height / 2;
-    var angle = Math.atan2(centerY - meteor.y, centerX - meteor.x);
-    
-    // Mettre à jour la position de la météorite pour la faire suivre une orbite
-    meteor.x += Math.cos(angle) * meteor.speed;
-    meteor.y += Math.sin(angle) * meteor.speed;
+    // Mettre à jour la position de la météorite pour la faire suivre une spirale
+    meteor.x += Math.cos(meteor.angle) * meteor.speed;
+    meteor.y += Math.sin(meteor.angle) * meteor.speed;
+    meteor.angle += 0.05; // Augmenter l'angle pour simuler une spirale
     
     // Réinitialiser la position de la météorite une fois qu'elle sort du canvas
     if (meteor.x < -50 || meteor.x > canvas.width + 50 || meteor.y < -50 || meteor.y > canvas.height + 50) {
@@ -63,18 +45,20 @@ function drawMeteors() {
     }
   });
 }
+
 // Fonction pour générer une couleur néon aléatoire
 function getRandomNeonColor() {
-    var neonColors = ['#ff6eff', '#6effff', '#ff6eff']; // Rose, bleu et violet
-    return neonColors[Math.floor(Math.random() * neonColors.length)];
-  }
+  var neonColors = ['#ff6eff', '#6effff', '#ff6eff']; // Rose, bleu et violet
+  return neonColors[Math.floor(Math.random() * neonColors.length)];
+}
+
 // Créer une fonction pour animer les météorites
 function animateMeteors() {
   // Appeler la fonction de dessin à chaque rafraîchissement de l'écran
   requestAnimationFrame(animateMeteors);
   
   // Générer une nouvelle météorite à intervalles réguliers
-  if (Math.random() < 0.05) { // Réduire la fréquence d'apparition pour ralentir l'animation
+  if (Math.random() < 0.02) { // Réduire la fréquence d'apparition pour ralentir l'animation
     createMeteor();
   }
   

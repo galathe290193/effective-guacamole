@@ -70,7 +70,7 @@ function animateMeteors() {
   requestAnimationFrame(animateMeteors);
   
   // Générer une nouvelle météorite à intervalles réguliers
-  if (Math.random() < 0.02) { // Réduire la fréquence d'apparition pour ralentir l'animation
+  if (Math.random() < 0.05) { // Réduire la fréquence d'apparition pour ralentir l'animation
     createMeteor();
   }
   

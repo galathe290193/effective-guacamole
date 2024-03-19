@@ -14,6 +14,12 @@ body {
   background: rgb(255,255,255);
   background: radial-gradient(circle, rgba(255,255,255,1) 5%, rgba(124,119,125,1) 20%, rgba(136,131,137,1) 33%, rgba(34,45,82,1) 53%);
 }
+#background-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1; // Placez le canvas en arrière-plan
+}
 
 // Styles de base pour la bannière de cookie
 #cookie-banner {

@@ -14,6 +14,13 @@ body {
   background: radial-gradient(circle, rgb(255, 255, 255) 5%, rgb(124, 119, 125) 20%, rgb(136, 131, 137) 33%, rgb(34, 45, 82) 53%);
 }
 
+#background-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 #cookie-banner {
   position: fixed;
   bottom: 0;

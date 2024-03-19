@@ -63,7 +63,11 @@ function drawMeteors() {
     }
   });
 }
-
+// Fonction pour générer une couleur néon aléatoire
+function getRandomNeonColor() {
+    var neonColors = ['#ff6eff', '#6effff', '#ff6eff']; // Rose, bleu et violet
+    return neonColors[Math.floor(Math.random() * neonColors.length)];
+  }
 // Créer une fonction pour animer les météorites
 function animateMeteors() {
   // Appeler la fonction de dessin à chaque rafraîchissement de l'écran

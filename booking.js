@@ -27,3 +27,12 @@ $(document).ready(function(){
        e.preventDefault();
    });
    });	
+
+   // Sélectionnez le bouton de recherche par son ID
+const searchButton = document.getElementById('search');
+
+// Ajoutez un écouteur d'événements pour le clic sur le bouton
+searchButton.addEventListener('click', function() {
+    // Affichez une alerte indiquant que le site est une démo
+    alert("Ce site est une démo. Vous ne pouvez pas effectuer de réservation réelle.");
+});

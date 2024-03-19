@@ -1,102 +1,66 @@
-"use strict";
+var canvas = document.getElementById('background-canvas');
+var ctx = canvas.getContext('2d');
 
-var canvas = document.getElementById('canvas'),
-  ctx = canvas.getContext('2d'),
-  w = canvas.width = window.innerWidth,
-  h = canvas.height = window.innerHeight,
+// Définir la taille du canvas en fonction de la taille de la fenêtre
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Créer un tableau pour stocker les météorites
+var meteors = [];
+
+// Créer une fonction pour générer une météorite
+function createMeteor() {
+  // Générer des coordonnées aléatoires pour la météorite
+  var x = Math.random() * canvas.width;
+  var y = -50; // La météorite commence en haut du canvas
+  var radius = Math.random() * 3 + 1; // Taille aléatoire pour la météorite
+  
+  // Générer une vitesse de chute aléatoire pour la météorite
+  var speed = Math.random() * 2 + 1;
+  
+  // Ajouter la météorite au tableau
+  meteors.push({ x: x, y: y, radius: radius, speed: speed });
+}
+
+// Créer une fonction pour dessiner les météorites
+function drawMeteors() {
+  // Effacer le canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  // Dessiner chaque météorite dans le tableau
+  meteors.forEach(function(meteor) {
+    ctx.beginPath();
+    ctx.arc(meteor.x, meteor.y, meteor.radius, 0, Math.PI * 2);
+    ctx.fillStyle = '#ffffff'; // Couleur blanche pour la météorite
+    ctx.fill();
     
-  hue = 217,
-  stars = [],
-  count = 0,
-  maxStars = 1400;
+    // Mettre à jour la position de la météorite pour la faire descendre
+    meteor.y += meteor.speed;
+    
+    // Ajuster la position horizontale en fonction de la position verticale
+    meteor.x += (canvas.width / 2 - meteor.x) * 0.002;
+    
+    // Réinitialiser la position de la météorite une fois qu'elle atteint le bas du canvas
+    if (meteor.y > canvas.height + meteor.radius) {
+      meteor.y = -meteor.radius; // Repositionner la météorite en haut du canvas
+      meteor.x = Math.random() * canvas.width; // Repositionner la météorite horizontalement de manière aléatoire
+    }
+  });
+}
 
-// Thanks @jackrugile for the performance tip! https://codepen.io/jackrugile/pen/BjBGoM
-// Cache gradient
-var canvas2 = document.createElement('canvas'),
-    ctx2 = canvas2.getContext('2d');
-    canvas2.width = 100;
-    canvas2.height = 100;
-var half = canvas2.width/2,
-    gradient2 = ctx2.createRadialGradient(half, half, 0, half, half, half);
-    gradient2.addColorStop(0.025, '#fff');
-    gradient2.addColorStop(0.1, 'hsl(' + hue + ', 61%, 33%)');
-    gradient2.addColorStop(0.25, 'hsl(' + hue + ', 64%, 6%)');
-    gradient2.addColorStop(1, 'transparent');
-
-    ctx2.fillStyle = gradient2;
-    ctx2.beginPath();
-    ctx2.arc(half, half, half, 0, Math.PI * 2);
-    ctx2.fill();
-
-// End cache
-
-function random(min, max) {
-  if (arguments.length < 2) {
-    max = min;
-    min = 0;
+// Créer une fonction pour animer les météorites
+function animateMeteors() {
+  // Appeler la fonction de dessin à chaque rafraîchissement de l'écran
+  requestAnimationFrame(animateMeteors);
+  
+  // Générer une nouvelle météorite à intervalles réguliers
+  if (Math.random() < 0.05) {
+    createMeteor();
   }
   
-  if (min > max) {
-    var hold = max;
-    max = min;
-    min = hold;
-  }
-
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  // Dessiner les météorites
+  drawMeteors();
 }
 
-function maxOrbit(x,y) {
-  var max = Math.max(x,y),
-      diameter = Math.round(Math.sqrt(max*max + max*max));
-  return diameter/2;
-}
-
-var Star = function() {
-
-  this.orbitRadius = random(maxOrbit(w,h));
-  this.radius = random(60, this.orbitRadius) / 12;
-  this.orbitX = w / 2;
-  this.orbitY = h / 2;
-  this.timePassed = random(0, maxStars);
-  this.speed = random(this.orbitRadius) / 50000;
-  this.alpha = random(2, 10) / 10;
-
-  count++;
-  stars[count] = this;
-}
-
-Star.prototype.draw = function() {
-  var x = Math.sin(this.timePassed) * this.orbitRadius + this.orbitX,
-      y = Math.cos(this.timePassed) * this.orbitRadius + this.orbitY,
-      twinkle = random(10);
-
-  if (twinkle === 1 && this.alpha > 0) {
-    this.alpha -= 0.05;
-  } else if (twinkle === 2 && this.alpha < 1) {
-    this.alpha += 0.05;
-  }
-
-  ctx.globalAlpha = this.alpha;
-    ctx.drawImage(canvas2, x - this.radius / 2, y - this.radius / 2, this.radius, this.radius);
-  this.timePassed += this.speed;
-}
-
-for (var i = 0; i < maxStars; i++) {
-  new Star();
-}
-
-function animation() {
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.globalAlpha = 0.8;
-    ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 1)';
-    ctx.fillRect(0, 0, w, h)
-  
-  ctx.globalCompositeOperation = 'lighter';
-  for (var i = 1, l = stars.length; i < l; i++) {
-    stars[i].draw();
-  };  
-  
-  window.requestAnimationFrame(animation);
-}
-
-animation();
+// Démarrer l'animation
+animateMeteors();

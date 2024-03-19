@@ -37,8 +37,14 @@ function drawMeteors() {
     // Mettre à jour la position de la météorite pour la faire descendre
     meteor.y += meteor.speed;
     
-    // Ajuster la position horizontale en fonction de la position verticale
-    meteor.x += (canvas.width / 2 - meteor.x) * 0.002;
+    // Ajuster la position horizontale en fonction de la position verticale et d'une composante circulaire
+    var centerX = canvas.width / 2;
+    var centerY = canvas.height / 2;
+    var distanceToCenter = Math.sqrt(Math.pow(meteor.x - centerX, 2) + Math.pow(meteor.y - centerY, 2));
+    var angle = Math.atan2(centerY - meteor.y, centerX - meteor.x);
+    var circularMotion = 0.1; // Ajustez cette valeur pour changer l'intensité de la composante circulaire
+    
+    meteor.x += Math.cos(angle) * circularMotion * distanceToCenter;
     
     // Réinitialiser la position de la météorite une fois qu'elle atteint le bas du canvas
     if (meteor.y > canvas.height + meteor.radius) {

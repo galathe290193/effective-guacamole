@@ -10,8 +10,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: rgb(177, 212, 154);
-  background: radial-gradient(circle, rgb(177, 212, 154) 3%, rgb(53, 161, 85) 5%, rgb(3, 3, 3) 45%);
+  background: #060e1b;
+  overflow: hidden;
 }
 
 #background-canvas {

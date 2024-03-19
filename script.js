@@ -21,6 +21,11 @@ function getCookie(name) {
     return null;
 }
 
+// Fonction pour supprimer un cookie
+function deleteCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+}
+
 // Fonction pour incrémenter le compteur de visites
 function incrementVisitCounter() {
     var visits = parseInt(getCookie("visits")) || 0;
@@ -29,15 +34,27 @@ function incrementVisitCounter() {
     document.getElementById("visits").textContent = visits;
 }
 
+// Masquer le bandeau de cookie
+function hideCookieBanner() {
+    var banner = document.getElementById("cookie-banner");
+    banner.parentNode.removeChild(banner);
+}
+
 // Vérifie si le cookie de consentement existe déjà
 if (!getCookie("cookie_consent")) {
     // Affiche le bandeau de cookie
     document.getElementById("cookie-banner").style.display = "block";
 
-    // Écouteur d'événement pour le clic sur le bouton d'acceptation des cookies
+    // Écouteurs d'événements pour le clic sur les boutons d'acceptation et de refus des cookies
     document.getElementById("accept-cookies").addEventListener("click", function() {
         setCookie("cookie_consent", true, 365); // Stocke le consentement pendant 1 an
-        document.getElementById("cookie-banner").style.display = "none"; // Masque le bandeau de cookie
+        hideCookieBanner();
+        incrementVisitCounter();
+    });
+
+    document.getElementById("reject-cookies").addEventListener("click", function() {
+        deleteCookie("cookie_consent"); // Supprime le cookie de consentement
+        hideCookieBanner();
     });
 }
 

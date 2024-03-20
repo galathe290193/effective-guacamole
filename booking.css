@@ -375,3 +375,28 @@ button.button-big {
 #book-now:hover {
     background-color: #333; /* Lorsque survolé, couleur un peu plus foncée */
 }
+/* Ajoutez ces styles à votre fichier CSS */
+
+/* Style du carrousel */
+.hotel-carousel {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Style des images dans le carrousel */
+.hotel-carousel img {
+    width: 100%;
+    height: auto;
+}
+
+/* Style des points de navigation du carrousel */
+.slick-dots li button:before {
+    font-size: 12px; /* Taille des points */
+    color: #fb6362; /* Couleur des points */
+}
+
+/* Style des flèches de navigation du carrousel (si elles sont activées) */
+.slick-arrow {
+    font-size: 24px; /* Taille des flèches */
+    color: #fb6362; /* Couleur des flèches */
+}

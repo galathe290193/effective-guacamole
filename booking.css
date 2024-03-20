@@ -375,3 +375,30 @@ button.button-big {
 #book-now:hover {
     background-color: #333; /* Lorsque survolé, couleur un peu plus foncée */
 }
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-nav button {
+    background-color: #fb6362;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.carousel-nav button:hover {
+    background-color: #f98584;
+}
+
+#prev-btn {
+    float: left;
+}
+
+#next-btn {
+    float: right;
+}

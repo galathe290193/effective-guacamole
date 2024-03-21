@@ -198,7 +198,7 @@ h1.demo-title a {
 }
 
 .pricing-table .ptable-description ul li {
-  color: #2A293E;
+  color: rgb(6,14,27);
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 1px;

@@ -45,18 +45,3 @@ $(document).ready(function(){
         window.location.href = "index.html";
     });
 });
-
-// Récupérer les boutons de navigation
-var prevButton = document.getElementById('prev-btn');
-var nextButton = document.getElementById('next-btn');
-
-// Ajouter des écouteurs d'événements pour les boutons
-prevButton.addEventListener('click', function() {
-    // Logique pour passer à l'image précédente dans le carrousel
-    // (Cette partie sera implémentée dans la fonction JavaScript suivante)
-});
-
-nextButton.addEventListener('click', function() {
-    // Logique pour passer à l'image suivante dans le carrousel
-    // (Cette partie sera implémentée dans la fonction JavaScript suivante)
-});

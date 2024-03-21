@@ -4,7 +4,8 @@
 	outline: none;
 }
 body {
-	background-color: rgb(6, 14, 27);
+	background: rgb(6,14,27);
+    background: linear-gradient(108deg, rgba(6,14,27,1) 49%, rgba(177,212,154,1) 52%, rgba(6,14,27,1) 55%);
 	font-size: 14px;
 	font-family: "Gotham Book", sans-serif;
 }

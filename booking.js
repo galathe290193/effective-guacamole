@@ -24,7 +24,7 @@ $(document).ready(function(){
         $('#overlay').fadeOut(300);
         $('.calendar').fadeOut(300);
         let id=($('.dates').data()).type;
-        $('#' + id).val(value+" May, 2014");
+        $('#' + id).val(value+" May, 2024");
     }); 
     
     // Au clic sur le bouton "Search rooms"

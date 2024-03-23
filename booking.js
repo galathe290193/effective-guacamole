@@ -45,3 +45,19 @@ $(document).ready(function(){
         window.location.href = "index.html";
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const calendar = document.querySelector('.dates');
+    const closeIcon = document.querySelector('.close-icon');
+    
+    // Fermer le calendrier en cliquant sur la croix
+    closeIcon.addEventListener('click', function() {
+        calendar.setAttribute('data-type', 'none');
+    });
+
+    // Fermer le calendrier en cliquant en dehors du cadre
+    document.addEventListener('click', function(event) {
+        if (!calendar.contains(event.target) && event.target !== closeIcon) {
+            calendar.setAttribute('data-type', 'none');
+        }
+    });
+});

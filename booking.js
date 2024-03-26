@@ -26,6 +26,19 @@ $(document).ready(function(){
         let id=($('.dates').data()).type;
         $('#' + id).val(value+" May, 2024");
     }); 
+
+    $('.pop-up').on('click', function(){
+        $('#overlay').fadeIn(300); 
+        $('.calendar').fadeIn(300); 
+        let clickedbutton = $("input",$(this).parent()).attr('id');
+        $('.dates').data('type',clickedbutton);
+    });
+
+    // Ajout de l'événement pour fermer le pop-up
+    $('.close-icon').on('click', function() {
+        $('#overlay').fadeOut(300);
+        $('.calendar').fadeOut(300);
+    });
     
     // Au clic sur le bouton "Search rooms"
     $('#search').on('click', function(e){

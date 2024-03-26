@@ -1,3 +1,4 @@
+import 'feather-icons/dist/feather.min.css';
 $(document).ready(function(){
     // Fonction pour afficher l'alerte
     function showAlert() {

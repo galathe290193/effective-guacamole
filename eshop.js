@@ -1,3 +1,4 @@
+import 'feather-icons/dist/feather.min.css';
 $(document).ready(function(){
     $(".home-button img").hover(
       function() {

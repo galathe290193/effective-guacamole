@@ -34,12 +34,20 @@ $(document).ready(function(){
         $('.dates').data('type',clickedbutton);
     });
 
-    // Ajout de l'événement pour fermer le pop-up
+    // Ajout de l'événement pour fermer le pop-up en cliquant sur la croix (X)
     $('.close-icon').on('click', function() {
         $('#overlay').fadeOut(300);
         $('.calendar').fadeOut(300);
     });
-    
+
+    // Ajout de l'événement pour fermer le pop-up en cliquant en dehors du pop-up
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('.calendar').length && !$(event.target).hasClass('pop-up')) {
+            $('#overlay').fadeOut(300);
+            $('.calendar').fadeOut(300);
+        }
+    });
+
     // Au clic sur le bouton "Search rooms"
     $('#search').on('click', function(e){
         $('.booking').addClass('is-sent');

@@ -14,7 +14,7 @@ h1.demo-title {
   text-align: center;
   font-size: 30px;
   font-weight: 600;
-  color: #2A293E;
+  color: #b6b5cd;
   letter-spacing: 2px;
 }
 
@@ -117,7 +117,7 @@ h1.demo-title a {
 }
 
 .pricing-table .ptable-item.featured-item .ptable-header {
-  background: #FF6F61;
+  background: #2A293E;
 }
 
 .pricing-table .ptable-status {
@@ -131,7 +131,7 @@ h1.demo-title a {
   height: 30px;
   padding: 5px 0;
   text-align: center;
-  color: #FF6F61;
+  color: #2A293E;
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 1px;

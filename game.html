@@ -12,18 +12,30 @@
     <container>
         <canvas id="canvas1"></canvas>
       
-        <article><span> Back to home  <a href="index.html"></a></span>
+        <article><span>pas de base de donnes , pas de classement , que de la detente.<a href="index.html"></a></span>
         </article>
     </container>
       
     <footer>
         A partir de 10 points la musique permet une meilleure concentration !
-        <audio controls autoplay loop>
+        <button onclick="toggleAudio()">Play Music</button>
+        <audio id="backgroundMusic" loop>
             <source src="shadowhunter-161216.mp3" type="audio/mp3">
             Votre navigateur ne supporte pas l'élément audio.
         </audio>
     </footer>
 
     <script src="game.js"></script>
+    <script>
+        const audio = document.getElementById('backgroundMusic');
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    </script>
 </body>
 </html>

@@ -171,7 +171,7 @@ let bubbleTextArray = [];
 let adjustX = -3;
 let adjustY = -3;
 ctx.fillStyle = 'white';
-ctx.font = '17px Verdana';
+ctx.font = '15px Verdana';
 ctx.fillText('GALATHE', 20, 42);
 //ctx.font = '19px Verdana';
 //ctx.fillText('TEXT', 36, 49);

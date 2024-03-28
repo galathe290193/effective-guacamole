@@ -8,49 +8,7 @@ const songName = document.querySelector(".music-player h1");
 const artistName = document.querySelector(".music-player p");
 
 const songs = [
-  {
-    title: "Symphony",
-    name: "Clean Bandit ft. Zara Larsson",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3",
-  },
-  {
-    title: "Pawn It All",
-    name: "Alicia Keys",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3",
-  },
-  {
-    title: "Seni Dert Etmeler",
-    name: "Madrigal",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Madrigal-Seni-Dert-Etmeler.mp3",
-  },
-  {
-    title: "Instant Crush",
-    name: "Daft Punk ft. Julian Casablancas",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Daft-Punk-Instant-Crush.mp3",
-  },
-  {
-    title: "As It Was",
-    name: "Harry Styles",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Harry-Styles-As-It-Was.mp3",
-  },
-
-  {
-    title: "Physical",
-    name: "Dua Lipa",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Dua-Lipa-Physical.mp3",
-  },
-  {
-    title: "Delicate",
-    name: "Taylor Swift",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Taylor-Swift-Delicate.mp3",
-  },
+  // ... (rest of your songs array)
 ];
 
 let currentSongIndex = 3;
@@ -104,15 +62,21 @@ progress.addEventListener("change", function () {
   playSong();
 });
 
+function updateCarousel() {
+  swiper.slideTo(currentSongIndex, 0); // 0 pour une transition immédiate
+}
+
 forwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex + 1) % songs.length;
   updateSongInfo();
+  updateCarousel(); // Mettre à jour le carrousel après le changement de chanson
   playPause();
 });
 
 backwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
   updateSongInfo();
+  updateCarousel(); // Mettre à jour le carrousel après le changement de chanson
   playPause();
 });
 
@@ -121,7 +85,7 @@ updateSongInfo();
 var swiper = new Swiper(".swiper", {
   effect: "coverflow",
   centeredSlides: true,
-  initialSlide: 3,
+  initialSlide: currentSongIndex,
   slidesPerView: "auto",
   allowTouchMove: false,
   spaceBetween: 40,

@@ -141,5 +141,28 @@ backwardButton.addEventListener("click", function () {
   updateCarousel(); // Mettre à jour le carrousel après le changement de chanson
   playPause();
 });
+function updateCarousel() {
+  swiper.slideTo(currentSongIndex, 0); // 0 pour une transition immédiate
+}
+
+forwardButton.addEventListener("click", function () {
+  currentSongIndex = (currentSongIndex + 1) % songs.length;
+  updateSongInfo();
+  updateCarousel(); // Mettre à jour le carrousel après le changement de chanson
+  playPause();
+});
+
+backwardButton.addEventListener("click", function () {
+  currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+  updateSongInfo();
+  updateCarousel(); // Mettre à jour le carrousel après le changement de chanson
+  playPause();
+});
+
+// Ajout d'un écouteur pour le changement de slide
+swiper.on('slideChange', function () {
+  currentSongIndex = swiper.realIndex;
+  updateSongInfo();
+});
 
 updateSongInfo();

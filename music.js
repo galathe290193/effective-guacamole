@@ -110,11 +110,13 @@ progress.addEventListener("change", function () {
 
 forwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex + 1) % songs.length;
+  swiper.slideTo(currentSongIndex); // Mettre à jour le slide du Swiper
   updateSongInfo();
 });
 
 backwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+  swiper.slideTo(currentSongIndex); // Mettre à jour le slide du Swiper
   updateSongInfo();
 });
 

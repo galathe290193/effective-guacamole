@@ -53,7 +53,15 @@ const songs = [
   },
 ];
 
-let currentSongIndex = 1;
+let currentSongIndex = 0; // Définir la chanson initiale comme la première chanson
+
+function updateSongInfo() {
+  songName.textContent = songs[currentSongIndex].title;
+  artistName.textContent = songs[currentSongIndex].name;
+  song.src = songs[currentSongIndex].source;
+
+  song.addEventListener("loadeddata", function () {});
+}
 
 function updateSongInfo() {
   songName.textContent = songs[currentSongIndex].title;

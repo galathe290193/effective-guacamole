@@ -11,45 +11,37 @@ const songs = [
   {
     title: "Symphony",
     name: "Clean Bandit ft. Zara Larsson",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3",
+    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3",
   },
   {
     title: "Pawn It All",
     name: "Alicia Keys",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3",
+    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3",
   },
   {
     title: "Seni Dert Etmeler",
     name: "Madrigal",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Madrigal-Seni-Dert-Etmeler.mp3",
+    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Madrigal-Seni-Dert-Etmeler.mp3",
   },
   {
     title: "Instant Crush",
     name: "Daft Punk ft. Julian Casablancas",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Daft-Punk-Instant-Crush.mp3",
+    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Daft-Punk-Instant-Crush.mp3",
   },
   {
     title: "As It Was",
     name: "Harry Styles",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Harry-Styles-As-It-Was.mp3",
+    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Harry-Styles-As-It-Was.mp3",
   },
-
   {
     title: "Physical",
     name: "Dua Lipa",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Dua-Lipa-Physical.mp3",
+    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Dua-Lipa-Physical.mp3",
   },
   {
     title: "Delicate",
     name: "Taylor Swift",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Taylor-Swift-Delicate.mp3",
+    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Taylor-Swift-Delicate.mp3",
   },
 ];
 
@@ -60,7 +52,11 @@ function updateSongInfo() {
   artistName.textContent = songs[currentSongIndex].name;
   song.src = songs[currentSongIndex].source;
 
-  song.addEventListener("loadeddata", function () {});
+  song.addEventListener("canplaythrough", function () {
+    if (song.paused) {
+      playSong();
+    }
+  });
 }
 
 song.addEventListener("timeupdate", function () {
@@ -128,36 +124,15 @@ function updateCarousel() {
   swiper.slideTo(currentSongIndex, 0); // 0 pour une transition immédiate
 }
 
-forwardButton.addEventListener("click", function () {
-  currentSongIndex = (currentSongIndex + 1) % songs.length;
+function changeSong(direction) {
+  currentSongIndex = (currentSongIndex + direction + songs.length) % songs.length;
   updateSongInfo();
   updateCarousel(); // Mettre à jour le carrousel après le changement de chanson
   playPause();
-});
-
-backwardButton.addEventListener("click", function () {
-  currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-  updateSongInfo();
-  updateCarousel(); // Mettre à jour le carrousel après le changement de chanson
-  playPause();
-});
-function updateCarousel() {
-  swiper.slideTo(currentSongIndex, 0); // 0 pour une transition immédiate
 }
 
-forwardButton.addEventListener("click", function () {
-  currentSongIndex = (currentSongIndex + 1) % songs.length;
-  updateSongInfo();
-  updateCarousel(); // Mettre à jour le carrousel après le changement de chanson
-  playPause();
-});
-
-backwardButton.addEventListener("click", function () {
-  currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-  updateSongInfo();
-  updateCarousel(); // Mettre à jour le carrousel après le changement de chanson
-  playPause();
-});
+forwardButton.addEventListener("click", () => changeSong(1));
+backwardButton.addEventListener("click", () => changeSong(-1));
 
 // Ajout d'un écouteur pour le changement de slide
 swiper.on('slideChange', function () {

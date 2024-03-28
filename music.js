@@ -52,11 +52,7 @@ function updateSongInfo() {
   artistName.textContent = songs[currentSongIndex].name;
   song.src = songs[currentSongIndex].source;
 
-  song.addEventListener("canplaythrough", function () {
-    if (song.paused) {
-      playSong();
-    }
-  });
+  song.addEventListener("loadeddata", function () {});
 }
 
 song.addEventListener("timeupdate", function () {
@@ -124,17 +120,20 @@ function updateCarousel() {
   swiper.slideTo(currentSongIndex, 0); // 0 pour une transition immédiate
 }
 
-function changeSong(direction) {
-  currentSongIndex = (currentSongIndex + direction + songs.length) % songs.length;
+forwardButton.addEventListener("click", function () {
+  currentSongIndex = (currentSongIndex + 1) % songs.length;
   updateSongInfo();
-  updateCarousel(); // Mettre à jour le carrousel après le changement de chanson
+  updateCarousel();
   playPause();
-}
+});
 
-forwardButton.addEventListener("click", () => changeSong(1));
-backwardButton.addEventListener("click", () => changeSong(-1));
+backwardButton.addEventListener("click", function () {
+  currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+  updateSongInfo();
+  updateCarousel();
+  playPause();
+});
 
-// Ajout d'un écouteur pour le changement de slide
 swiper.on('slideChange', function () {
   currentSongIndex = swiper.realIndex;
   updateSongInfo();

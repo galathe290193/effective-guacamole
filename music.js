@@ -20,55 +20,20 @@ const songs = [
     source:
       "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3",
   },
-  {
-    title: "Seni Dert Etmeler",
-    name: "Madrigal",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Madrigal-Seni-Dert-Etmeler.mp3",
-  },
-  {
-    title: "Instant Crush",
-    name: "Daft Punk ft. Julian Casablancas",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Daft-Punk-Instant-Crush.mp3",
-  },
-  {
-    title: "As It Was",
-    name: "Harry Styles",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Harry-Styles-As-It-Was.mp3",
-  },
-
-  {
-    title: "Physical",
-    name: "Dua Lipa",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Dua-Lipa-Physical.mp3",
-  },
-  {
-    title: "Delicate",
-    name: "Taylor Swift",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Taylor-Swift-Delicate.mp3",
-  },
+  // ... (autres chansons)
 ];
 
-let currentSongIndex = 0; // Définir la chanson initiale comme la première chanson
+let currentSongIndex = 0; // Définir la première chanson comme chanson initiale
 
 function updateSongInfo() {
   songName.textContent = songs[currentSongIndex].title;
   artistName.textContent = songs[currentSongIndex].name;
   song.src = songs[currentSongIndex].source;
 
-  song.addEventListener("loadeddata", function () {});
-}
-
-function updateSongInfo() {
-  songName.textContent = songs[currentSongIndex].title;
-  artistName.textContent = songs[currentSongIndex].name;
-  song.src = songs[currentSongIndex].source;
-
-  song.addEventListener("loadeddata", function () {});
+  song.addEventListener("canplaythrough", function onCanPlay() {
+    song.removeEventListener("canplaythrough", onCanPlay); // Supprime l'écouteur pour éviter les appels multiples
+    playSong(); // Joue la chanson une fois qu'elle est complètement chargée
+  });
 }
 
 song.addEventListener("timeupdate", function () {
@@ -115,13 +80,11 @@ progress.addEventListener("change", function () {
 forwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex + 1) % songs.length;
   updateSongInfo();
-  playPause();
 });
 
 backwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
   updateSongInfo();
-  playPause();
 });
 
 updateSongInfo();
@@ -129,7 +92,7 @@ updateSongInfo();
 var swiper = new Swiper(".swiper", {
   effect: "coverflow",
   centeredSlides: true,
-  initialSlide: 3,
+  initialSlide: 0, // Définir la première carte comme carte initiale
   slidesPerView: "auto",
   allowTouchMove: false,
   spaceBetween: 40,

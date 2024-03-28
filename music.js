@@ -52,19 +52,15 @@ const songs = [
       "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Taylor-Swift-Delicate.mp3",
   },
 ];
- 
 
-let currentSongIndex = 0; // Définir la première chanson comme chanson initiale
+let currentSongIndex = 3;
 
 function updateSongInfo() {
   songName.textContent = songs[currentSongIndex].title;
   artistName.textContent = songs[currentSongIndex].name;
   song.src = songs[currentSongIndex].source;
 
-  song.addEventListener("canplaythrough", function onCanPlay() {
-    song.removeEventListener("canplaythrough", onCanPlay); // Supprime l'écouteur pour éviter les appels multiples
-    playSong(); // Joue la chanson une fois qu'elle est complètement chargée
-  });
+  song.addEventListener("loadeddata", function () {});
 }
 
 song.addEventListener("timeupdate", function () {
@@ -110,14 +106,14 @@ progress.addEventListener("change", function () {
 
 forwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex + 1) % songs.length;
-  swiper.slideTo(currentSongIndex); // Mettre à jour le slide du Swiper
   updateSongInfo();
+  playPause();
 });
 
 backwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-  swiper.slideTo(currentSongIndex); // Mettre à jour le slide du Swiper
   updateSongInfo();
+  playPause();
 });
 
 updateSongInfo();
@@ -125,7 +121,7 @@ updateSongInfo();
 var swiper = new Swiper(".swiper", {
   effect: "coverflow",
   centeredSlides: true,
-  initialSlide: 0, // Définir la première carte comme carte initiale
+  initialSlide: 3,
   slidesPerView: "auto",
   allowTouchMove: false,
   spaceBetween: 40,

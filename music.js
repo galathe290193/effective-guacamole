@@ -9,37 +9,37 @@ const artistName = document.querySelector(".music-player p");
 
 const songs = [
   {
-    title: "song 1",
+    title: "Piste 1",
     name: "libre de droit",
     source: "piste1.mp3",
   },
   {
-    title: "song2",
+    title: "Piste 2",
     name: "libre de droit",
     source: "piste2.mp3",
   },
   {
-    title: "song3",
+    title: "Piste 3",
     name: "libre de droit",
     source: "piste3.mp3",
   },
   {
-    title: "song4",
+    title: "Piste 4",
     name: "libre de droit",
     source: "piste4.mp3",
   },
   {
-    title: "song5",
+    title: "Piste 5",
     name: "libre de droit",
     source: "piste5.mp3",
   },
   {
-    title: "song6",
+    title: "Piste 6",
     name: "libre de droit",
     source: "piste6.mp3",
   },
   {
-    title: "song7",
+    title: "Piste 7",
     name: "libre de droit",
     source: "piste7.mp3",
   },
@@ -61,6 +61,9 @@ function updateSongInfo() {
   song.addEventListener("error", function (error) {
     console.error("Error loading song:", error);
   });
+
+  // Mettre à jour la diapositive active dans le carrousel Swiper
+  swiper.slideTo(currentSongIndex);
 }
 
 song.addEventListener("timeupdate", function () {
@@ -84,6 +87,9 @@ function playSong() {
   song.play();
   controlIcon.classList.add("fa-pause");
   controlIcon.classList.remove("fa-play");
+
+  // Mettre à jour la diapositive active dans le carrousel Swiper
+  swiper.slideTo(currentSongIndex);
 }
 
 function playPause() {

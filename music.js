@@ -60,7 +60,15 @@ function updateSongInfo() {
   artistName.textContent = songs[currentSongIndex].name;
   song.src = songs[currentSongIndex].source;
 
-  song.addEventListener("loadeddata", function () {});
+  song.addEventListener("loadeddata", function () {
+    if (!song.paused) {
+      playSong();
+    }
+  });
+
+  song.addEventListener("error", function (error) {
+    console.error("Error loading song:", error);
+  });
 }
 
 song.addEventListener("timeupdate", function () {
@@ -107,13 +115,17 @@ progress.addEventListener("change", function () {
 forwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex + 1) % songs.length;
   updateSongInfo();
-  playPause();
+  if (!song.paused) {
+    playSong();
+  }
 });
 
 backwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
   updateSongInfo();
-  playPause();
+  if (!song.paused) {
+    playSong();
+  }
 });
 
 updateSongInfo();

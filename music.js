@@ -106,18 +106,13 @@ progress.addEventListener("change", function () {
 
 forwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex + 1) % songs.length;
-  
+
   // Mettez à jour les informations de la chanson
   updateSongInfo();
   
   // Jouez la chanson si elle n'est pas en pause
   if (!song.paused) {
     playSong();
-  }
-  
-  // Si c'est la dernière piste, revenez à la première
-  if (currentSongIndex === 0) {
-    currentSongIndex = songs.length - 1;
   }
 });
 

@@ -14,32 +14,32 @@ const songs = [
     source: "piste1.mp3",
   },
   {
-    title: "song2",
+    title: "song 2",
     name: "libre de droit",
     source: "piste2.mp3",
   },
   {
-    title: "song3",
+    title: "song 3",
     name: "libre de droit",
     source: "piste3.mp3",
   },
   {
-    title: "song4",
+    title: "song 4",
     name: "libre de droit",
     source: "piste4.mp3",
   },
   {
-    title: "song5",
+    title: "song 5",
     name: "libre de droit",
     source: "piste5.mp3",
   },
   {
-    title: "song6",
+    title: "song 6",
     name: "libre de droit",
     source: "piste6.mp3",
   },
   {
-    title: "song7",
+    title: "song 7",
     name: "libre de droit",
     source: "piste7.mp3",
   },
@@ -139,7 +139,7 @@ swiper = new Swiper(".swiper", {
   },
   on: {
     slideChange: function () {
-      currentSongIndex = this.realIndex;
+      currentSongIndex = this.activeIndex;
       updateSongInfo();
     },
   },

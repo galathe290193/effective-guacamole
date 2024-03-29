@@ -46,6 +46,7 @@ const songs = [
 ];
 
 let currentSongIndex = 0;
+let swiper;
 
 function updateSongInfo() {
   songName.textContent = songs[currentSongIndex].title;
@@ -61,9 +62,6 @@ function updateSongInfo() {
   song.addEventListener("error", function (error) {
     console.error("Error loading song:", error);
   });
-
-  // Mettre à jour la diapositive active dans le carrousel Swiper
-  swiper.slideTo(currentSongIndex);
 }
 
 song.addEventListener("timeupdate", function () {
@@ -110,19 +108,21 @@ progress.addEventListener("change", function () {
 forwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex + 1) % songs.length;
   updateSongInfo();
+  swiper.slideTo(currentSongIndex);
 });
 
 backwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
   updateSongInfo();
+  swiper.slideTo(currentSongIndex);
 });
 
 updateSongInfo();
 
-var swiper = new Swiper(".swiper", {
+swiper = new Swiper(".swiper", {
   effect: "coverflow",
   centeredSlides: true,
-  initialSlide: 0,  // Démarrez avec la première diapositive
+  initialSlide: 0,
   slidesPerView: "auto",
   allowTouchMove: false,
   spaceBetween: 40,
@@ -139,7 +139,7 @@ var swiper = new Swiper(".swiper", {
   },
   on: {
     slideChange: function () {
-      currentSongIndex = this.activeIndex;
+      currentSongIndex = this.realIndex;
       updateSongInfo();
     },
   },

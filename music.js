@@ -9,37 +9,37 @@ const artistName = document.querySelector(".music-player p");
 
 const songs = [
   {
-    title: "Piste 1",
+    title: "song 1",
     name: "libre de droit",
     source: "piste1.mp3",
   },
   {
-    title: "Piste 2",
+    title: "song2",
     name: "libre de droit",
     source: "piste2.mp3",
   },
   {
-    title: "Piste 3",
+    title: "song3",
     name: "libre de droit",
     source: "piste3.mp3",
   },
   {
-    title: "Piste 4",
+    title: "song4",
     name: "libre de droit",
     source: "piste4.mp3",
   },
   {
-    title: "Piste 5",
+    title: "song5",
     name: "libre de droit",
     source: "piste5.mp3",
   },
   {
-    title: "Piste 6",
+    title: "song6",
     name: "libre de droit",
     source: "piste6.mp3",
   },
   {
-    title: "Piste 7",
+    title: "song7",
     name: "libre de droit",
     source: "piste7.mp3",
   },
@@ -87,9 +87,6 @@ function playSong() {
   song.play();
   controlIcon.classList.add("fa-pause");
   controlIcon.classList.remove("fa-play");
-
-  // Mettre à jour la diapositive active dans le carrousel Swiper
-  swiper.slideTo(currentSongIndex);
 }
 
 function playPause() {
@@ -113,17 +110,11 @@ progress.addEventListener("change", function () {
 forwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex + 1) % songs.length;
   updateSongInfo();
-  if (!song.paused) {
-    playSong();
-  }
 });
 
 backwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
   updateSongInfo();
-  if (!song.paused) {
-    playSong();
-  }
 });
 
 updateSongInfo();
@@ -148,9 +139,8 @@ var swiper = new Swiper(".swiper", {
   },
   on: {
     slideChange: function () {
-      if (this.isEnd) {
-        this.slideTo(0);  // Faites glisser vers la première diapositive
-      }
+      currentSongIndex = this.activeIndex;
+      updateSongInfo();
     },
   },
 });

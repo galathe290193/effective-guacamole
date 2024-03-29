@@ -110,6 +110,10 @@ forwardButton.addEventListener("click", function () {
   if (!song.paused) {
     playSong();
   }
+  // Si c'est la dernière piste, revenez à la première
+  if (currentSongIndex === 0) {
+    currentSongIndex = songs.length - 1;
+  }
 });
 
 backwardButton.addEventListener("click", function () {

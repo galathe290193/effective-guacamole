@@ -114,6 +114,11 @@ forwardButton.addEventListener("click", function () {
   if (!song.paused) {
     playSong();
   }
+
+  // Si c'est la dernière chanson, revenez à la première
+  if (currentSongIndex === songs.length - 1) {
+    currentSongIndex = 0;
+  }
 });
 
 backwardButton.addEventListener("click", function () {
@@ -126,6 +131,11 @@ backwardButton.addEventListener("click", function () {
   // Jouez la chanson
   if (!song.paused) {
     playSong();
+  }
+
+  // Si c'est la première chanson, allez à la dernière
+  if (currentSongIndex === 0) {
+    currentSongIndex = songs.length - 1;
   }
 });
 

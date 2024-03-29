@@ -53,7 +53,7 @@ const songs = [
   },
 ];
 
-let currentSongIndex = 3;
+let currentSongIndex = 0;
 
 function updateSongInfo() {
   songName.textContent = songs[currentSongIndex].title;

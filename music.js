@@ -9,39 +9,39 @@ const artistName = document.querySelector(".music-player p");
 
 const songs = [
   {
-    title: "Symphony",
-    name: "Clean Bandit ft. Zara Larsson",
-    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3",
+    title: "song 1",
+    name: "libre de droit",
+    source: "piste1.mp3",
   },
   {
-    title: "Pawn It All",
-    name: "Alicia Keys",
-    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3",
+    title: "song2",
+    name: "libre de droit",
+    source: "piste2.mp3",
   },
   {
-    title: "Seni Dert Etmeler",
-    name: "Madrigal",
-    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Madrigal-Seni-Dert-Etmeler.mp3",
+    title: "song3",
+    name: "libre de droit",
+    source: "piste3.mp3",
   },
   {
-    title: "Instant Crush",
-    name: "Daft Punk ft. Julian Casablancas",
-    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Daft-Punk-Instant-Crush.mp3",
+    title: "song4",
+    name: "libre de droit",
+    source: "piste4.mp3",
   },
   {
-    title: "As It Was",
-    name: "Harry Styles",
-    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Harry-Styles-As-It-Was.mp3",
+    title: "song5",
+    name: "libre de droit",
+    source: "piste5.mp3",
   },
   {
-    title: "Physical",
-    name: "Dua Lipa",
-    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Dua-Lipa-Physical.mp3",
+    title: "song6",
+    name: "libre de droit",
+    source: "piste6.mp3",
   },
   {
-    title: "Delicate",
-    name: "Taylor Swift",
-    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Taylor-Swift-Delicate.mp3",
+    title: "song7",
+    name: "libre de droit",
+    source: "piste7.mp3",
   },
 ];
 
@@ -106,24 +106,15 @@ progress.addEventListener("change", function () {
 
 forwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex + 1) % songs.length;
-  
-  // Mettez à jour les informations de la chanson
   updateSongInfo();
-  
-  // Jouez la chanson si elle n'est pas en pause
   if (!song.paused) {
     playSong();
   }
 });
 
 backwardButton.addEventListener("click", function () {
-  // Mettez à jour l'index de la chanson précédente
   currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-  
-  // Mettez à jour les informations de la chanson
   updateSongInfo();
-  
-  // Jouez la chanson
   if (!song.paused) {
     playSong();
   }
@@ -134,7 +125,7 @@ updateSongInfo();
 var swiper = new Swiper(".swiper", {
   effect: "coverflow",
   centeredSlides: true,
-  initialSlide: 0,
+  initialSlide: 0,  // Démarrez avec la première diapositive
   slidesPerView: "auto",
   allowTouchMove: false,
   spaceBetween: 40,
@@ -152,7 +143,7 @@ var swiper = new Swiper(".swiper", {
   on: {
     slideChange: function () {
       if (this.isEnd) {
-        this.slideTo(0);
+        this.slideTo(0);  // Faites glisser vers la première diapositive
       }
     },
   },

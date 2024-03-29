@@ -106,18 +106,13 @@ progress.addEventListener("change", function () {
 
 forwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex + 1) % songs.length;
-
+  
   // Mettez à jour les informations de la chanson
   updateSongInfo();
   
   // Jouez la chanson si elle n'est pas en pause
   if (!song.paused) {
     playSong();
-  }
-
-  // Si c'est la dernière chanson, revenez à la première
-  if (currentSongIndex === songs.length - 1) {
-    currentSongIndex = 0;
   }
 });
 
@@ -132,11 +127,6 @@ backwardButton.addEventListener("click", function () {
   if (!song.paused) {
     playSong();
   }
-
-  // Si c'est la première chanson, allez à la dernière
-  if (currentSongIndex === 0) {
-    currentSongIndex = songs.length - 1;
-  }
 });
 
 updateSongInfo();
@@ -144,7 +134,7 @@ updateSongInfo();
 var swiper = new Swiper(".swiper", {
   effect: "coverflow",
   centeredSlides: true,
-  initialSlide: 0,  // Démarrez avec la première diapositive
+  initialSlide: 0,
   slidesPerView: "auto",
   allowTouchMove: false,
   spaceBetween: 40,
@@ -162,7 +152,7 @@ var swiper = new Swiper(".swiper", {
   on: {
     slideChange: function () {
       if (this.isEnd) {
-        this.slideTo(0);  // Faites glisser vers la première diapositive
+        this.slideTo(0);
       }
     },
   },

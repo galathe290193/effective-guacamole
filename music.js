@@ -11,45 +11,37 @@ const songs = [
   {
     title: "Symphony",
     name: "Clean Bandit ft. Zara Larsson",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3",
+    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Clean-Bandit-Symphony.mp3",
   },
   {
     title: "Pawn It All",
     name: "Alicia Keys",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3",
+    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Pawn-It-All.mp3",
   },
   {
     title: "Seni Dert Etmeler",
     name: "Madrigal",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Madrigal-Seni-Dert-Etmeler.mp3",
+    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Madrigal-Seni-Dert-Etmeler.mp3",
   },
   {
     title: "Instant Crush",
     name: "Daft Punk ft. Julian Casablancas",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Daft-Punk-Instant-Crush.mp3",
+    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Daft-Punk-Instant-Crush.mp3",
   },
   {
     title: "As It Was",
     name: "Harry Styles",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Harry-Styles-As-It-Was.mp3",
+    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Harry-Styles-As-It-Was.mp3",
   },
-
   {
     title: "Physical",
     name: "Dua Lipa",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Dua-Lipa-Physical.mp3",
+    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Dua-Lipa-Physical.mp3",
   },
   {
     title: "Delicate",
     name: "Taylor Swift",
-    source:
-      "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Taylor-Swift-Delicate.mp3",
+    source: "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Taylor-Swift-Delicate.mp3",
   },
 ];
 
@@ -133,7 +125,7 @@ updateSongInfo();
 var swiper = new Swiper(".swiper", {
   effect: "coverflow",
   centeredSlides: true,
-  initialSlide: 3,
+  initialSlide: 0,  // Démarrez avec la première diapositive
   slidesPerView: "auto",
   allowTouchMove: false,
   spaceBetween: 40,
@@ -147,5 +139,12 @@ var swiper = new Swiper(".swiper", {
   navigation: {
     nextEl: ".forward",
     prevEl: ".backward",
+  },
+  on: {
+    slideChange: function () {
+      if (this.isEnd) {
+        this.slideTo(0);  // Faites glisser vers la première diapositive
+      }
+    },
   },
 });

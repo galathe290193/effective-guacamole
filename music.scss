@@ -60,7 +60,7 @@ body {
   .swiper-slide::after {
     content: "";
     position: absolute;
-    bottom: -50%;  // Ajustez cette valeur pour contrôler la hauteur du reflet
+    bottom: -5%;  // Ajustez cette valeur pour contrôler la hauteur du reflet
     left: 0;
     right: 0;
     height: 100%;

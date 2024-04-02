@@ -58,7 +58,7 @@ body {
 .swiper-slide::after {
   content: "";
   position: absolute;
-  bottom: -50%;
+  bottom: -5%;
   left: 0;
   right: 0;
   height: 100%;

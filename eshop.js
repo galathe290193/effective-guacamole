@@ -1,58 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     const payButton = document.querySelector('#pay-button');
-    let cart = [];
+    const cart = {};
 
-    addToCartButtons.forEach((button, index) => {
+    addToCartButtons.forEach((button) => {
         button.addEventListener('click', () => {
             const card = button.closest('.card');
             const productName = card.querySelector('h3').textContent;
             const productPrice = card.querySelector('.price').textContent;
 
-            cart.push({
-                name: productName,
-                price: productPrice
-            });
+            if (cart[productName]) {
+                cart[productName].quantity++;
+            } else {
+                cart[productName] = {
+                    price: productPrice,
+                    quantity: 1
+                };
+            }
 
             updateCartDisplay();
         });
     });
 
     payButton.addEventListener('click', () => {
-        if (cart.length === 0) {
-            alert('Votre panier est vide.');
-            return;
-        }
-
+        let total = 0;
         let message = 'Détails du panier :\n';
 
-        cart.forEach((product, index) => {
-            message += `${index + 1}. ${product.name} - ${product.price}\n`;
-        });
+        for (const [productName, productInfo] of Object.entries(cart)) {
+            const { price, quantity } = productInfo;
+            message += `${productName} x${quantity} - ${price}\n`;
 
-        message += '\nCeci est une démo. Vous ne pouvez pas effectuer de vraies transactions.';
+            const priceValue = parseFloat(price.replace('€', ''));
+            total += priceValue * quantity;
+        }
+
+        message += `\nTotal : €${total.toFixed(2)}`;
 
         alert(message);
-        cart = [];
-        updateCartDisplay();
     });
 
     function updateCartDisplay() {
         const cartDisplay = document.querySelector('.cart');
         cartDisplay.innerHTML = '<h2>Panier</h2>';
         
-        if (cart.length === 0) {
+        if (Object.keys(cart).length === 0) {
             cartDisplay.innerHTML += '<p>Votre panier est vide.</p>';
             return;
         }
 
         const ul = document.createElement('ul');
 
-        cart.forEach(product => {
+        for (const [productName, productInfo] of Object.entries(cart)) {
+            const { price, quantity } = productInfo;
             const li = document.createElement('li');
-            li.textContent = `${product.name} - ${product.price}`;
+            li.textContent = `${productName} x${quantity} - ${price}`;
             ul.appendChild(li);
-        });
+        }
 
         cartDisplay.appendChild(ul);
     }

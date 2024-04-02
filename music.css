@@ -96,6 +96,7 @@ body {
   cursor: pointer;
 }
 
+/* Music Player */
 .music-player {
   display: flex;
   flex-direction: column;
@@ -119,6 +120,7 @@ body {
   opacity: 0.6;
 }
 
+/* Music Player Progress */
 #progress {
   -moz-appearance: none;
        appearance: none;
@@ -142,6 +144,7 @@ body {
   box-shadow: 0 6px 10px rgba(5, 36, 28, 0.3);
 }
 
+/* Music Player Controls */
 .controls {
   display: flex;
   justify-content: center;

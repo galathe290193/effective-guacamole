@@ -1,200 +1,184 @@
-// Importation de la police Nunito depuis Google Fonts
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap");
 
-// Définition des variables globales
 :root {
-  --primary-clr: rgba(228, 228, 229, 1);  // Couleur primaire pour la mise en surbrillance et les icônes
+  --primary-clr: rgba(228, 228, 229, 1);
 }
 
-// Réinitialisation des styles de base
 * {
-  margin: 0;              // Suppression des marges extérieures
-  padding: 0;             // Suppression des rembourrages
-  box-sizing: border-box; // Utilisation de la boîte de modèle pour inclure les bordures et le rembourrage dans la largeur/hauteur totale
-  font-family: "Nunito", sans-serif; // Police par défaut pour tout le document
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
 }
 
-// Styles du corps de la page
 body {
-  position: relative;          // Position relative pour permettre le positionnement absolu des éléments enfants
-  display: flex;               // Utilisation de flexbox pour le positionnement et le centrage
-  flex-direction: column;      // Alignement vertical des éléments enfants
-  align-items: center;         // Centrage horizontal
-  justify-content: center;     // Centrage vertical
-  min-height: 100vh;           // Hauteur minimale de la vue à 100% de la hauteur de la fenêtre
-  width: 100%;                 // Largeur de la vue à 100% de la largeur de la fenêtre
-  background: url(marbremusic.jpg); // Image de fond pour le corps
-  background-repeat: no-repeat;    // Empêche la répétition de l'image de fond
-  backdrop-filter: blur(1px);       // Flou de l'arrière-plan
-  -webkit-backdrop-filter: blur(1px); // Flou de l'arrière-plan pour les navigateurs WebKit
-  animation: slidein 120s forwards infinite alternate; // Animation de défilement de l'arrière-plan
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  background: url(marbremusic.jpg);
+  background-repeat: no-repeat;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  animation: slidein 120s forwards infinite alternate;
 }
 
-// Animation de défilement de l'arrière-plan
 @keyframes slidein {
-  0%, 100% {
-    background-position: 20% 0%; // Position de départ et d'arrivée de l'arrière-plan
-    background-size: 3400px;     // Taille de l'arrière-plan à 3400px
+  0%,
+  100% {
+    background-position: 20% 0%;
+    background-size: 3400px;
   }
   50% {
-    background-position: 100% 0%; // Position intermédiaire de l'arrière-plan
-    background-size: 2400px;       // Taille de l'arrière-plan à 2400px
+    background-position: 100% 0%;
+    background-size: 2400px;
   }
 }
 
-// Styles pour la pochette d'album
 .album-cover {
-  width: 90%; // Largeur de la pochette d'album à 90% du conteneur parent
+  width: 90%;
 }
 
-// Styles pour Swiper (carrousel)
 .swiper {
-  width: 100%;       // Largeur du carrousel à 100% du conteneur parent
-  padding: 40px 0 100px; // Espacement intérieur du carrousel
+  width: 100%;
+  padding: 40px 0 100px;
 }
 
-// Styles pour les diapositives Swiper
 .swiper-slide {
-  position: relative; // Position relative pour permettre le positionnement absolu des éléments enfants
-  max-width: 200px;   // Largeur maximale des diapositives à 200px
-  aspect-ratio: 1/1;  // Ratio d'aspect de 1:1 pour conserver un carré
-  border-radius: 10px; // Bordures arrondies pour les diapositives
+  position: relative;
+  max-width: 200px;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
 }
 
-// Styles pour les images dans les diapositives Swiper
 .swiper-slide img {
-  object-fit: cover;  // Redimensionnement de l'image pour couvrir entièrement la diapositive
-  width: 100%;        // Largeur de l'image à 100% de la diapositive
-  height: 100%;       // Hauteur de l'image à 100% de la diapositive
-  border-radius: inherit; // Héritage des bordures arrondies de la diapositive
-  -webkit-box-reflect: below -5px linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4)); // Reflet sous l'image
-  transform-origin: center; // Point d'origine de la transformation
-  transform: perspective(800px); // Perspective pour l'effet 3D
-  transition: 0.3s ease-out;    // Transition douce pour les animations
-  pointer-events: none;          // Empêche les événements de pointer
-  user-select: none;             // Empêche la sélection de texte
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  -webkit-box-reflect: below -5px linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4));
+  transform-origin: center;
+  transform: perspective(800px);
+  transition: 0.3s ease-out;
+  pointer-events: none;
+  user-select: none;
 }
 
-// Styles pour l'overlay des diapositives Swiper lorsqu'elles sont actives
 .swiper-slide-active .overlay {
-  display: flex;            // Affichage en flex pour centrer les éléments
-  align-items: center;      // Centrage vertical
-  justify-content: center;  // Centrage horizontal
-  position: absolute;       // Position absolue pour recouvrir l'image
-  inset: 0;                 // Empêche les marges intérieures
-  width: 100%;              // Largeur de l'overlay à 100% de la diapositive
-  height: 98%;              // Hauteur de l'overlay à 98% de la diapositive
-  background-color: rgba(28, 22, 37, 0.6); // Couleur de fond avec transparence
-  border-radius: inherit;   // Héritage des bordures arrondies de la diapositive
-  opacity: 0;               // Opacité initiale à 0 pour l'effet de transition
-  transition: all 0.4s linear; // Transition pour l'effet de fondu
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 98%;
+  background-color: rgba(28, 22, 37, 0.6);
+  border-radius: inherit;
+  opacity: 0;
+  transition: all 0.4s linear;
 }
 
-// Styles pour l'overlay des diapositives Swiper au survol
 .swiper-slide:hover .overlay {
-  opacity: 1; // Opacité à 1 au survol pour afficher l'overlay
+  opacity: 1;
 }
 
-// Styles pour l'icône dans l'overlay des diapositives Swiper
 .swiper-slide .overlay ion-icon {
-  opacity: 0; // Opacité initiale à 0 pour l'icône
+  opacity: 0;
 }
 
-// Styles pour l'icône dans l'overlay des diapositives Swiper lorsqu'elles sont actives et au survol
 .swiper-slide-active:hover .overlay ion-icon {
-  font-size: 4rem;      // Taille de l'icône à 4rem
-  color: #eb0b0b;       // Couleur de l'icône en rouge
-  opacity: 1;           // Opacité à 1 pour afficher l'icône
-  cursor: pointer;      // Curseur pointeur
+  font-size: 4rem;
+  color: #eb0b0b;
+  opacity: 1;
+  cursor: pointer;
 }
 
-// Styles pour le lecteur de musique
+/* Music Player */
+
 .music-player {
-  display: flex;               // Utilisation de flexbox pour le positionnement et le centrage
-  flex-direction: column;      // Alignement vertical des éléments enfants
-  justify-content: center;     // Centrage vertical
-  align-items: center;         // Centrage horizontal
-  color: var(--primary-clr);   // Couleur du texte à partir de la variable globale
-  width: 380px;                // Largeur du lecteur de musique à 380px
-  padding: 10px 30px;          // Espacement intérieur du lecteur de musique
-  border-radius: 20px;         // Bordures arrondies du lecteur de musique
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-clr);
+  width: 380px;
+  padding: 10px 30px;
+  border-radius: 20px;
 }
 
-// Styles pour le titre du lecteur de musique
 .music-player h1 {
-  font-size: 1.5rem;    // Taille de police du titre
-  font-weight: 600;     // Poids de police du titre
-  line-height: 1.6;     // Hauteur de ligne du titre
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.6;
 }
 
-// Styles pour la description du lecteur de musique
 .music-player p {
-  font-size: 1rem;      // Taille de police de la description
-  font-weight: 400;     // Poids de police de la description
-  opacity: 0.6;         // Opacité de la description
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.6;
 }
 
-// Styles pour la barre de progression du lecteur de musique
+/* Music Player Progress */
+
 #progress {
-  appearance: none;      // Suppression du style par défaut
-  -webkit-appearance: none; // Suppression du style par défaut pour les navigateurs WebKit
-  width: 100%;           // Largeur de la barre de progression à 100% du conteneur parent
-  height: 7px;           // Hauteur de la barre de progression à 7px
-  background: rgba(163, 162, 164, 0.4); // Couleur de fond de la barre de progression avec transparence
-  border-radius: 4px;    // Bordures arrondies de la barre de progression
-  margin: 32px 0 24px;   // Marge externe de la barre de progression
-  cursor: pointer;       // Curseur pointeur pour la barre de progression
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 7px;
+  background: rgba(163, 162, 164, 0.4);
+  border-radius: 4px;
+  margin: 32px 0 24px;
+  cursor: pointer;
 }
 
-// Styles pour le curseur de la barre de progression du lecteur de musique
 #progress::-webkit-slider-thumb {
-  appearance: none;      // Suppression du style par défaut
-  -webkit-appearance: none; // Suppression du style par défaut pour les navigateurs WebKit
-  background: rgba(163, 162, 164, 0.9); // Couleur du curseur avec transparence
-  width: 16px;           // Largeur du curseur à 16px
-  aspect-ratio: 1/1;     // Ratio d'aspect de 1:1 pour conserver un carré
-  border-radius: 50%;    // Bordures arrondies du curseur
-  outline: 4px solid var(--primary-clr); // Contour du curseur
-  box-shadow: 0 6px 10px rgba(5, 36, 28, 0.3); // Ombre du curseur
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(163, 162, 164, 0.9);
+  width: 16px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  outline: 4px solid var(--primary-clr);
+  box-shadow: 0 6px 10px rgba(5, 36, 28, 0.3);
 }
 
-// Styles pour les contrôles du lecteur de musique
+/* Music Player Controls */
+
 .controls {
-  display: flex;          // Utilisation de flexbox pour le positionnement et le centrage
-  justify-content: center; // Centrage horizontal
-  align-items: center;     // Centrage vertical
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-// Styles pour les boutons des contrôles du lecteur de musique
 .controls button {
-  display: flex;             // Utilisation de flexbox pour le positionnement et le centrage
-  align-items: center;       // Centrage vertical
-  justify-content: center;   // Centrage horizontal
-  width: 50px;               // Largeur des boutons à 50px
-  aspect-ratio: 1/1;         // Ratio d'aspect de 1:1 pour conserver un carré
-  margin: 20px;              // Marge autour des boutons
-  background: rgba(163, 162, 164, 0.3); // Couleur de fond des boutons avec transparence
-  color: var(--primary-clr); // Couleur du texte à partir de la variable globale
-  border-radius: 50%;        // Bordures arrondies des boutons
-  border: 1px solid rgba(255, 255, 255, 0.3); // Bordure des boutons avec transparence
-  outline: 0;                // Suppression de l'effet de focus
-  font-size: 1.1rem;         // Taille de police des boutons
-  box-shadow: 0 10px 20px rgba(5, 36, 28, 0.3); // Ombre des boutons
-  cursor: pointer;           // Curseur pointeur pour les boutons
-  transition: all 0.3s linear; // Transition pour les animations
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  aspect-ratio: 1/1;
+  margin: 20px;
+  background: rgba(163, 162, 164, 0.3);
+  color: var(--primary-clr);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  outline: 0;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 20px rgba(5, 36, 28, 0.3);
+  cursor: pointer;
+  transition: all 0.3s linear;
 }
 
-// Styles pour les effets de survol et de focus des boutons des contrôles du lecteur de musique
 .controls button:is(:hover, :focus-visible) {
-  transform: scale(0.96);   // Réduction de la taille des boutons au survol ou au focus
+  transform: scale(0.96);
 }
 
-// Styles spécifiques pour le deuxième bouton des contrôles du lecteur de musique
 .controls button:nth-child(2) {
-  transform: scale(1.3);     // Agrandissement de la taille du deuxième bouton
+  transform: scale(1.3);
 }
 
-// Styles pour les effets de survol et de focus du deuxième bouton des contrôles du lecteur de musique
 .controls button:nth-child(2):is(:hover, :focus-visible) {
-  transform: scale(1.25);    // Agrandissement de la taille du deuxième bouton au survol ou au focus
+  transform: scale(1.25);
 }

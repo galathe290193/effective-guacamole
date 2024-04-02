@@ -38,7 +38,6 @@ const songs = [
     source:
       "https://github.com/ecemgo/mini-samples-great-tricks/raw/main/song-list/Harry-Styles-As-It-Was.mp3",
   },
-
   {
     title: "Physical",
     name: "Dua Lipa",
@@ -53,7 +52,7 @@ const songs = [
   },
 ];
 
-let currentSongIndex = 3;
+let currentSongIndex = 0;
 
 function updateSongInfo() {
   songName.textContent = songs[currentSongIndex].title;
@@ -94,6 +93,10 @@ function playPause() {
   }
 }
 
+function updateSwiper() {
+  swiper.slideTo(currentSongIndex, 0); // 0 pour une transition instantanée
+}
+
 playPauseButton.addEventListener("click", playPause);
 
 progress.addEventListener("input", function () {
@@ -107,12 +110,14 @@ progress.addEventListener("change", function () {
 forwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex + 1) % songs.length;
   updateSongInfo();
+  updateSwiper();
   playPause();
 });
 
 backwardButton.addEventListener("click", function () {
   currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
   updateSongInfo();
+  updateSwiper();
   playPause();
 });
 

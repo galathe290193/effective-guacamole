@@ -80,11 +80,12 @@ body {
   position: fixed;
   right: 20px;
   top: 20px;
+  z-index: 10; /* Assurez-vous que le panier soit au-dessus des autres éléments */
 }
 
 #pay-button {
   display: block;
-  width: 100%;
+  width: 250px; /* Largeur identique au panier */
   padding: 10px;
   margin-top: 20px;
   background-color: #007bff;
@@ -93,6 +94,9 @@ body {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out; /* Ajouter une transition */
+  position: fixed; /* Position fixe pour que le bouton reste en place */
+  right: 20px; /* Aligner avec le panier */
+  top: calc(20px + 250px + 20px); /* Positionner en dessous du panier */
 }
 
 #pay-button:hover {

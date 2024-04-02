@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     const cartContainer = document.querySelector('.cart');
-    const payButton = document.getElementById('pay-button'); // Sélectionner le bouton "Payer" à l'intérieur de la div du panier
+    const payButton = document.getElementById('pay-button');
     const cart = {};
 
     addToCartButtons.forEach((button) => {
@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
             }
 
+            updatePayButtonVisibility(); // Mettre à jour la visibilité du bouton "Payer" avant de mettre à jour le contenu du panier
             updateCartDisplay();
-            updatePayButtonVisibility();
         });
     });
 
@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     delete cart[productName];
                 }
 
+                updatePayButtonVisibility(); // Mettre à jour la visibilité du bouton "Payer" avant de mettre à jour le contenu du panier
                 updateCartDisplay();
-                updatePayButtonVisibility();
             }
         }
     });
@@ -63,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (Object.keys(cart).length === 0) {
             cartContainer.innerHTML += '<p>Votre panier est vide.</p>';
-            payButton.style.display = 'none';
             return;
         }
 
@@ -84,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         cartContainer.appendChild(ul);
-        updatePayButtonVisibility();
     }
 
     function updatePayButtonVisibility() {

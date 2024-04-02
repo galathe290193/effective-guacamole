@@ -120,13 +120,10 @@ body {
 .player-cover__img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 15px;
   box-shadow: 0px 10px 40px 0px rgba(76, 70, 124, 0.5);
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   pointer-events: none;
 }
 .player-controls {
@@ -239,9 +236,7 @@ body {
 .progress {
   width: 100%;
   margin-top: -15px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .progress__top {
   display: flex;
@@ -282,9 +277,7 @@ body {
   color: #71829e;
   flex: 1;
   padding-right: 60px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 @media screen and (max-width: 576px), (max-height: 500px) {
   .album-info {
@@ -389,4 +382,6 @@ body {
   transform: scale(0.55);
   pointer-events: none;
   opacity: 0;
-}/*# sourceMappingURL=music.css.map */
+}
+
+/*# sourceMappingURL=music.css.map */

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     const cartContainer = document.querySelector('.cart');
-    const payButton = document.querySelector('#pay-button');
+    const payButton = cartContainer.querySelector('#pay-button'); // Sélectionner le bouton "Payer" à l'intérieur de la div du panier
     const cart = {};
 
     addToCartButtons.forEach((button) => {
@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (Object.keys(cart).length === 0) {
             cartContainer.innerHTML += '<p>Votre panier est vide.</p>';
+            payButton.style.display = 'none'; // Cacher le bouton "Payer" lorsque le panier est vide
             return;
         }
 

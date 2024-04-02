@@ -44,7 +44,6 @@ body {
   max-width: 200px;
   aspect-ratio: 1/1;
   border-radius: 10px;
-  overflow: hidden;
 }
 
 .swiper-slide img {
@@ -53,18 +52,14 @@ body {
   width: 100%;
   height: 100%;
   border-radius: inherit;
-}
-
-.swiper-slide::after {
-  content: "";
-  position: absolute;
-  bottom: -5%;
-  left: 0;
-  right: 0;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  transform: scaleY(-1);
-  z-index: 1;
+  -webkit-box-reflect: below -5px linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4));
+  transform-origin: center;
+  transform: perspective(100px);
+  transition: 0.3s ease-out;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .swiper-slide-active .overlay {

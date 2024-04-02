@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartContainer = document.querySelector('.cart');
     const payButton = document.querySelector('#pay-button');
     const cart = {};
 
@@ -19,7 +20,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             updateCartDisplay();
+            updatePayButtonVisibility();
         });
+    });
+
+    cartContainer.addEventListener('click', (event) => {
+        if (event.target && event.target.className === 'remove-item') {
+            const productName = event.target.dataset.productName;
+            
+            if (cart[productName]) {
+                cart[productName].quantity--;
+
+                if (cart[productName].quantity <= 0) {
+                    delete cart[productName];
+                }
+
+                updateCartDisplay();
+                updatePayButtonVisibility();
+            }
+        }
     });
 
     payButton.addEventListener('click', () => {
@@ -40,11 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateCartDisplay() {
-        const cartDisplay = document.querySelector('.cart');
-        cartDisplay.innerHTML = '<h2>Panier</h2>';
+        cartContainer.innerHTML = '<h2>Panier</h2>';
         
         if (Object.keys(cart).length === 0) {
-            cartDisplay.innerHTML += '<p>Votre panier est vide.</p>';
+            cartContainer.innerHTML += '<p>Votre panier est vide.</p>';
             return;
         }
 
@@ -54,9 +72,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const { price, quantity } = productInfo;
             const li = document.createElement('li');
             li.textContent = `${productName} x${quantity} - ${price}`;
+
+            const removeButton = document.createElement('button');
+            removeButton.textContent = '-';
+            removeButton.className = 'remove-item';
+            removeButton.dataset.productName = productName;
+            
+            li.appendChild(removeButton);
             ul.appendChild(li);
         }
 
-        cartDisplay.appendChild(ul);
+        cartContainer.appendChild(ul);
+    }
+
+    function updatePayButtonVisibility() {
+        if (Object.keys(cart).length === 0) {
+            payButton.style.display = 'none';
+        } else {
+            payButton.style.display = 'block';
+        }
     }
 });

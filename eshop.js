@@ -4,65 +4,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const payButton = document.getElementById('pay-button');
     const cart = {};
 
-    addToCartButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-            const card = button.closest('.card');
-            const productName = card.querySelector('h3').textContent;
-            const productPrice = card.querySelector('.price').textContent;
-
-            if (cart[productName]) {
-                cart[productName].quantity++;
-            } else {
-                cart[productName] = {
-                    price: productPrice,
-                    quantity: 1
-                };
-            }
-
-            updatePayButtonVisibility(); // Mettre à jour la visibilité du bouton "Payer" avant de mettre à jour le contenu du panier
-            updateCartDisplay();
-        });
-    });
-
-    cartContainer.addEventListener('click', (event) => {
-        if (event.target && event.target.className === 'remove-item') {
-            const productName = event.target.dataset.productName;
-            
-            if (cart[productName]) {
-                cart[productName].quantity--;
-
-                if (cart[productName].quantity <= 0) {
-                    delete cart[productName];
-                }
-
-                updatePayButtonVisibility(); // Mettre à jour la visibilité du bouton "Payer" avant de mettre à jour le contenu du panier
-                updateCartDisplay();
-            }
-        }
-    });
-
-    payButton.addEventListener('click', () => {
+    function updateTotalAndButtonText() {
         let total = 0;
-        let message = 'Détails du panier :\n';
 
         for (const [productName, productInfo] of Object.entries(cart)) {
             const { price, quantity } = productInfo;
-            message += `${productName} x${quantity} - ${price}\n`;
-
             const priceValue = parseFloat(price.replace('€', ''));
             total += priceValue * quantity;
         }
 
-        message += `\nTotal : €${total.toFixed(2)}`;
-
-        alert(message);
-    });
+        payButton.textContent = `Payer €${total.toFixed(2)}`;
+    }
 
     function updateCartDisplay() {
         cartContainer.innerHTML = '<h2>Panier</h2>';
         
         if (Object.keys(cart).length === 0) {
             cartContainer.innerHTML += '<p>Votre panier est vide.</p>';
+            payButton.style.display = 'none';
             return;
         }
 
@@ -83,13 +42,54 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         cartContainer.appendChild(ul);
+        updateTotalAndButtonText(); // Mettre à jour le total et le texte du bouton "Payer"
     }
 
-    function updatePayButtonVisibility() {
-        if (Object.keys(cart).length === 0) {
-            payButton.style.display = 'none';
-        } else {
-            payButton.style.display = 'block';
+    addToCartButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const card = button.closest('.card');
+            const productName = card.querySelector('h3').textContent;
+            const productPrice = card.querySelector('.price').textContent;
+
+            if (cart[productName]) {
+                cart[productName].quantity++;
+            } else {
+                cart[productName] = {
+                    price: productPrice,
+                    quantity: 1
+                };
+            }
+
+            updateCartDisplay();
+        });
+    });
+
+    cartContainer.addEventListener('click', (event) => {
+        if (event.target && event.target.className === 'remove-item') {
+            const productName = event.target.dataset.productName;
+            
+            if (cart[productName]) {
+                cart[productName].quantity--;
+
+                if (cart[productName].quantity <= 0) {
+                    delete cart[productName];
+                }
+
+                updateCartDisplay();
+            }
         }
-    }
+    });
+
+    payButton.addEventListener('click', () => {
+        let message = 'Détails du panier :\n';
+
+        for (const [productName, productInfo] of Object.entries(cart)) {
+            const { price, quantity } = productInfo;
+            message += `${productName} x${quantity} - ${price}\n`;
+        }
+
+        alert(message);
+    });
+
+    updateTotalAndButtonText(); // Initialiser le total et le texte du bouton "Payer" lors du chargement de la page
 });

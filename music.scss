@@ -67,7 +67,7 @@ body {
   width: 100%;        // Largeur de l'image à 100% de la diapositive
   height: 100%;       // Hauteur de l'image à 100% de la diapositive
   border-radius: inherit; // Héritage des bordures arrondies de la diapositive
-  -webkit-box-reflect: below -10px linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4)); // Reflet sous l'image
+  -webkit-box-reflect: below -5px linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4)); // Reflet sous l'image
   transform-origin: center; // Point d'origine de la transformation
   transform: perspective(800px); // Perspective pour l'effet 3D
   transition: 0.3s ease-out;    // Transition douce pour les animations

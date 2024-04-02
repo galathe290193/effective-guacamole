@@ -42,30 +42,32 @@ body {
   width: 90%;
 }
 
-.swiper {
-  width: 100%;
-  padding: 40px 0 100px;
-}
-
 .swiper-slide {
-  position: relative;
-  max-width: 200px;
-  aspect-ratio: 1/1;
-  border-radius: 10px;
-}
-
-.swiper-slide img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  -webkit-box-reflect: below -25px linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4));
-  transform-origin: center;
-  transform: perspective(800px);
-  transition: 0.3s ease-out;
-  pointer-events: none;
-  user-select: none;
-}
+    position: relative;
+    max-width: 200px;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    overflow: hidden; // Assurez-vous que le contenu ne dépasse pas les limites du conteneur
+  }
+  
+  .swiper-slide img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+  }
+  
+  .swiper-slide::after {
+    content: "";
+    position: absolute;
+    bottom: -50%;  // Ajustez cette valeur pour contrôler la hauteur du reflet
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);  // Couleur et opacité du reflet
+    transform: scaleY(-1);  // Inversion verticale pour simuler un reflet
+    z-index: 1;  // Placez le reflet derrière l'image
+  }
 
 .swiper-slide-active .overlay {
   display: flex;

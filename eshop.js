@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         payButton.textContent = `Payer €${total.toFixed(2)}`;
+        
+        if (Object.keys(cart).length === 0) {
+            payButton.style.display = 'none';
+        } else {
+            payButton.style.display = 'block';
+        }
     }
 
     function updateCartDisplay() {
@@ -21,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (Object.keys(cart).length === 0) {
             cartContainer.innerHTML += '<p>Votre panier est vide.</p>';
-            payButton.style.display = 'none';
+            updateTotalAndButtonText(); // Mettre à jour le total et le texte du bouton "Payer"
             return;
         }
 

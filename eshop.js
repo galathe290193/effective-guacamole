@@ -34,7 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         cartContainer.appendChild(ul);
+        updatePayButton(total);
+    }
 
+    function updatePayButton(total) {
         if (total > 0) {
             payButton.textContent = `Payer €${total.toFixed(2)}`;
             payButton.style.display = 'block';

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartContainer = document.querySelector('.cart');
     const payButton = document.getElementById('pay-button');
     const cart = {};
-    
+
     function updateTotalAndButtonText() {
         let total = 0;
     
@@ -97,3 +97,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     updateTotalAndButtonText(); // Initialiser le total et le texte du bouton "Payer" lors du chargement de la page
 });
+
+function updateTotalAndButtonText() {
+    console.log("Fonction updateTotalAndButtonText appelée");
+
+    let total = 0;
+
+    for (const [productName, productInfo] of Object.entries(cart)) {
+        const { price, quantity } = productInfo;
+        const priceValue = parseFloat(price.replace('€', ''));
+        total += priceValue * quantity;
+    }
+
+    console.log("Total du panier :", total);
+
+    if (total > 0) {
+        console.log("Affichage du bouton Payer");
+        payButton.style.display = 'block';
+        payButton.textContent = `Payer €${total.toFixed(2)}`;
+    } else {
+        console.log("Masquage du bouton Payer");
+        payButton.style.display = 'none';
+    }
+}

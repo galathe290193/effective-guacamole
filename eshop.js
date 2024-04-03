@@ -3,22 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartContainer = document.querySelector('.cart');
     const payButton = document.getElementById('pay-button');
     const cart = {};
-
+    
     function updateTotalAndButtonText() {
         let total = 0;
-
+    
         for (const [productName, productInfo] of Object.entries(cart)) {
             const { price, quantity } = productInfo;
             const priceValue = parseFloat(price.replace('€', ''));
             total += priceValue * quantity;
         }
-
-        payButton.textContent = `Payer €${total.toFixed(2)}`;
-        
-        if (Object.keys(cart).length === 0) {
-            payButton.style.display = 'none';
-        } else {
+    
+        if (total > 0) {
             payButton.style.display = 'block';
+            payButton.textContent = `Payer €${total.toFixed(2)}`;
+        } else {
+            payButton.style.display = 'none';
         }
     }
 

@@ -96,6 +96,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
         alert(message);
     });
-
     updateTotalAndButtonText(); // Initialiser le total et le texte du bouton "Payer" lors du chargement de la page
 });

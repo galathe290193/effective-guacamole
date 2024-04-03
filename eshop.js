@@ -4,23 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const payButton = document.getElementById('pay-button');
     const cart = {};
 
-    function updateTotalAndButtonText() {
-        let total = 0;
-
-        for (const [productName, productInfo] of Object.entries(cart)) {
-            const { price, quantity } = productInfo;
-            const priceValue = parseFloat(price.replace('€', ''));
-            total += priceValue * quantity;
-        }
-
-        if (total > 0) {
-            payButton.textContent = `Payer €${total.toFixed(2)}`;
-            payButton.style.display = 'block';
-        } else {
-            payButton.style.display = 'none';
-        }
-    }
-
     function updateCartDisplay() {
         cartContainer.innerHTML = '<h2>Panier</h2>';
         
@@ -31,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const ul = document.createElement('ul');
+        let total = 0;
 
         for (const [productName, productInfo] of Object.entries(cart)) {
             const { price, quantity } = productInfo;
@@ -44,10 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
             
             li.appendChild(removeButton);
             ul.appendChild(li);
+
+            const priceValue = parseFloat(price.replace('€', ''));
+            total += priceValue * quantity;
         }
 
         cartContainer.appendChild(ul);
-        updateTotalAndButtonText(); // Mettre à jour le total et le texte du bouton "Payer"
+
+        if (total > 0) {
+            payButton.textContent = `Payer €${total.toFixed(2)}`;
+            payButton.style.display = 'block';
+        } else {
+            payButton.style.display = 'none';
+        }
     }
 
     addToCartButtons.forEach((button) => {
@@ -96,5 +89,5 @@ document.addEventListener('DOMContentLoaded', () => {
         alert(message);
     });
 
-    updateTotalAndButtonText(); // Initialiser le total et le texte du bouton "Payer" lors du chargement de la page
+    updateCartDisplay(); // Initialiser l'affichage du panier lors du chargement de la page
 });

@@ -13,12 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
             total += priceValue * quantity;
         }
 
-        payButton.textContent = `Payer €${total.toFixed(2)}`;
-        
-        if (Object.keys(cart).length === 0) {
-            payButton.style.display = 'none';
-        } else {
+        if (total > 0) {
+            payButton.textContent = `Payer €${total.toFixed(2)}`;
             payButton.style.display = 'block';
+        } else {
+            payButton.style.display = 'none';
         }
     }
 

@@ -13,12 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             total += priceValue * quantity;
         }
 
-        if (total > 0) {
-            payButton.textContent = `Payer €${total.toFixed(2)}`;
-            payButton.style.display = 'block';
-        } else {
-            payButton.style.display = 'none';
-        }
+        payButton.textContent = `Payer €${total.toFixed(2)}`;
     }
 
     function updateCartDisplay() {
@@ -26,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (Object.keys(cart).length === 0) {
             cartContainer.innerHTML += '<p>Votre panier est vide.</p>';
-            updateTotalAndButtonText(); // Mettre à jour le total et le texte du bouton "Payer"
+            payButton.style.display = 'none';
             return;
         }
 

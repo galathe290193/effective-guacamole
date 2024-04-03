@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (Object.keys(cart).length === 0) {
             cartContainer.innerHTML += '<p>Votre panier est vide.</p>';
-            payButton.style.display = 'none';
+            updatePayButton(0); // Mettre à jour le bouton "Payer" avec un total de 0
             return;
         }
 

@@ -1,250 +1,277 @@
-import _ from 'lodash'; // Importation de lodash
+window.addEventListener("load", event => {
 
-var app = window.app || {};
-var business_paypal = 'votre_email_paypal'; // Remplacez par votre adresse e-mail PayPal
+    function productHeading() {
+        ////////////////
+        // Variables
+        ////////////////
 
-(function($){
-    'use strict';
+        const product = {
 
-	app.init = function(){
-		//totalItems totalAmount
-		var total = 0,
-		items = 0
-		
-		var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []} ;
-		
-		if(undefined != cart.items && cart.items != null && cart.items != '' && cart.items.length > 0){
-			_.forEach(cart.items, function(n, key) {
-			   items = (items + n.cant)
-			   total = total  + (n.cant * n.price)
-			});
+            value: 125,
+            images: [{
+                    img: 'https://rafaelalucas.com/dailyui/12/assets/img01.png'
+                },
+                {
+                    img: 'https://rafaelalucas.com/dailyui/12/assets/img02.png'
+                },
+                {
+                    img: 'https://rafaelalucas.com/dailyui/12/assets/img03.png'
+                },
+                {
+                    img: 'https://rafaelalucas.com/dailyui/12/assets/img04.png'
+                },
+                {
+                    img: 'https://rafaelalucas.com/dailyui/12/assets/img05.png'
+                },
+                {
+                    img: 'https://rafaelalucas.com/dailyui/12/assets/img06.png'
+                }
+            ]
+        }
 
-		}
+        const btnAdd = document.querySelector('.btn.add'),
+            btnContainer = document.querySelector('.btnContainer'),
+            wrapper = document.querySelector('.wrapper'),
+            itemNumber = document.querySelector('.itemNumber'),
+            shoppingQuantity = document.querySelector('.shoppingQuantity'),
+            inputQuantity = document.querySelector('.inputQuantity'),
+            plus = document.querySelector('.plus'),
+            minus = document.querySelector('.minus'),
+            arrowDrop = document.querySelector('.arrowDrop'),
+            dropdown = document.querySelector('.dropdown'),
+            nav = document.querySelector('nav'),
+            error = document.querySelector('.error'),
+            shoppingIcon = document.querySelector('.shoppingIcon'),
+            shoppingMenu = document.querySelector('.shoppingMenu'),
+            emptyCart = document.querySelector('.emptyCart');
 
-		$('#totalItems').text(items)
-		$('.totalAmount').text('$ '+total+ ' USD')
-		
-	}
+        let = priceFinal = document.querySelector('.priceFinal'),
+            priceOriginal = document.querySelector('.priceOriginal'),
+            discount = null,
+            sizeNumber = document.querySelector('.sizeNumber'),
+            dropItem = document.querySelectorAll('.dropItem'),
+            maxQuantity = 5,
+            newMaxQuantity = maxQuantity;
 
-	app.createProducts = function(){
-		var productos = [
-			{
-				id : 1,
-				img : 'alb1.jpg',
-				name : 'Libertad 5oz',
-				price : 299.00,
-				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-				stock : 4
-			},
-			{
-				id : 2,
-				name : 'alb2.jpg',
-				img : 'alb2.jpg',
-				price : 199.00,
-				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-				stock : 2
-			},
-			{
-				id : 3,
-				name : 'Libertad 5oz',
-				img : 'alb3.jpg',
-				price : 99.00,
-				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-				stock : 1
-			},
-			{
-				id : 4,
-				name : 'Libertad 5oz',
-				img : 'alb4.jpg',
-				price : 80.00,
-				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-				stock : 0
-			}
-		],
-		wrapper = $('.productosWrapper'),
-		contenido = ''
+        ////////////////
+        // Events
+        ////////////////
 
-		for(var i = 0; i < productos.length; i++){
+        btnAdd.addEventListener('click', addItem);
+        plus.addEventListener("click", plusQuantity);
+        minus.addEventListener("click", minusQuantity);
+        arrowDrop.addEventListener("click", openDrop);
+        shoppingIcon.addEventListener("click", openShoppingCart);
 
-			if(productos[i].stock > 0){
+        emptyCart.addEventListener("click", cleanCart);
 
-				contenido+= '<div class="coin-wrapper">'
-				contenido+= '		<img src="'+productos[i].img+'" alt="'+productos[i].name+'">'
-				contenido+= '		<span class="large-12 columns product-details">'
-				contenido+= '			<h3>'+productos[i].name+' <span class="price">$ '+productos[i].price+' USD</span></h3>'
-				contenido+= '			<h3>Tenemos: <span class="stock">'+productos[i].stock+'</span></h3>'
-				contenido+= '		</span>'
-				contenido+= '		<a class="large-12 columns btn submit ladda-button prod-'+productos[i].id+'" data-style="slide-right" onclick="app.addtoCart('+productos[i].id+');">Añadir a la canasta</a>'
-				contenido+= '		<div class="clearfix"></div>'
-				contenido+= '</div>'
+        dropItem.forEach(function (el) {
+            el.addEventListener("click", getSize);
+        })
 
-			}
+        window.addEventListener("resize", resize);
 
-		}
 
-		wrapper.html(contenido)
+        ////////////////
+        // Functions
+        //////////////// 
 
-		localStorage.setItem('productos',JSON.stringify(productos))
-	}
+        // Fixed Nav 
 
-	app.addtoCart = function(id){
-		var l = Ladda.create( document.querySelector( '.prod-'+id ) );
+        window.onscroll = function () {
+            if (window.pageYOffset >= 60) {
+                nav.classList.add("fixed");
+            } else {
+                nav.classList.remove("fixed");
+            }
+        };
 
-		l.start();
-		var productos = JSON.parse(localStorage.getItem('productos')),
-		producto = _.find(productos,{ 'id' : id }),
-		cant = 1
-		if(cant <= producto.stock){
-			if(undefined != producto){
-				if(cant > 0){
-					setTimeout(function(){
-						var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []} ;
-						app.searchProd(cart,producto.id,parseInt(cant),producto.name,producto.price,producto.img,producto.stock)
-						l.stop();
-					},2000)
-				}else{
-					alert('Solo se permiten cantidades mayores a cero')
-				}
-			}else{
-				alert('Oops! algo malo ocurrió, inténtalo de nuevo más tarde')
-			}
-		}else{
-			alert('No se pueden añadir más de este producto')
-		}
-	}
+        // Change button position on mobile
 
-	app.searchProd = function(cart,id,cant,name,price,img,available){
-		//si le pasamos un valor negativo a la cantidad, se descuenta del carrito
-		var curProd = _.find(cart.items, { 'id': id })
+        function resize() {
+            //Button
+            if (window.innerHeight > wrapper.offsetHeight) {
+                btnContainer.classList.remove('fixedBtn');
+            } else {
+                btnContainer.classList.add('fixedBtn');
+            }
+            parallax();
+        }
 
-		if(undefined != curProd && curProd != null){
-			//ya existe el producto, aÃ±adimos uno mÃ¡s a su cantidad
-			if(curProd.cant < available){
-				curProd.cant = parseInt(curProd.cant + cant)
-			}else{
-				alert('No se pueden añadir más de este producto')
-			}
-			
-		}else{
-			//sino existe lo agregamos al carrito
-			var prod = {
-				id : id,
-				cant : cant,
-				name : name,
-				price : price,
-				img : img,
-				available : available
-			}
-			cart.items.push(prod)
-			
-		}
-		localStorage.setItem('cart',JSON.stringify(cart))
-		app.init()
-		app.getProducts()
-		app.updatePayForm()
-	}
+        // Parallax
 
-	app.getProducts = function(){
-		var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []},
-		msg = '',
-		wrapper = $('.cart'),
-		total = 0
-		wrapper.html('')
+        function parallax() {
+            if (window.innerWidth > 800) {
+                var scene = document.querySelectorAll('.scene');
+                scene.forEach(pic => {
+                    var parallax = new Parallax(pic);
+                })
+            }
+        }
 
-		if(undefined == cart || null == cart || cart == '' || cart.items.length == 0){
-			wrapper.html('<li>Tu canasta está vacía</li>');
-			$('.cart').css('left','-400%')
-		}else{
-			var items = '';
-			_.forEach(cart.items, function(n, key) {
-	
-			   total = total  + (n.cant * n.price)
-			   items += '<li>'
-			   items += '<img src="'+n.img+'" />'
-			   items += '<h3 class="title">'+n.name+'<br><span class="price">'+n.cant+' x $ '+n.price+' USD</span> <button class="add" onclick="app.updateItem('+n.id+','+n.available+')"><i class="icon ion-minus-circled"></i></button> <button onclick="app.deleteProd('+n.id+')" ><i class="icon ion-close-circled"></i></button><div class="clearfix"></div></h3>'
-			   items += '</li>'
-			});
+        // Calculate the Discount
 
-			//agregar el total al carrito
-			items += '<li id="total">Total : $ '+total+' USD <div id="submitForm"></div></li>'
-			wrapper.html(items)
-			$('.cart').css('left','-500%')
-		}
-	}
+        function getDisccount() {
+            priceOriginal.innerText = product.value + "€";
+            discount = product.value - (product.value * (30 / 100));
+            priceFinal.innerText = discount + "€";
+        }
 
-	app.updateItem = function(id,available){
-		//resta uno a la cantidad del carrito de compras
-		var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []} ,
-		curProd = _.find(cart.items, { 'id': id })
-			//actualizar el carrito
-			curProd.cant = curProd.cant - 1;
-			//validar que la cantidad no sea menor a 0
-			if(curProd.cant > 0){
-				localStorage.setItem('cart',JSON.stringify(cart))
-				app.init()
-				app.getProducts()
-				app.updatePayForm()
-			}else{
-				app.deleteProd(id,true)
-			}
-	}
+        // Calculate the the Prices with discounts
 
-	app.delete = function(id){
-		var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []} ;
-		var curProd = _.find(cart.items, { 'id': id })
-		_.remove(cart.items, curProd);
-		localStorage.setItem('cart',JSON.stringify(cart))
-		app.init()
-		app.getProducts()
-		app.updatePayForm()
-	}
+        function getPrice() {
 
-	app.deleteProd = function(id,remove){
-		if(undefined != id && id > 0){
-			
-			if(remove == true){
-				app.delete(id)
-			}else{
-				var conf = confirm('¿Deseas eliminar este producto?')
-				if(conf){
-					app.delete(id)
-				}
-			}
-			
-		}
-	}
+            priceFinal.innerText = discount * inputQuantity.value + "€";
+            priceOriginal.innerText = product.value * inputQuantity.value + "€";
 
-	app.updatePayForm = function(){
-		//eso va a generar un formulario dinamico para paypal
-		//con los productos y sus precios
-		var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {items : []} ;
-		var statics = '<form action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_cart"><input type="hidden" name="upload" value="1"><input type="hidden" name="currency_code" value="USD" /><input type="hidden" name="business" value="'+business_paypal+'">',
-		dinamic = '',
-		wrapper = $('#submitForm')
+            setTimeout(() => {
+                priceFinal.classList.remove('anime');
+            }, 400);
+        }
 
-		wrapper.html('')
-		
-		if(undefined != cart && null != cart && cart != ''){
-			var i = 1;
-			_.forEach(cart.items, function(prod, key) {
-					dinamic += '<input type="hidden" name="item_name_'+i+'" value="'+prod.name+'">'
-					dinamic += '<input type="hidden" name="amount_'+i+'" value="'+prod.price+'">'
-					dinamic += '<input type="hidden" name="item_number_'+i+'" value="'+prod.id+'" />'
-					dinamic += '<input type="hidden" name="quantity_'+i+'" value="'+prod.cant+'" />'
-				i++;
-			})
+        // Update the prices with the quantity counter
 
-			statics += dinamic + '<button type="submit" class="pay">Pagar &nbsp;<i class="ion-chevron-right"></i></button></form>'
+        function plusQuantity() {
+            if (inputQuantity.value < maxQuantity) {
+                inputQuantity.value == inputQuantity.value++;
+                priceFinal.classList.add('anime');
+            }
+            getPrice();
+        }
 
-			wrapper.html(statics)
-		}
-	}
+        function minusQuantity() {
+            if (inputQuantity.value > 1) {
+                inputQuantity.value == inputQuantity.value--;
+                priceFinal.classList.add('anime');
+            }
+            getPrice();
+        }
 
-	$(document).ready(function(){
-		app.init()
-		app.getProducts()
-		app.updatePayForm()
-		app.createProducts()
-	})
+        // Add items to shopping cart
 
-})(jQuery)
+        function addItem() {
+
+            let cenas = parseInt(itemNumber.innerText) + parseInt(inputQuantity.value);
+
+            if (cenas <= newMaxQuantity) {
+                itemNumber.style.display = "flex";
+                itemNumber.innerText = cenas;
+                shoppingQuantity.innerText = "x" + cenas;
+                itemNumber.classList.add("addItem");
+                error.style.display = "none";
+            } else {
+                error.style.display = "flex";
+            }
+
+            setTimeout(() => {
+                itemNumber.classList.remove("addItem");
+            }, 700);
+        }
+
+        // Open Drop
+
+        function openDrop() {
+            if (dropdown.classList.contains('open')) {
+                dropdown.classList.remove('open');
+            } else {
+                dropdown.classList.add('open');
+            }
+        }
+
+        //get Drop Size Number Value 
+
+        function getSize(e) {
+            sizeNumber.innerText = e.currentTarget.innerText;
+            openDrop();
+        }
+
+        // Open Shopphing cart
+
+        function openShoppingCart() {
+            if (itemNumber.innerText != "0") {
+                if (shoppingMenu.classList.contains('openShopping')) {
+                    shoppingMenu.classList.remove('openShopping');
+                } else {
+                    shoppingMenu.classList.add('openShopping');
+                }
+            }
+        }
+
+        //Clean Shopping Cart
+
+        function cleanCart() {
+            shoppingMenu.classList.remove('openShopping');
+            itemNumber.style.display = "none";
+            itemNumber.classList.remove('addItem');
+            itemNumber.innerText = "0";
+        }
+
+        // Populate the images for Swiper
+
+        product.images.forEach(function (el) {
+
+            let template = `
+                <div class="swiper-slide">
+                    <div class="scene" data-hover-only="false"> 
+                        <img src="${el.img}" data-depth="0.5">
+                        <img src="${el.img}" data-depth="1" class="shadow">
+                    </div>
+                </div>`;
+
+            let template2 = `
+                <div class="swiper-slide">
+                    <img src="${el.img}">
+                </div>`;
+
+            document.querySelector('.galleryMain .swiper-wrapper').insertAdjacentHTML('beforeend', template);
+            document.querySelector('.galleryThumbs .swiper-wrapper').insertAdjacentHTML('beforeend', template2);
+        });
+
+
+        // Make the slider function
+
+        var galleryThumbs = new Swiper('.galleryThumbs', {
+            spaceBetween: 0,
+            slidesPerView: 'auto',
+            loop: false,
+            allowTouchMove: false,
+            allowSlidePrev: false,
+            allowSlideNext: false,
+
+        });
+
+        var galleryMain = new Swiper('.galleryMain', {
+            spaceBetween: 300,
+            speed: 500,
+            loop: true,
+            loopedSlides: 5, //looped slides should be the same
+            effect: "coverflow",
+            coverflowEffect: {
+                rotate: 50,
+                slideShadows: false,
+                depth: 200,
+                stretch: 50,
+
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+
+            },
+            thumbs: {
+                swiper: galleryThumbs,
+            },
+        });
+
+        // Call functions 
+        getDisccount();
+        parallax();
+        resize();
+    }
+
+    productHeading();
+});

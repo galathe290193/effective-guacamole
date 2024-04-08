@@ -2,48 +2,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     const cartContainer = document.querySelector('.cart');
     const payButton = document.getElementById('pay-button');
-    const cart = {};
+    let cart = [];
 
     function updateCartDisplay() {
         cartContainer.innerHTML = '<h2>Panier</h2>';
         
-        if (Object.keys(cart).length === 0) {
+        if (cart.length === 0) {
             cartContainer.innerHTML += '<p>Votre panier est vide.</p>';
-            updatePayButton(0); // Mettre à jour le bouton "Payer" avec un total de 0
+            payButton.style.display = 'none';
             return;
         }
 
         const ul = document.createElement('ul');
         let total = 0;
 
-        for (const [productName, productInfo] of Object.entries(cart)) {
-            const { price, quantity } = productInfo;
+        cart.forEach(item => {
             const li = document.createElement('li');
-            li.textContent = `${productName} x${quantity} - ${price}`;
+            li.textContent = `${item.name} x${item.quantity} - ${item.price}`;
 
             const removeButton = document.createElement('button');
             removeButton.textContent = '-';
             removeButton.className = 'remove-item';
-            removeButton.dataset.productName = productName;
+            removeButton.dataset.productName = item.name;
             
             li.appendChild(removeButton);
             ul.appendChild(li);
 
-            const priceValue = parseFloat(price.replace('€', ''));
-            total += priceValue * quantity;
-        }
+            const priceValue = parseFloat(item.price.replace('€', ''));
+            total += priceValue * item.quantity;
+        });
 
         cartContainer.appendChild(ul);
-        updatePayButton(total);
-    }
-
-    function updatePayButton(total) {
-        if (total > 0) {
-            payButton.textContent = `Payer €${total.toFixed(2)}`;
-            payButton.style.display = 'block';
-        } else {
-            payButton.style.display = 'none';
-        }
+        payButton.textContent = `Payer €${total.toFixed(2)}`;
+        payButton.style.display = 'block';
     }
 
     addToCartButtons.forEach((button) => {
@@ -51,14 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = button.closest('.card');
             const productName = card.querySelector('h3').textContent;
             const productPrice = card.querySelector('.price').textContent;
+            let existingItem = cart.find(item => item.name === productName);
 
-            if (cart[productName]) {
-                cart[productName].quantity++;
+            if (existingItem) {
+                existingItem.quantity++;
             } else {
-                cart[productName] = {
+                cart.push({
+                    name: productName,
                     price: productPrice,
                     quantity: 1
-                };
+                });
             }
 
             updateCartDisplay();
@@ -68,12 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
     cartContainer.addEventListener('click', (event) => {
         if (event.target && event.target.className === 'remove-item') {
             const productName = event.target.dataset.productName;
+            const itemIndex = cart.findIndex(item => item.name === productName);
             
-            if (cart[productName]) {
-                cart[productName].quantity--;
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity--;
 
-                if (cart[productName].quantity <= 0) {
-                    delete cart[productName];
+                if (cart[itemIndex].quantity <= 0) {
+                    cart.splice(itemIndex, 1);
                 }
 
                 updateCartDisplay();
@@ -84,10 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
     payButton.addEventListener('click', () => {
         let message = 'Détails du panier :\n';
 
-        for (const [productName, productInfo] of Object.entries(cart)) {
-            const { price, quantity } = productInfo;
-            message += `${productName} x${quantity} - ${price}\n`;
-        }
+        cart.forEach(item => {
+            message += `${item.name} x${item.quantity} - ${item.price}\n`;
+        });
 
         alert(message);
     });

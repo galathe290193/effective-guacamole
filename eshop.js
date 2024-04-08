@@ -1,10 +1,10 @@
-var app = window.app || {},
-business_paypal = ''; // aquí va tu correo electrónico de paypal
+import _ from 'lodash'; // Importation de lodash
+
+var app = window.app || {};
+var business_paypal = 'votre_email_paypal'; // Remplacez par votre adresse e-mail PayPal
 
 (function($){
-	'use strict';
-
-	//no coflict con underscores
+    'use strict';
 
 	app.init = function(){
 		//totalItems totalAmount

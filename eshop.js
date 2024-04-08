@@ -30,7 +30,7 @@ business_paypal = ''; // aquí va tu correo electrónico de paypal
 		var productos = [
 			{
 				id : 1,
-				img : 'http://libertadproof.com/wp-content/uploads/2016/02/87952_Obv.jpg',
+				img : 'alb1.jpg',
 				name : 'Libertad 5oz',
 				price : 299.00,
 				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
@@ -38,8 +38,8 @@ business_paypal = ''; // aquí va tu correo electrónico de paypal
 			},
 			{
 				id : 2,
-				name : 'Libertad 5oz',
-				img : 'http://libertadproof.com/wp-content/uploads/2016/02/87952_Obv.jpg',
+				name : 'alb2.jpg',
+				img : 'alb2.jpg',
 				price : 199.00,
 				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
 				stock : 2
@@ -47,7 +47,7 @@ business_paypal = ''; // aquí va tu correo electrónico de paypal
 			{
 				id : 3,
 				name : 'Libertad 5oz',
-				img : 'http://libertadproof.com/wp-content/uploads/2016/02/87952_Obv.jpg',
+				img : 'alb3.jpg',
 				price : 99.00,
 				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
 				stock : 1
@@ -55,7 +55,7 @@ business_paypal = ''; // aquí va tu correo electrónico de paypal
 			{
 				id : 4,
 				name : 'Libertad 5oz',
-				img : 'http://libertadproof.com/wp-content/uploads/2016/02/87952_Obv.jpg',
+				img : 'alb4.jpg',
 				price : 80.00,
 				desc : 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
 				stock : 0

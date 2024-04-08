@@ -2,39 +2,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     const cartContainer = document.querySelector('.cart');
     const payButton = document.getElementById('pay-button');
-    let cart = [];
+    let cart = {};
 
     function updateCartDisplay() {
         cartContainer.innerHTML = '<h2>Panier</h2>';
         
-        if (cart.length === 0) {
+        if (Object.keys(cart).length === 0) {
             cartContainer.innerHTML += '<p>Votre panier est vide.</p>';
-            payButton.style.display = 'block';
+            payButton.style.display = 'none';  // Cacher le bouton "Payer" si le panier est vide
             return;
         }
 
         const ul = document.createElement('ul');
         let total = 0;
 
-        cart.forEach(item => {
+        for (const [productName, productInfo] of Object.entries(cart)) {
+            const { price, quantity } = productInfo;
             const li = document.createElement('li');
-            li.textContent = `${item.name} x${item.quantity} - ${item.price}`;
+            li.textContent = `${productName} x${quantity} - ${price}`;
 
             const removeButton = document.createElement('button');
             removeButton.textContent = '-';
             removeButton.className = 'remove-item';
-            removeButton.dataset.productName = item.name;
+            removeButton.dataset.productName = productName;
             
             li.appendChild(removeButton);
             ul.appendChild(li);
 
-            const priceValue = parseFloat(item.price.replace('€', ''));
-            total += priceValue * item.quantity;
-        });
+            const priceValue = parseFloat(price.replace('€', ''));
+            total += priceValue * quantity;
+        }
 
         cartContainer.appendChild(ul);
         payButton.textContent = `Payer €${total.toFixed(2)}`;
-        payButton.style.display = 'block'; // Assure-toi que le bouton "Payer" est visible
+        payButton.style.display = 'block';  // Afficher le bouton "Payer" si le panier n'est pas vide
+        
+        console.log(payButton.style.display);  // Débogage : Afficher la valeur de la propriété display du bouton
+        console.log(cartContainer.innerHTML);  // Débogage : Afficher le contenu de l'élément .cart
     }
 
     addToCartButtons.forEach((button) => {
@@ -42,16 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = button.closest('.card');
             const productName = card.querySelector('h3').textContent;
             const productPrice = card.querySelector('.price').textContent;
-            let existingItem = cart.find(item => item.name === productName);
 
-            if (existingItem) {
-                existingItem.quantity++;
+            if (cart[productName]) {
+                cart[productName].quantity++;
             } else {
-                cart.push({
-                    name: productName,
+                cart[productName] = {
                     price: productPrice,
                     quantity: 1
-                });
+                };
             }
 
             updateCartDisplay();
@@ -61,13 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
     cartContainer.addEventListener('click', (event) => {
         if (event.target && event.target.className === 'remove-item') {
             const productName = event.target.dataset.productName;
-            const itemIndex = cart.findIndex(item => item.name === productName);
             
-            if (itemIndex !== -1) {
-                cart[itemIndex].quantity--;
+            if (cart[productName]) {
+                cart[productName].quantity--;
 
-                if (cart[itemIndex].quantity <= 0) {
-                    cart.splice(itemIndex, 1);
+                if (cart[productName].quantity <= 0) {
+                    delete cart[productName];
                 }
 
                 updateCartDisplay();
@@ -78,12 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
     payButton.addEventListener('click', () => {
         let message = 'Détails du panier :\n';
 
-        cart.forEach(item => {
-            message += `${item.name} x${item.quantity} - ${item.price}\n`;
-        });
+        for (const [productName, productInfo] of Object.entries(cart)) {
+            const { price, quantity } = productInfo;
+            message += `${productName} x${quantity} - ${price}\n`;
+        }
 
         alert(message);
     });
 
-    updateCartDisplay(); // Initialiser l'affichage du panier lors du chargement de la page
+    updateCartDisplay();  // Initialiser l'affichage du panier lors du chargement de la page
 });

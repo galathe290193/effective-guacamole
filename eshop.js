@@ -1,8 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     const cartContainer = document.querySelector('.cart');
-    const payButton = document.getElementById('pay-button'); // Sélectionner le bouton "Payer" à l'intérieur de la div du panier
+    const payButton = document.getElementById('pay-button');
     const cart = {};
+
+    function updateCartDisplay() {
+        cartContainer.innerHTML = '<h2>Panier</h2>';
+        
+        if (Object.keys(cart).length === 0) {
+            cartContainer.innerHTML += '<p>Votre panier est vide.</p>';
+            updatePayButton(0); // Mettre à jour le bouton "Payer" avec un total de 0
+            return;
+        }
+
+        const ul = document.createElement('ul');
+        let total = 0;
+
+        for (const [productName, productInfo] of Object.entries(cart)) {
+            const { price, quantity } = productInfo;
+            const li = document.createElement('li');
+            li.textContent = `${productName} x${quantity} - ${price}`;
+
+            const removeButton = document.createElement('button');
+            removeButton.textContent = '-';
+            removeButton.className = 'remove-item';
+            removeButton.dataset.productName = productName;
+            
+            li.appendChild(removeButton);
+            ul.appendChild(li);
+
+            const priceValue = parseFloat(price.replace('€', ''));
+            total += priceValue * quantity;
+        }
+
+        cartContainer.appendChild(ul);
+        updatePayButton(total);
+    }
+
+    function updatePayButton(total) {
+        if (total > 0) {
+            payButton.textContent = `Payer €${total.toFixed(2)}`;
+            payButton.style.display = 'block';
+        } else {
+            payButton.style.display = 'none';
+        }
+    }
 
     addToCartButtons.forEach((button) => {
         button.addEventListener('click', () => {
@@ -20,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             updateCartDisplay();
-            updatePayButtonVisibility();
         });
     });
 
@@ -36,62 +77,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 updateCartDisplay();
-                updatePayButtonVisibility();
             }
         }
     });
 
     payButton.addEventListener('click', () => {
-        let total = 0;
         let message = 'Détails du panier :\n';
 
         for (const [productName, productInfo] of Object.entries(cart)) {
             const { price, quantity } = productInfo;
             message += `${productName} x${quantity} - ${price}\n`;
-
-            const priceValue = parseFloat(price.replace('€', ''));
-            total += priceValue * quantity;
         }
-
-        message += `\nTotal : €${total.toFixed(2)}`;
 
         alert(message);
     });
 
-    function updateCartDisplay() {
-        cartContainer.innerHTML = '<h2>Panier</h2>';
-        
-        if (Object.keys(cart).length === 0) {
-            cartContainer.innerHTML += '<p>Votre panier est vide.</p>';
-            payButton.style.display = 'none';
-            return;
-        }
-
-        const ul = document.createElement('ul');
-
-        for (const [productName, productInfo] of Object.entries(cart)) {
-            const { price, quantity } = productInfo;
-            const li = document.createElement('li');
-            li.textContent = `${productName} x${quantity} - ${price}`;
-
-            const removeButton = document.createElement('button');
-            removeButton.textContent = '-';
-            removeButton.className = 'remove-item';
-            removeButton.dataset.productName = productName;
-            
-            li.appendChild(removeButton);
-            ul.appendChild(li);
-        }
-
-        cartContainer.appendChild(ul);
-        updatePayButtonVisibility();
-    }
-
-    function updatePayButtonVisibility() {
-        if (Object.keys(cart).length === 0) {
-            payButton.style.display = 'none';
-        } else {
-            payButton.style.display = 'block';
-        }
-    }
+    updateCartDisplay(); // Initialiser l'affichage du panier lors du chargement de la page
 });

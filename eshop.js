@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         cartContainer.appendChild(ul);
         payButton.textContent = `Payer €${total.toFixed(2)}`;
-        payButton.style.display = 'block';
+        payButton.style.display = 'block'; // Assure-toi que le bouton "Payer" est visible
     }
 
     addToCartButtons.forEach((button) => {

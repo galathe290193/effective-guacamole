@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (Object.keys(cart).length === 0) {
             cartContainer.innerHTML += '<p>Votre panier est vide.</p>';
-            payButton.style.display = 'none';  // Cacher le bouton "Payer" si le panier est vide
             return;
         }
 

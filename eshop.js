@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function addPayButton(cartContainer) {
-        let payButton = document.getElementById('pay-button');
+        let payButton = cartContainer.querySelector('#pay-button');
 
         if (payButton) {
             payButton.remove(); // Remove existing pay button

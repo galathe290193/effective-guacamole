@@ -63,16 +63,19 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.appendChild(cartContainer);
         }
 
-        addPayButton();
+        addPayButton(cartContainer);
         addQuantityButtons();
     }
 
-    function addPayButton() {
+    function addPayButton(cartContainer) {
         const existingPayButton = document.querySelector('#pay-button');
         if (!existingPayButton) {
             const payButton = document.createElement('button');
             payButton.id = 'pay-button';
             payButton.innerText = 'Payer';
+            payButton.style.position = 'fixed';
+            payButton.style.top = '10px';
+            payButton.style.right = '10px';
             payButton.addEventListener('click', function() {
                 alert('Paiement effectué !');
                 Object.keys(cartItems).forEach(key => delete cartItems[key]); // Clear cart

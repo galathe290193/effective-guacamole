@@ -25,7 +25,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateCartDisplay(cartContainer) {
-        cartContainer.innerHTML = ''; // Clear previous cart items
+        const cartContent = cartContainer.querySelector('.cart-content');
+
+        if (cartContent) {
+            cartContent.innerHTML = ''; // Clear previous cart items
+        } else {
+            const newCartContent = document.createElement('div');
+            newCartContent.className = 'cart-content';
+            cartContainer.appendChild(newCartContent);
+        }
 
         cartContainer.cartItems.forEach(item => {
             const cartItem = document.createElement('div');
@@ -34,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span>${item.name}</span>
                 <span>${item.price}</span>
             `;
-            cartContainer.appendChild(cartItem);
+            cartContent.appendChild(cartItem);
         });
 
         addPayButton(cartContainer);

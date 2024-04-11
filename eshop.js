@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    const cartItems = [];
+    const cartContainer = createCartContainer();
 
     addToCartButtons.forEach(button => {
         button.addEventListener('click', function(event) {
@@ -10,23 +10,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 price: card.querySelector('.price').innerText,
             };
 
-            cartItems.push(productInfo);
-            updateCartDisplay();
+            cartContainer.cartItems.push(productInfo);
+            updateCartDisplay(cartContainer);
         });
     });
 
-    function updateCartDisplay() {
-        const cartContainer = document.querySelector('.cart-container');
+    function createCartContainer() {
+        const cartContainer = document.createElement('div');
+        cartContainer.className = 'cart-container';
+        document.body.appendChild(cartContainer);
+        cartContainer.cartItems = [];
 
-        if (cartContainer) {
-            cartContainer.innerHTML = ''; // Clear previous cart items
-        } else {
-            const newCartContainer = document.createElement('div');
-            newCartContainer.className = 'cart-container';
-            document.body.appendChild(newCartContainer);
-        }
+        return cartContainer;
+    }
 
-        cartItems.forEach(item => {
+    function updateCartDisplay(cartContainer) {
+        cartContainer.innerHTML = ''; // Clear previous cart items
+
+        cartContainer.cartItems.forEach(item => {
             const cartItem = document.createElement('div');
             cartItem.className = 'cart-item';
             cartItem.innerHTML = `
@@ -36,28 +37,25 @@ document.addEventListener('DOMContentLoaded', function() {
             cartContainer.appendChild(cartItem);
         });
 
-        addPayButton();
+        addPayButton(cartContainer);
     }
 
-    function addPayButton() {
-        const payButton = document.querySelector('#pay-button');
+    function addPayButton(cartContainer) {
+        let payButton = document.getElementById('pay-button');
 
         if (payButton) {
             payButton.remove(); // Remove existing pay button
         }
 
-        const newPayButton = document.createElement('button');
-        newPayButton.id = 'pay-button';
-        newPayButton.innerText = 'Payer';
-        newPayButton.addEventListener('click', function() {
+        payButton = document.createElement('button');
+        payButton.id = 'pay-button';
+        payButton.innerText = 'Payer';
+        payButton.addEventListener('click', function() {
             alert('Paiement effectué !');
-            cartItems.length = 0; // Clear cart
-            updateCartDisplay(); // Update cart display after clearing
+            cartContainer.cartItems.length = 0; // Clear cart
+            updateCartDisplay(cartContainer); // Update cart display after clearing
         });
 
-        const cartContainer = document.querySelector('.cart-container');
-        if (cartContainer) {
-            cartContainer.appendChild(newPayButton);
-        }
+        cartContainer.appendChild(payButton);
     }
 });

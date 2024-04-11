@@ -56,13 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         cartContainer.appendChild(totalInfo);
 
-        const existingCartContainer = document.querySelector('.cart-container');
-        if (existingCartContainer) {
-            existingCartContainer.replaceWith(cartContainer);
-        } else {
-            document.body.appendChild(cartContainer);
-        }
-
         addPayButton(cartContainer);
         addQuantityButtons();
     }
@@ -73,15 +66,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const payButton = document.createElement('button');
             payButton.id = 'pay-button';
             payButton.innerText = 'Payer';
-            payButton.style.position = 'fixed';
-            payButton.style.top = '10px';
-            payButton.style.right = '10px';
+            payButton.style.display = 'block';
+            payButton.style.marginTop = '10px';
             payButton.addEventListener('click', function() {
                 alert('Paiement effectué !');
                 Object.keys(cartItems).forEach(key => delete cartItems[key]); // Clear cart
                 updateCartDisplay(); // Update cart display after clearing
             });
-            document.body.appendChild(payButton);
+            cartContainer.appendChild(payButton);
         }
     }
 

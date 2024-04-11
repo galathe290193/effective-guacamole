@@ -38,12 +38,14 @@ body {
 
 .cartes {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     height: 100vh; // pour centrer les cartes verticalement
 
     .carte {
-        width: 30%;
+        width: 60%; // ajustement de la largeur
+        margin-bottom: 20px; // espace entre les cartes
         background-color: #fff;
         border-radius: 8px;
         padding: 20px;

@@ -38,11 +38,13 @@ document.addEventListener('DOMContentLoaded', function() {
             totalPrice += parseFloat(productInfo.price.replace('€', '')) * productInfo.quantity;
         }
 
-        const payButton = document.querySelector('#pay-button');
-        if (payButton) {
-            payButton.innerText = `Payer €${totalPrice.toFixed(2)}`;
-        }
+        const totalInfo = document.createElement('div');
+        totalInfo.innerHTML = `
+            <strong>Total (${totalItems} items): €${totalPrice.toFixed(2)}</strong>
+        `;
+        cartContainer.appendChild(totalInfo);
 
+        addPayButton();
         addQuantityButtons();
     }
 

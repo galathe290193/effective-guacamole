@@ -50,7 +50,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 cartItems.length = 0; // Clear cart
                 updateCartDisplay(); // Update cart display after clearing
             });
-            document.body.appendChild(payButton);
+            
+            const cartContainer = document.querySelector('.cart-container');
+            if (cartContainer) {
+                cartContainer.appendChild(payButton);
+            }
         }
     }
 });

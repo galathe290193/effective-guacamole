@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    const cartContainer = createCartContainer();
+    const cartItems = [];
 
     addToCartButtons.forEach(button => {
         button.addEventListener('click', function(event) {
@@ -10,60 +10,47 @@ document.addEventListener('DOMContentLoaded', function() {
                 price: card.querySelector('.price').innerText,
             };
 
-            cartContainer.cartItems.push(productInfo);
-            updateCartDisplay(cartContainer);
+            cartItems.push(productInfo);
+            updateCartDisplay();
         });
     });
 
-    function createCartContainer() {
+    function updateCartDisplay() {
         const cartContainer = document.createElement('div');
         cartContainer.className = 'cart-container';
-        document.body.appendChild(cartContainer);
-        cartContainer.cartItems = [];
-
-        return cartContainer;
-    }
-
-    function updateCartDisplay(cartContainer) {
-        const cartContent = cartContainer.querySelector('.cart-content');
-
-        if (cartContent) {
-            cartContent.innerHTML = ''; // Clear previous cart items
-        } else {
-            const newCartContent = document.createElement('div');
-            newCartContent.className = 'cart-content';
-            cartContainer.appendChild(newCartContent);
-        }
-
-        cartContainer.cartItems.forEach(item => {
+        
+        cartItems.forEach(item => {
             const cartItem = document.createElement('div');
             cartItem.className = 'cart-item';
             cartItem.innerHTML = `
                 <span>${item.name}</span>
                 <span>${item.price}</span>
             `;
-            cartContent.appendChild(cartItem);
+            cartContainer.appendChild(cartItem);
         });
 
-        addPayButton(cartContainer);
-    }
-
-    function addPayButton(cartContainer) {
-        let payButton = cartContainer.querySelector('#pay-button');
-
-        if (payButton) {
-            payButton.remove(); // Remove existing pay button
+        const existingCartContainer = document.querySelector('.cart-container');
+        if (existingCartContainer) {
+            existingCartContainer.replaceWith(cartContainer);
+        } else {
+            document.body.appendChild(cartContainer);
         }
 
-        payButton = document.createElement('button');
-        payButton.id = 'pay-button';
-        payButton.innerText = 'Payer';
-        payButton.addEventListener('click', function() {
-            alert('Paiement effectué !');
-            cartContainer.cartItems.length = 0; // Clear cart
-            updateCartDisplay(cartContainer); // Update cart display after clearing
-        });
+        addPayButton();
+    }
 
-        cartContainer.appendChild(payButton);
+    function addPayButton() {
+        const existingPayButton = document.querySelector('#pay-button');
+        if (!existingPayButton) {
+            const payButton = document.createElement('button');
+            payButton.id = 'pay-button';
+            payButton.innerText = 'Payer';
+            payButton.addEventListener('click', function() {
+                alert('Paiement effectué !');
+                cartItems.length = 0; // Clear cart
+                updateCartDisplay(); // Update cart display after clearing
+            });
+            document.body.appendChild(payButton);
+        }
     }
 });

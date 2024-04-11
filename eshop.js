@@ -16,9 +16,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function updateCartDisplay() {
-        const cartContainer = document.createElement('div');
-        cartContainer.className = 'cart-container';
-        
+        const cartContainer = document.querySelector('.cart-container');
+
+        if (cartContainer) {
+            cartContainer.innerHTML = ''; // Clear previous cart items
+        } else {
+            const newCartContainer = document.createElement('div');
+            newCartContainer.className = 'cart-container';
+            document.body.appendChild(newCartContainer);
+        }
+
         cartItems.forEach(item => {
             const cartItem = document.createElement('div');
             cartItem.className = 'cart-item';
@@ -29,32 +36,28 @@ document.addEventListener('DOMContentLoaded', function() {
             cartContainer.appendChild(cartItem);
         });
 
-        const existingCartContainer = document.querySelector('.cart-container');
-        if (existingCartContainer) {
-            existingCartContainer.replaceWith(cartContainer);
-        } else {
-            document.body.appendChild(cartContainer);
-        }
-
         addPayButton();
     }
 
     function addPayButton() {
-        const existingPayButton = document.querySelector('#pay-button');
-        if (!existingPayButton) {
-            const payButton = document.createElement('button');
-            payButton.id = 'pay-button';
-            payButton.innerText = 'Payer';
-            payButton.addEventListener('click', function() {
-                alert('Paiement effectué !');
-                cartItems.length = 0; // Clear cart
-                updateCartDisplay(); // Update cart display after clearing
-            });
-            
-            const cartContainer = document.querySelector('.cart-container');
-            if (cartContainer) {
-                cartContainer.appendChild(payButton);
-            }
+        const payButton = document.querySelector('#pay-button');
+
+        if (payButton) {
+            payButton.remove(); // Remove existing pay button
+        }
+
+        const newPayButton = document.createElement('button');
+        newPayButton.id = 'pay-button';
+        newPayButton.innerText = 'Payer';
+        newPayButton.addEventListener('click', function() {
+            alert('Paiement effectué !');
+            cartItems.length = 0; // Clear cart
+            updateCartDisplay(); // Update cart display after clearing
+        });
+
+        const cartContainer = document.querySelector('.cart-container');
+        if (cartContainer) {
+            cartContainer.appendChild(newPayButton);
         }
     }
 });

@@ -1,90 +1,56 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    const cartContainer = document.querySelector('.cart');
-    const payButton = document.getElementById('pay-button');
-    let cart = {};
+    const cartItems = [];
 
-    function updateCartDisplay() {
-        cartContainer.innerHTML = '<h2>Panier</h2>';
-        
-        if (Object.keys(cart).length === 0) {
-            cartContainer.innerHTML += '<p>Votre panier est vide.</p>';
-            return;
-        }
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            const card = event.target.closest('.card');
+            const productInfo = {
+                name: card.querySelector('h3').innerText,
+                price: card.querySelector('.price').innerText,
+            };
 
-        const ul = document.createElement('ul');
-        let total = 0;
-
-        for (const [productName, productInfo] of Object.entries(cart)) {
-            const { price, quantity } = productInfo;
-            const li = document.createElement('li');
-            li.textContent = `${productName} x${quantity} - ${price}`;
-
-            const removeButton = document.createElement('button');
-            removeButton.textContent = '-';
-            removeButton.className = 'remove-item';
-            removeButton.dataset.productName = productName;
-            
-            li.appendChild(removeButton);
-            ul.appendChild(li);
-
-            const priceValue = parseFloat(price.replace('€', ''));
-            total += priceValue * quantity;
-        }
-
-        cartContainer.appendChild(ul);
-        payButton.textContent = `Payer €${total.toFixed(2)}`;
-        payButton.style.display = 'block';  // Afficher le bouton "Payer" si le panier n'est pas vide
-        
-        console.log(payButton.style.display);  // Débogage : Afficher la valeur de la propriété display du bouton
-        console.log(cartContainer.innerHTML);  // Débogage : Afficher le contenu de l'élément .cart
-    }
-
-    addToCartButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-            const card = button.closest('.card');
-            const productName = card.querySelector('h3').textContent;
-            const productPrice = card.querySelector('.price').textContent;
-
-            if (cart[productName]) {
-                cart[productName].quantity++;
-            } else {
-                cart[productName] = {
-                    price: productPrice,
-                    quantity: 1
-                };
-            }
-
+            cartItems.push(productInfo);
             updateCartDisplay();
         });
     });
 
-    cartContainer.addEventListener('click', (event) => {
-        if (event.target && event.target.className === 'remove-item') {
-            const productName = event.target.dataset.productName;
-            
-            if (cart[productName]) {
-                cart[productName].quantity--;
+    function updateCartDisplay() {
+        const cartContainer = document.createElement('div');
+        cartContainer.className = 'cart-container';
+        
+        cartItems.forEach(item => {
+            const cartItem = document.createElement('div');
+            cartItem.className = 'cart-item';
+            cartItem.innerHTML = `
+                <span>${item.name}</span>
+                <span>${item.price}</span>
+            `;
+            cartContainer.appendChild(cartItem);
+        });
 
-                if (cart[productName].quantity <= 0) {
-                    delete cart[productName];
-                }
-
-                updateCartDisplay();
-            }
-        }
-    });
-
-    payButton.addEventListener('click', () => {
-        let message = 'Détails du panier :\n';
-
-        for (const [productName, productInfo] of Object.entries(cart)) {
-            const { price, quantity } = productInfo;
-            message += `${productName} x${quantity} - ${price}\n`;
+        const existingCartContainer = document.querySelector('.cart-container');
+        if (existingCartContainer) {
+            existingCartContainer.replaceWith(cartContainer);
+        } else {
+            document.body.appendChild(cartContainer);
         }
 
-        alert(message);
-    });
+        addPayButton();
+    }
 
-    updateCartDisplay();  // Initialiser l'affichage du panier lors du chargement de la page
+    function addPayButton() {
+        const existingPayButton = document.querySelector('#pay-button');
+        if (!existingPayButton) {
+            const payButton = document.createElement('button');
+            payButton.id = 'pay-button';
+            payButton.innerText = 'Payer';
+            payButton.addEventListener('click', function() {
+                alert('Paiement effectué !');
+                cartItems.length = 0; // Clear cart
+                updateCartDisplay(); // Update cart display after clearing
+            });
+            document.body.appendChild(payButton);
+        }
+    }
 });

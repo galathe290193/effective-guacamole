@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
-.lobster-regular, .p {
-  font-family: "Lobster", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+.lobster-regular {
+    font-family: "Lobster", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
+
 
 body {
   font-family: Arial, sans-serif;

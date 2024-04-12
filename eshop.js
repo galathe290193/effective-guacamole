@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const totalInfo = document.createElement('div');
         totalInfo.innerHTML = `
-            <strong>Total (${totalItems} items): €${totalPrice.toFixed(2)}</strong>
+            <strong>Total: €${totalPrice.toFixed(2)}</strong>
         `;
         cartContainer.appendChild(totalInfo);
 

@@ -7,15 +7,11 @@
     font-style: normal;
 }
 
-.p {
-    @extend .lobster-regular;
-}
 body {
 	font-family: Arial, sans-serif;
 	margin: 0;
 	padding: 0;
-	background-color: #FF3CAC;
-    background-image: linear-gradient(116deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+	background-color: rgb(29, 29, 29)
  /* Changer la couleur de fond */
   }
   
@@ -58,8 +54,10 @@ body {
   }
   
   .info p {
+	@extend .lobster-regular;
 	font-size: 1em; /* Augmenter la taille de la police */
 	color: #555; /* Changer la couleur du texte */
+	
   }
   
   .price {

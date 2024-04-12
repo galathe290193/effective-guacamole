@@ -37,13 +37,17 @@ document.addEventListener('DOMContentLoaded', function() {
     function addPayButton() {
         const existingPayButton = document.querySelector('#pay-button');
         if (!existingPayButton && selectedDonation) {
-            const payButton = document.createElement('a');
+            const payButton = document.createElement('button');
             payButton.id = 'pay-button';
-            payButton.href = selectedDonation.paymentLink;
             payButton.innerText = 'Payer';
-            payButton.target = '_blank';
             payButton.style.display = 'block';
             payButton.style.marginTop = '10px';
+            payButton.addEventListener('click', function() {
+                const confirmPayment = window.confirm('Vous allez être redirigé vers un site de paiement sécurisé. Voulez-vous continuer ?');
+                if (confirmPayment) {
+                    window.location.href = selectedDonation.paymentLink;
+                }
+            });
             cartContainer.appendChild(payButton);
         }
     }

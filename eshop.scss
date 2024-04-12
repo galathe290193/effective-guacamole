@@ -2,11 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
 .satisfy-regular {
-	font-family: "Satisfy", cursive;
-	font-weight: 400;
-	font-style: normal;
-  }
-// Utilisation de la classe .lobster-regular
+    font-family: "Satisfy", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
 .lobster-regular {
     font-family: "Lobster", sans-serif;
     font-weight: 400;
@@ -14,95 +14,105 @@
 }
 
 body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
-	background-color: rgb(29, 29, 29)
- /* Changer la couleur de fond */
-  }
-  
-  .container {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	padding: 20px;
-  }
-  
-  .card {
-	background-color: #ffffff; /* Changer la couleur de fond */
-	border: 1px solid #ddd; /* Ajouter une bordure */
-	border-radius: 8px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	margin: 15px;
-	overflow: hidden;
-	width: 300px;
-	transition: transform 0.3s ease-in-out;
-  }
-  
-  .card:hover {
-	transform: scale(1.05);
-	border-color: #007bff; /* Changement de la couleur de bordure au survol */
-  }
-  
-  .card img {
-	width: 100%;
-	height: auto;
-  }
-  
-  .info {
-	padding: 15px;
-	text-align: center;
-  }
-  
-  .info h3 {
-	margin-top: 0;
-	font-size: 1.2em; /* Augmenter la taille de la police */
-  }
-  
-  .info p {
-	@extend .satisfy-regular;
-	font-size: 1em; /* Augmenter la taille de la police */
-	color: #555; /* Changer la couleur du texte */
-	
-  }
-  
-  .price {
-	font-weight: bold;
-	color: #333;
-	font-size: 1.2em; /* Augmenter la taille de la police */
-  }
-  
-  .add-to-cart {
-	display: block;
-	width: 100%;
-	padding: 10px;
-	margin-top: 15px;
-	background-color: #007bff;
-	color: #ffffff;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: background-color 0.3s ease-in-out; /* Ajouter une transition */
-  }
-  
-  .add-to-cart:hover {
-	background-color: #0056b3; /* Changement de couleur au survol */
-  }
-  
-
-#pay-button {
-	display: block;
-	width: 100%;
-	padding: 10px;
-	margin-top: 20px;
-	background-color: #007bff;
-	color: #ffffff;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: background-color 0.3s ease-in-out;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(29, 29, 29); /* Changer la couleur de fond */
 }
 
-#pay-button:hover {
-	background-color: #0056b3;
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    background-color: #ffffff; /* Changer la couleur de fond */
+    border: 1px solid #ddd; /* Ajouter une bordure */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    overflow: hidden;
+    width: 300px;
+    height: 450px; /* Définir une hauteur fixe pour toutes les cartes */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espacement uniforme entre les éléments */
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(1.05);
+        border-color: #007bff; /* Changement de la couleur de bordure au survol */
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        flex: 1; /* Permettre à l'image de s'adapter à la hauteur de la carte */
+        object-fit: cover; /* Assurer que l'image couvre complètement l'espace */
+    }
+
+    .info {
+        padding: 15px;
+        text-align: center;
+        flex: 1; /* Utiliser l'espace restant pour le contenu */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Espacement uniforme entre les éléments */
+
+        h3 {
+            margin-top: 0;
+            font-size: 1.2em; /* Augmenter la taille de la police */
+            margin-bottom: 10px; /* Ajouter un espacement après le titre */
+        }
+
+        p {
+            @extend .satisfy-regular;
+            font-size: 1em; /* Augmenter la taille de la police */
+            color: #555; /* Changer la couleur du texte */
+            flex-grow: 1; /* Permettre au paragraphe de s'adapter à la hauteur disponible */
+        }
+
+        .price {
+            font-weight: bold;
+            color: #333;
+            font-size: 1.2em; /* Augmenter la taille de la police */
+        }
+
+        .add-to-cart {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out; /* Ajouter une transition */
+            align-self: center; /* Centrer le bouton horizontalement */
+
+            &:hover {
+                background-color: #0056b3; /* Changement de couleur au survol */
+            }
+        }
+    }
+}
+
+#pay-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+        background-color: #0056b3;
+    }
 }

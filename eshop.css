@@ -1,8 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+.lobster-regular, .p {
+  font-family: "Lobster", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4; /* Changer la couleur de fond */
+  background-color: #FF3CAC;
+  background-image: linear-gradient(116deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+  /* Changer la couleur de fond */
 }
 
 .container {
@@ -69,16 +78,6 @@ body {
 
 .add-to-cart:hover {
   background-color: #0056b3; /* Changement de couleur au survol */
-}
-
-.cart {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 150px;
-  padding: 20px;
-  position: relative; /* Modifier la position en relative */
-  z-index: 10;
 }
 
 #pay-button {

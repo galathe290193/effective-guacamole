@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cartItem.className = 'cart-item';
             cartItem.innerHTML = `
                 <span>${selectedDonation.label} (${selectedDonation.amount}€)</span>
-                <button class="remove-from-cart">Retirer</button>
+                <span class="remove-from-cart">-</span>
             `;
             cartContainer.appendChild(cartItem);
         }

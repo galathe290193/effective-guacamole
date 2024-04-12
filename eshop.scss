@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
+.satisfy-regular {
+	font-family: "Satisfy", cursive;
+	font-weight: 400;
+	font-style: normal;
+  }
 // Utilisation de la classe .lobster-regular
 .lobster-regular {
     font-family: "Lobster", sans-serif;
@@ -54,7 +60,7 @@ body {
   }
   
   .info p {
-	@extend .lobster-regular;
+	@extend .satisfy-regular;
 	font-size: 1em; /* Augmenter la taille de la police */
 	color: #555; /* Changer la couleur du texte */
 	

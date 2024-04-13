@@ -76,7 +76,7 @@
 }
 
 .dropdown-content a {
-  color: black;
+  color: white; /* Changer la couleur des icônes en blanc */
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -99,19 +99,19 @@
 #home-link {
   top: 50%;
   left: 50%;
-  transform: translate(-100%, -50%) rotate(-45deg);
+  transform: translate(-100%, -50%) rotate(135deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
 }
 
 #about-link {
   top: 50%;
   left: 50%;
-  transform: translate(0, -100%) rotate(-45deg);
+  transform: translate(0, -100%) rotate(135deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
 }
 
 #contact-link {
   top: 50%;
   left: 50%;
-  transform: translate(100%, -50%) rotate(-45deg);
+  transform: translate(100%, -50%) rotate(135deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
 }
 
 h2 {

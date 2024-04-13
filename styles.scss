@@ -67,7 +67,14 @@
 .modal h2 {
   margin-top: 0;
 }
-
+/* Dropdown Menu Icons */
+#home-link i,
+#about-link i,
+#contact-link i {
+  font-size: 1.5rem;  // Taille de la police pour les icônes
+  margin: 0;  // Supprime les marges par défaut
+  padding: 0;  // Supprime les espaces intérieurs par défaut
+}
 /* Dropdown Menu */
 .dropdown {
   position: fixed;

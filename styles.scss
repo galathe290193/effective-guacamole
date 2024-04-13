@@ -63,7 +63,6 @@
   right: 2rem;
   z-index: 1000;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -71,8 +70,9 @@
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  right: 100%; /* positionne le menu à gauche du bouton */
-  top: 0;
+  right: 0; /* positionne le menu à gauche du bouton */
+  top: 50%;
+  transform: translate(100%, -50%);
 }
 
 .dropdown-content a {
@@ -99,22 +99,19 @@
 #home-link {
   top: 50%;
   left: 50%;
-  transform: translate(-100%, -50%) rotate(45deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
-  transform-origin: bottom right; /* Ajuster l'origine de la transformation */
+  transform: translate(-125%, -50%) rotate(45deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
 }
 
 #about-link {
   top: 50%;
   left: 50%;
-  transform: translate(0, -100%) rotate(45deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
-  transform-origin: bottom center; /* Ajuster l'origine de la transformation */
+  transform: translate(-50%, -125%) rotate(45deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
 }
 
 #contact-link {
   top: 50%;
   left: 50%;
-  transform: translate(100%, -50%) rotate(45deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
-  transform-origin: bottom left; /* Ajuster l'origine de la transformation */
+  transform: translate(25%, -50%) rotate(45deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
 }
 
 h2 {

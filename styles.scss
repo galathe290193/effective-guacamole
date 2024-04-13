@@ -1,4 +1,4 @@
-/*PEN STYLES*/
+/* PEN STYLES */
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap");
 
 @mixin mQ($rem) {
@@ -6,6 +6,7 @@
     @content;
   }
 }
+
 /* Menu Hamburger */
 .menu-toggle {
   position: fixed;
@@ -16,6 +17,7 @@
   background: transparent;
   border: none;
   outline: none;
+  transition: transform 0.3s ease-in-out; /* Animation pour le burger */
 }
 
 .menu-toggle span {
@@ -54,6 +56,7 @@
   margin-top: 0;
 }
 
+/* Dropdown Menu */
 .dropdown {
   position: fixed;
   top: 2rem;
@@ -68,7 +71,7 @@
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  right: 100%;  /* positionne le menu à gauche du bouton */
+  right: 100%; /* positionne le menu à gauche du bouton */
   top: 0;
 }
 
@@ -77,15 +80,40 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out;
+  position: absolute;
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
-.show {
-  display: block;
+/* Positionnement des icônes autour du burger */
+#home-link {
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -50%) rotate(-45deg);
 }
+
+#about-link {
+  top: 50%;
+  left: 50%;
+  transform: translate(0, -100%) rotate(-45deg);
+}
+
+#contact-link {
+  top: 50%;
+  left: 50%;
+  transform: translate(100%, -50%) rotate(-45deg);
+}
+
 h2 {
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
@@ -157,31 +185,28 @@ h2 {
 }
 
 .card:nth-child(1) .circle {
-  background: url("home1.jpg")
-    no-repeat 50% 50% / cover;
+  background: url("home1.jpg") no-repeat 50% 50% / cover;
   bottom: 0;
   right: 0;
   clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%);
 }
 
 .card:nth-child(2) .circle {
-  background: url("home2.jpg")
-    no-repeat 50% 50% / cover;
+  background: url("home2.jpg") no-repeat 50% 50% / cover;
   bottom: 0;
   left: 0;
   clip-path: circle(calc(6.25rem + 7.5vw) at 0% 100%);
 }
+
 .card:nth-child(3) .circle {
-  background: url("home3.jpg")
-    no-repeat 50% 50% / cover;
+  background: url("home3.jpg") no-repeat 50% 50% / cover;
   top: 0;
   right: 0;
   clip-path: circle(calc(6.25rem + 7.5vw) at 100% 0%);
 }
 
 .card:nth-child(4) .circle {
-  background: url("home4.jpg")
-    no-repeat 50% 50% / cover;
+  background: url("home4.jpg") no-repeat 50% 50% / cover;
   top: 0;
   left: 0;
   clip-path: circle(calc(6.25rem + 7.5vw) at 0% 0%);

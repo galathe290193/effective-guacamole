@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*PEN STYLES*/
+/* PEN STYLES */
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap");
 /* Menu Hamburger */
 .menu-toggle {
@@ -11,6 +11,7 @@
   background: transparent;
   border: none;
   outline: none;
+  transition: transform 0.3s ease-in-out; /* Animation pour le burger */
 }
 
 .menu-toggle span {
@@ -49,6 +50,7 @@
   margin-top: 0;
 }
 
+/* Dropdown Menu */
 .dropdown {
   position: fixed;
   top: 2rem;
@@ -72,14 +74,38 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out;
+  position: absolute;
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
-.show {
-  display: block;
+/* Positionnement des icônes autour du burger */
+#home-link {
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -50%) rotate(-45deg);
+}
+
+#about-link {
+  top: 50%;
+  left: 50%;
+  transform: translate(0, -100%) rotate(-45deg);
+}
+
+#contact-link {
+  top: 50%;
+  left: 50%;
+  transform: translate(100%, -50%) rotate(-45deg);
 }
 
 h2 {

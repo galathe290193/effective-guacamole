@@ -108,3 +108,11 @@ h2 {
   clip-path: circle(calc(6.25rem + 7.5vw) at 0% 0%);
 }
 
+body {
+  overflow-y: hidden; /* Masquer la barre de défilement verticale */
+}
+
+/* Réactiver le défilement pour la grille ou d'autres éléments si nécessaire */
+.grid-offer {
+  overflow-y: auto; /* Si vous voulez autoriser le défilement pour cette grille */
+}

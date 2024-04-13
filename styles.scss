@@ -99,19 +99,22 @@
 #home-link {
   top: 50%;
   left: 50%;
-  transform: translate(-100%, -50%) rotate(135deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
+  transform: translate(-100%, -50%) rotate(45deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
+  transform-origin: bottom right; /* Ajuster l'origine de la transformation */
 }
 
 #about-link {
   top: 50%;
   left: 50%;
-  transform: translate(0, -100%) rotate(135deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
+  transform: translate(0, -100%) rotate(45deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
+  transform-origin: bottom center; /* Ajuster l'origine de la transformation */
 }
 
 #contact-link {
   top: 50%;
   left: 50%;
-  transform: translate(100%, -50%) rotate(135deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
+  transform: translate(100%, -50%) rotate(45deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
+  transform-origin: bottom left; /* Ajuster l'origine de la transformation */
 }
 
 h2 {

@@ -9,7 +9,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: burlywood;
+    background-image:url(musicF.jpg) ;
 }
 .back-home-button {
   position: fixed;

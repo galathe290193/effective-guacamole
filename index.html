@@ -53,34 +53,42 @@
 
         </div>
     </section>
-    <!-- Menu Hamburger -->
-<button id="menu-toggle" class="menu-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+    <div class="dropdown">
+        <button id="menu-toggle" class="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div id="dropdown-content" class="dropdown-content">
+          <a href="#" id="home-link">Home</a>
+          <a href="#" id="about-link">About</a>
+          <a href="#" id="contact-link">Contact</a>
+        </div>
+      </div>
+      
+      <!-- Modales -->
+      <div id="home-modal" class="modal">
+        <div class="modal-content">
+          <h2>Home</h2>
+          <p>Contenu de la section Home...</p>
+        </div>
+      </div>
+      
+      <div id="about-modal" class="modal">
+        <div class="modal-content">
+          <h2>About</h2>
+          <p>Contenu de la section About...</p>
+        </div>
+      </div>
+      
+      <div id="contact-modal" class="modal">
+        <div class="modal-content">
+          <h2>Contact</h2>
+          <p>Contenu de la section Contact...</p>
+        </div>
+      </div>
   
-  <!-- Modales -->
-  <div id="home-modal" class="modal">
-    <div class="modal-content">
-      <h2>Home</h2>
-      <p>Contenu de la section Home...</p>
-    </div>
-  </div>
   
-  <div id="about-modal" class="modal">
-    <div class="modal-content">
-      <h2>About</h2>
-      <p>Contenu de la section About...</p>
-    </div>
-  </div>
-  
-  <div id="contact-modal" class="modal">
-    <div class="modal-content">
-      <h2>Contact</h2>
-      <p>Contenu de la section Contact...</p>
-    </div>
-  </div>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>

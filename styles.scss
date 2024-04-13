@@ -10,7 +10,9 @@
   display: block;
   width: 28px;
   height: 30px;
-  margin: 30px auto 10px;
+  position: fixed; /* Position fixe pour rester en haut */
+  top: 20px; /* Distance du haut de la page */
+  right: 20px; /* Distance de la droite de la page */
 }
 
 #toggle span:after,

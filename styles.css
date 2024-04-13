@@ -11,7 +11,7 @@
   background: transparent;
   border: none;
   outline: none;
-  transition: transform 0.3s ease-in-out; /* Animation pour le burger */
+  transition: transform 0.5s ease-in-out; /* Animation pour le burger */
 }
 
 .menu-toggle span {
@@ -22,6 +22,18 @@
   position: relative;
   background: #fff;
   transition: transform 0.3s ease-in-out;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Modales */
@@ -65,12 +77,13 @@
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  right: 100%; /* positionne le menu à gauche du bouton */
-  top: 0;
+  right: 0; /* positionne le menu à gauche du bouton */
+  top: 50%;
+  transform: translate(100%, -50%);
 }
 
 .dropdown-content a {
-  color: black;
+  color: white; /* Changer la couleur des icônes en blanc */
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -93,19 +106,19 @@
 #home-link {
   top: 50%;
   left: 50%;
-  transform: translate(-100%, -50%) rotate(-45deg);
+  transform: translate(-125%, -50%) rotate(45deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
 }
 
 #about-link {
   top: 50%;
   left: 50%;
-  transform: translate(0, -100%) rotate(-45deg);
+  transform: translate(-50%, -125%) rotate(45deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
 }
 
 #contact-link {
   top: 50%;
   left: 50%;
-  transform: translate(100%, -50%) rotate(-45deg);
+  transform: translate(25%, -50%) rotate(45deg); /* Ajuster la rotation pour qu'elle soit dirigée vers la gauche */
 }
 
 h2 {
@@ -206,13 +219,4 @@ h2 {
   left: 0;
   -webkit-clip-path: circle(calc(6.25rem + 7.5vw) at 0% 0%);
           clip-path: circle(calc(6.25rem + 7.5vw) at 0% 0%);
-}
-
-body {
-  overflow-y: hidden; /* Masquer la barre de défilement verticale */
-}
-
-/* Réactiver le défilement pour la grille ou d'autres éléments si nécessaire */
-.grid-offer {
-  overflow-y: auto; /* Si vous voulez autoriser le défilement pour cette grille */
 }/*# sourceMappingURL=styles.css.map */

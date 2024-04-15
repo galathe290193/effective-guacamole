@@ -1,44 +1,42 @@
 document.addEventListener("DOMContentLoaded", function () {
   const menuToggle = document.getElementById("menu-toggle");
   const dropdownContent = document.getElementById("dropdown-content");
-  const homeModal = document.getElementById("home-modal");
-  const aboutModal = document.getElementById("about-modal");
-  const contactModal = document.getElementById("contact-modal");
   const homeLink = document.getElementById("home-link");
   const aboutLink = document.getElementById("about-link");
   const contactLink = document.getElementById("contact-link");
+  const homeModal = document.getElementById("home-modal");
+  const aboutModal = document.getElementById("about-modal");
+  const contactModal = document.getElementById("contact-modal");
 
   menuToggle.addEventListener("click", function () {
     if (dropdownContent.style.display === "none" || dropdownContent.style.display === "") {
-      dropdownContent.style.display = "block";
+      dropdownContent.classList.add("active");
       menuToggle.classList.add("active");
     } else {
-      dropdownContent.style.display = "none";
+      dropdownContent.classList.remove("active");
       menuToggle.classList.remove("active");
     }
   });
 
   homeLink.addEventListener("click", function (e) {
     e.preventDefault();
-    dropdownContent.style.display = "none";
+    dropdownContent.classList.remove("active");
     homeModal.style.display = "block";
-    menuToggle.classList.remove("active");
   });
 
   aboutLink.addEventListener("click", function (e) {
     e.preventDefault();
-    dropdownContent.style.display = "none";
+    dropdownContent.classList.remove("active");
     aboutModal.style.display = "block";
-    menuToggle.classList.remove("active");
   });
 
   contactLink.addEventListener("click", function (e) {
     e.preventDefault();
-    dropdownContent.style.display = "none";
+    dropdownContent.classList.remove("active");
     contactModal.style.display = "block";
-    menuToggle.classList.remove("active");
   });
 
+  // Fermer les modales en cliquant dessus
   homeModal.addEventListener("click", function () {
     homeModal.style.display = "none";
   });

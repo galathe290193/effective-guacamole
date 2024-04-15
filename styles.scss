@@ -72,19 +72,15 @@
 }
 
 #home-link {
-  transform: translateY(-50px) rotate(45deg);
-  right: 0;
+  transform: translateX(-35px) translateY(-35px) rotate(45deg);
 }
 
 #about-link {
-  transform: translateX(-50px) rotate(45deg);
-  bottom: 0;
+  transform: translateY(50px) rotate(45deg);
 }
 
 #contact-link {
-  transform: translateY(50px) rotate(45deg);
-  right: 0;
-  bottom: 0;
+  transform: translateX(35px) translateY(-35px) rotate(45deg);
 }
 
 .dropdown-content a:hover {

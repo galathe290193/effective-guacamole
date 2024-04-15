@@ -43,22 +43,19 @@
 }
 
 /* Dropdown Menu Icons */
+/* Dropdown Menu Icons */
 .dropdown-content {
   position: fixed;
-  top: 5rem;
+  top: 5rem;  // Décale un peu plus les icônes vers le bas
   right: 2rem;
   z-index: 998;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;  // Ajoute de la marge entre les icônes
   transform: translateY(-100%);
   transition: transform 0.3s ease-in-out;
-}
-
-.dropdown-content.active {
-  transform: translateY(0);
 }
 
 #home-link i,
@@ -72,11 +69,18 @@
   transition: opacity 0.3s ease-in-out;
 }
 
+#home-link i:hover,
+#about-link i:hover,
+#contact-link i:hover {
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);  // Ombre au survol
+}
+
 .dropdown-content.active #home-link i,
 .dropdown-content.active #about-link i,
 .dropdown-content.active #contact-link i {
   opacity: 1;
 }
+
 
 
 /* Modales */

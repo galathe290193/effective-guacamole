@@ -45,7 +45,6 @@
 /* Dropdown Menu */
 .dropdown-content {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -63,13 +62,24 @@
   transform: translateY(0);
 }
 
+/* Dropdown Menu Icons */
 #home-link i,
 #about-link i,
 #contact-link i {
   font-size: 1.5rem;
   margin: 0;
   padding: 0;
-  transition: transform 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.dropdown-content.active #home-link i,
+.dropdown-content.active #about-link i,
+.dropdown-content.active #contact-link i {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
 }
 
 #home-link i {
@@ -82,15 +92,6 @@
 
 #contact-link i {
   transform: translateY(-50%) rotate(45deg);
-}
-
-/* Ajout de styles pour espacer les icônes */
-#home-link {
-  margin-bottom: 1rem;
-}
-
-#about-link {
-  margin-bottom: 1rem;
 }
 
 /* Modales */

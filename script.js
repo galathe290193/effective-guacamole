@@ -15,8 +15,19 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       dropdownContent.classList.add("active");
       menuToggle.classList.add("active");
+      animateIcons();  // Déclenche l'animation lorsque le menu est ouvert
     }
   });
+
+  function animateIcons() {
+    homeLink.querySelector("i").classList.add("animate");
+    setTimeout(() => {
+      aboutLink.querySelector("i").classList.add("animate");
+    }, 200);
+    setTimeout(() => {
+      contactLink.querySelector("i").classList.add("animate");
+    }, 400);
+  }
 
   homeLink.addEventListener("click", function (e) {
     e.preventDefault();

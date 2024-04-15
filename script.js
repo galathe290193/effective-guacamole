@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const contactModal = document.getElementById("contact-modal");
 
   menuToggle.addEventListener("click", function () {
-    if (dropdownContent.style.display === "none" || dropdownContent.style.display === "") {
-      dropdownContent.classList.add("active");
-      menuToggle.classList.add("active");
-    } else {
+    if (dropdownContent.classList.contains("active")) {
       dropdownContent.classList.remove("active");
       menuToggle.classList.remove("active");
+    } else {
+      dropdownContent.classList.add("active");
+      menuToggle.classList.add("active");
     }
   });
 

@@ -35,62 +35,7 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Modales */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 999;
-}
-
-.modal-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-.modal h2 {
-  margin-top: 0;
-}
-
-/* Dropdown Menu Icons */
-#home-link i,
-#about-link i,
-#contact-link i {
-  font-size: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-.menu-toggle {
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  z-index: 1000;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  outline: none;
-}
-
-.menu-toggle span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin-bottom: 5px;
-  position: relative;
-  background: #fff;
-  transition: transform 0.3s ease-in-out;
-}
-
+/* Dropdown Menu */
 .dropdown-content {
   display: none;
   position: fixed;
@@ -98,10 +43,13 @@
   right: 2rem;
   z-index: 999;
   transition: opacity 0.3s ease-in-out;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .dropdown-content.active {
-  display: block;
+  display: flex;
 }
 
 .dropdown-content a {

@@ -71,15 +71,15 @@
   position: absolute;
 }
 #home-link {
-  transform: translateX(-45px) translateY(30px) rotate(-45deg);
+  transform: translateY(-50px) rotate(-45deg);
 }
 
 #about-link {
-  transform: translateY(40px) rotate(-45deg);
+  transform: translateY(50px) rotate(45deg);
 }
 
 #contact-link {
-  transform: translateX(30px) translateY(30px) rotate(-45deg);
+  transform: translateY(100px) rotate(-45deg);
 }
 
 .dropdown-content a:hover {

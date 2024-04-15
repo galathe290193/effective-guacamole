@@ -36,10 +36,9 @@
 }
 
 /* Dropdown Menu Icons */
-/* Dropdown Menu Icons */
 .dropdown-content {
   position: fixed;
-  top: 5rem;
+  top: 25%;
   right: 2rem;
   z-index: 998;
   display: flex;
@@ -60,6 +59,19 @@
   opacity: 0;
   color: #fff;
   transition: opacity 0.3s ease-in-out;
+  animation: slideIn 0.5s ease forwards;
+}
+
+#home-link i {
+  animation-delay: 0.2s;
+}
+
+#about-link i {
+  animation-delay: 0.4s;
+}
+
+#contact-link i {
+  animation-delay: 0.6s;
 }
 
 #home-link i:hover,
@@ -74,6 +86,16 @@
   opacity: 1;
 }
 
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 /* Modales */
 .modal {
   display: none;

@@ -38,7 +38,7 @@
 /* Dropdown Menu Icons */
 .dropdown-content {
   position: fixed;
-  top: 2.5rem;
+  top: 5rem;
   right: 2rem;
   z-index: 998;
   display: flex;
@@ -68,18 +68,6 @@
 .dropdown-content.active #about-link i,
 .dropdown-content.active #contact-link i {
   opacity: 1;
-}
-
-#home-link i {
-  transform: rotate(-45deg);
-}
-
-#about-link i {
-  transform: translateY(-50%);
-}
-
-#contact-link i {
-  transform: rotate(45deg);
 }
 
 /* Modales */

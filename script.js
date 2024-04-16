@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isActive) {
       dropdownContent.classList.remove("active");
       menuToggle.classList.remove("active");
+      resetIcons();
     } else {
       dropdownContent.classList.add("active");
       menuToggle.classList.add("active");
@@ -51,6 +52,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  function resetIcons() {
+    const icons = selectAll(".dropdown-content a i");
+    icons.forEach((icon) => {
+      icon.classList.remove("animate");
+    });
+  }
+
   function closeMenuAndOpenModal(modal) {
     dropdownContent.classList.remove("active");
     menuToggle.classList.remove("active");
@@ -63,3 +71,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+

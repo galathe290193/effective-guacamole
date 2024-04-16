@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOMContentLoaded event triggered");
+
   const menuToggle = document.getElementById("menu-toggle");
   const dropdownContent = document.getElementById("dropdown-content");
   const homeLink = document.getElementById("home-link");
@@ -21,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       dropdownContent.classList.add("active");
       menuToggle.classList.add("active");
-      animateIcons();  // Déclenche l'animation lorsque le menu est ouvert
+      animateIcons();
     }
   }
 
@@ -61,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.style.display = "block";
   }
 
-  // Fermer les modales en cliquant dessus
   homeModal.addEventListener("click", closeModal);
   aboutModal.addEventListener("click", closeModal);
   contactModal.addEventListener("click", closeModal);
@@ -73,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Fermer le menu en cliquant en dehors
   document.addEventListener("click", function (e) {
     console.log("Document clicked");
     if (!dropdownContent.contains(e.target) && e.target !== menuToggle) {

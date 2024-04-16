@@ -1,23 +1,38 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOMContentLoaded event triggered");
 
-  const menuToggle = document.getElementById("menu-toggle");
-  const dropdownContent = document.getElementById("dropdown-content");
-  const homeLink = document.getElementById("home-link");
-  const aboutLink = document.getElementById("about-link");
-  const contactLink = document.getElementById("contact-link");
-  const homeModal = document.getElementById("home-modal");
-  const aboutModal = document.getElementById("about-modal");
-  const contactModal = document.getElementById("contact-modal");
+  const select = (selector) => document.querySelector(selector);
+  const selectAll = (selector) => document.querySelectorAll(selector);
 
-  menuToggle.addEventListener("click", function () {
-    console.log("Menu toggle clicked");
-    toggleMenu();
+  const menuToggle = select("#menu-toggle");
+  const dropdownContent = select("#dropdown-content");
+  const links = selectAll(".dropdown-content a");
+  const modals = selectAll(".modal");
+
+  menuToggle.addEventListener("click", toggleMenu);
+
+  links.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      closeMenuAndOpenModal(modals[links.indexOf(link)]);
+    });
+  });
+
+  modals.forEach((modal) => {
+    modal.addEventListener("click", closeModal);
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!dropdownContent.contains(e.target) && e.target !== menuToggle) {
+      toggleMenu();
+    }
   });
 
   function toggleMenu() {
     console.log("toggleMenu function called");
-    if (dropdownContent.classList.contains("active")) {
+    const isActive = dropdownContent.classList.contains("active");
+
+    if (isActive) {
       dropdownContent.classList.remove("active");
       menuToggle.classList.remove("active");
     } else {
@@ -28,57 +43,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function animateIcons() {
-    console.log("animateIcons function called");
-    homeLink.querySelector("i").classList.add("animate");
-    setTimeout(() => {
-      aboutLink.querySelector("i").classList.add("animate");
-    }, 200);
-    setTimeout(() => {
-      contactLink.querySelector("i").classList.add("animate");
-    }, 400);
+    const icons = selectAll(".dropdown-content a i");
+    icons.forEach((icon, index) => {
+      setTimeout(() => {
+        icon.classList.add("animate");
+      }, index * 200);
+    });
   }
 
-  homeLink.addEventListener("click", function (e) {
-    console.log("Home link clicked");
-    e.preventDefault();
-    closeMenuAndOpenModal(homeModal);
-  });
-
-  aboutLink.addEventListener("click", function (e) {
-    console.log("About link clicked");
-    e.preventDefault();
-    closeMenuAndOpenModal(aboutModal);
-  });
-
-  contactLink.addEventListener("click", function (e) {
-    console.log("Contact link clicked");
-    e.preventDefault();
-    closeMenuAndOpenModal(contactModal);
-  });
-
   function closeMenuAndOpenModal(modal) {
-    console.log("closeMenuAndOpenModal function called");
     dropdownContent.classList.remove("active");
     menuToggle.classList.remove("active");
     modal.style.display = "block";
   }
 
-  homeModal.addEventListener("click", closeModal);
-  aboutModal.addEventListener("click", closeModal);
-  contactModal.addEventListener("click", closeModal);
-
   function closeModal(e) {
-    console.log("Modal clicked");
     if (e.target === this) {
       this.style.display = "none";
     }
   }
-
-  document.addEventListener("click", function (e) {
-    console.log("Document clicked");
-    if (!dropdownContent.contains(e.target) && e.target !== menuToggle) {
-      dropdownContent.classList.remove("active");
-      menuToggle.classList.remove("active");
-    }
-  });
 });

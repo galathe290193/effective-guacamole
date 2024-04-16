@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const dropdownContent = document.getElementById("dropdown-content");
   const links = Array.from(document.querySelectorAll(".dropdown-content a"));
   const modals = document.querySelectorAll(".modal");
-  const btnCloses = document.querySelectorAll(".btn-close"); // Sélection des boutons "Fermer"
+  const closeButtons = document.querySelectorAll(".btn-close");
 
   let isOpen = false;
 
@@ -18,12 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  btnCloses.forEach((btn) => {
-    btn.addEventListener("click", closeModal);
+  modals.forEach((modal) => {
+    modal.addEventListener("click", closeModal);
   });
 
-  modals.forEach((modal) => {
-    modal.addEventListener("click", closeModalOutside);
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", closeModal);
   });
 
   document.addEventListener("click", (e) => {
@@ -67,14 +67,10 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.style.display = "block";
   }
 
-  function closeModal() {
-    const activeModal = document.querySelector(".modal.display-block");
-    activeModal.style.display = "none";
-  }
-
-  function closeModalOutside(e) {
-    if (e.target === this) {
-      this.style.display = "none";
+  function closeModal(e) {
+    if (e.target === this || e.target.classList.contains("btn-close")) {
+      const activeModal = document.querySelector(".modal.display-block");
+      activeModal.style.display = "none";
     }
   }
 });

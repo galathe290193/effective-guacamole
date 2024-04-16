@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const links = selectAll(".dropdown-content a");
   const modals = selectAll(".modal");
 
+  let isOpen = false; // Variable pour suivre l'état du menu
+
   menuToggle.addEventListener("click", toggleMenu);
 
   links.forEach((link) => {
@@ -23,23 +25,21 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.addEventListener("click", (e) => {
-    if (!dropdownContent.contains(e.target) && e.target !== menuToggle) {
+    if (!dropdownContent.contains(e.target) && e.target !== menuToggle && isOpen) {
       toggleMenu();
     }
   });
 
   function toggleMenu() {
     console.log("toggleMenu function called");
-    const isActive = dropdownContent.classList.contains("active");
-
-    if (isActive) {
-      dropdownContent.classList.remove("active");
-      menuToggle.classList.remove("active");
-      resetIcons();
-    } else {
-      dropdownContent.classList.add("active");
-      menuToggle.classList.add("active");
+    isOpen = !isOpen; // Inverse l'état du menu
+    dropdownContent.classList.toggle("active");
+    menuToggle.classList.toggle("active");
+    
+    if (isOpen) {
       animateIcons();
+    } else {
+      resetIcons();
     }
   }
 

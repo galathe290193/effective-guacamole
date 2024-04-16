@@ -1,13 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOMContentLoaded event triggered");
 
-  const select = (selector) => document.querySelector(selector);
-  const selectAll = (selector) => document.querySelectorAll(selector);
-
-  const menuToggle = select("#menu-toggle");
-  const dropdownContent = select("#dropdown-content");
-  const links = selectAll(".dropdown-content a");
-  const modals = selectAll(".modal");
+  const menuToggle = document.getElementById("menu-toggle");
+  const dropdownContent = document.getElementById("dropdown-content");
+  const links = document.querySelectorAll(".dropdown-content a");
+  const modals = document.querySelectorAll(".modal");
 
   let isOpen = false; // Variable pour suivre l'état du menu
 
@@ -44,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function animateIcons() {
-    const icons = selectAll(".dropdown-content a i");
+    const icons = document.querySelectorAll(".dropdown-content a i");
     icons.forEach((icon, index) => {
       setTimeout(() => {
         icon.classList.add("animate");
@@ -53,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function resetIcons() {
-    const icons = selectAll(".dropdown-content a i");
+    const icons = document.querySelectorAll(".dropdown-content a i");
     icons.forEach((icon) => {
       icon.classList.remove("animate");
     });
@@ -71,3 +68,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+

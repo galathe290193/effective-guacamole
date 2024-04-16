@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const menuToggle = document.getElementById("menu-toggle");
   const dropdownContent = document.getElementById("dropdown-content");
-  const links = document.querySelectorAll(".dropdown-content a");
+  const links = Array.from(document.querySelectorAll(".dropdown-content a")); // Convertit NodeList en tableau
   const modals = document.querySelectorAll(".modal");
 
   let isOpen = false; // Variable pour suivre l'état du menu

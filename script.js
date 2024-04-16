@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const dropdownContent = document.getElementById("dropdown-content");
   const links = Array.from(document.querySelectorAll(".dropdown-content a")); // Convertit NodeList en tableau
   const modals = document.querySelectorAll(".modal");
+  const modalCloses = document.querySelectorAll(".modal-close"); // Sélection des boutons de fermeture
 
   let isOpen = false; // Variable pour suivre l'état du menu
 
@@ -17,8 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  modalCloses.forEach((close) => {
+    close.addEventListener("click", closeModal);
+  });
+
   modals.forEach((modal) => {
-    modal.addEventListener("click", closeModal);
+    modal.addEventListener("click", closeModalOutside);
   });
 
   document.addEventListener("click", (e) => {
@@ -62,7 +67,12 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.style.display = "block";
   }
 
-  function closeModal(e) {
+  function closeModal() {
+    const activeModal = document.querySelector(".modal.display-block");
+    activeModal.style.display = "none";
+  }
+
+  function closeModalOutside(e) {
     if (e.target === this) {
       this.style.display = "none";
     }

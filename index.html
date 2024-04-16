@@ -73,6 +73,7 @@
     <!-- Modales -->
     <div id="home-modal" class="modal">
       <div class="modal-content">
+        <span class="modal-close">&times;</span>
         <h2>Home</h2>
         <p>
               Ce site a été créé par moi seul. <br>
@@ -95,9 +96,9 @@
     
     <div id="about-modal" class="modal">
       <div class="modal-content">
+        <span class="modal-close">&times;</span>
         <h2>About</h2>
         <p> 
-          
           Titre Professionnel “Développeur web et web mobile” niveau 5,<br>
           enregistré au RNCP sous le numéro 37674 par décision de France Compétences du 13/05/2023 ... <br>
           diplôme Développeur web full stack délivré par Studi en partenariat avec Digital Campus 
@@ -109,6 +110,7 @@
     
     <div id="contact-modal" class="modal">
       <div class="modal-content">
+        <span class="modal-close">&times;</span>
         <h2>Contact</h2>
         <p>  
           Galathe <br>
@@ -121,9 +123,34 @@
       </div>
     </div>
 
-  
+    <div class="cookie-banner" id="cookie-banner">
+      <p>Nous utilisons des cookies pour améliorer votre expérience sur notre site. En continuant à naviguer sur ce site, vous acceptez notre utilisation des cookies.</p>
+      <button id="accept-cookie">Accepter</button>
+      <button id="refuse-cookie">Refuser</button>
+   </div>
+   <script>
+      function createCookie(name, value) {
+        var date = new Date();
+        date.setTime(date.getTime() + (1 * 60 * 60 * 1000)); 
+        var expires = "; expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + expires + "; path=/";
+      }
+      function hideBanner() {
+        document.getElementById("cookie-banner").style.display = "none";
+      }
+      document.getElementById("accept-cookie").addEventListener("click", function() {
+        createCookie("cookie_accepte", "oui");
+        hideBanner();
+      });
+      document.getElementById("refuse-cookie").addEventListener("click", function() {
+        createCookie("cookie_accepte", "non");
+        hideBanner();
+      });
+      if (document.cookie.indexOf("cookie_accepte=oui") !== -1) {
+        hideBanner();
+      }
+   </script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>
-

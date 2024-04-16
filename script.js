@@ -3,12 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const menuToggle = document.getElementById("menu-toggle");
   const dropdownContent = document.getElementById("dropdown-content");
-  const links = Array.from(document.querySelectorAll(".dropdown-content a")); // Convertit NodeList en tableau
+  const links = Array.from(document.querySelectorAll(".dropdown-content a"));
   const modals = document.querySelectorAll(".modal");
-  const modalCloses = document.querySelectorAll(".modal-close"); // Sélection des boutons de fermeture
   const btnCloses = document.querySelectorAll(".btn-close"); // Sélection des boutons "Fermer"
 
-  let isOpen = false; // Variable pour suivre l'état du menu
+  let isOpen = false;
 
   menuToggle.addEventListener("click", toggleMenu);
 
@@ -17,10 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       closeMenuAndOpenModal(modals[links.indexOf(link)]);
     });
-  });
-
-  modalCloses.forEach((close) => {
-    close.addEventListener("click", closeModal);
   });
 
   btnCloses.forEach((btn) => {
@@ -39,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function toggleMenu() {
     console.log("toggleMenu function called");
-    isOpen = !isOpen; // Inverse l'état du menu
+    isOpen = !isOpen;
     dropdownContent.classList.toggle("active");
     menuToggle.classList.toggle("active");
     

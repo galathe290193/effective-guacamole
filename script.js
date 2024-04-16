@@ -9,10 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const contactModal = document.getElementById("contact-modal");
 
   menuToggle.addEventListener("click", function () {
+    console.log("Menu toggle clicked");
     toggleMenu();
   });
 
   function toggleMenu() {
+    console.log("toggleMenu function called");
     if (dropdownContent.classList.contains("active")) {
       dropdownContent.classList.remove("active");
       menuToggle.classList.remove("active");
@@ -24,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function animateIcons() {
+    console.log("animateIcons function called");
     homeLink.querySelector("i").classList.add("animate");
     setTimeout(() => {
       aboutLink.querySelector("i").classList.add("animate");
@@ -34,21 +37,25 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   homeLink.addEventListener("click", function (e) {
+    console.log("Home link clicked");
     e.preventDefault();
     closeMenuAndOpenModal(homeModal);
   });
 
   aboutLink.addEventListener("click", function (e) {
+    console.log("About link clicked");
     e.preventDefault();
     closeMenuAndOpenModal(aboutModal);
   });
 
   contactLink.addEventListener("click", function (e) {
+    console.log("Contact link clicked");
     e.preventDefault();
     closeMenuAndOpenModal(contactModal);
   });
 
   function closeMenuAndOpenModal(modal) {
+    console.log("closeMenuAndOpenModal function called");
     dropdownContent.classList.remove("active");
     menuToggle.classList.remove("active");
     modal.style.display = "block";
@@ -60,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
   contactModal.addEventListener("click", closeModal);
 
   function closeModal(e) {
+    console.log("Modal clicked");
     if (e.target === this) {
       this.style.display = "none";
     }
@@ -67,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Fermer le menu en cliquant en dehors
   document.addEventListener("click", function (e) {
+    console.log("Document clicked");
     if (!dropdownContent.contains(e.target) && e.target !== menuToggle) {
       dropdownContent.classList.remove("active");
       menuToggle.classList.remove("active");

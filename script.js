@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const links = Array.from(document.querySelectorAll(".dropdown-content a")); // Convertit NodeList en tableau
   const modals = document.querySelectorAll(".modal");
   const modalCloses = document.querySelectorAll(".modal-close"); // Sélection des boutons de fermeture
+  const btnCloses = document.querySelectorAll(".btn-close"); // Sélection des boutons "Fermer"
 
   let isOpen = false; // Variable pour suivre l'état du menu
 
@@ -20,6 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   modalCloses.forEach((close) => {
     close.addEventListener("click", closeModal);
+  });
+
+  btnCloses.forEach((btn) => {
+    btn.addEventListener("click", closeModal);
   });
 
   modals.forEach((modal) => {
@@ -78,4 +83,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
-

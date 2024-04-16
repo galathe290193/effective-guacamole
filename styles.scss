@@ -138,19 +138,23 @@
   color: #fff; /* Couleur du texte du titre */
   padding: 10px;
   border-radius: 5px 5px 0 0; /* Coins arrondis uniquement en haut */
+  display: flex;
+  justify-content: space-between; /* Espacement entre le titre et le bouton */
+  align-items: center; /* Centrage vertical */
 }
 
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
+.btn-close {
+  background-color: #e53e3e;
   color: #fff;
-  font-size: 1.5rem;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.modal-close:hover {
-  color: #e53e3e; /* Couleur de survol du bouton de fermeture */
+.btn-close:hover {
+  background-color: #c53030;
 }
 
 .card {

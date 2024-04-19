@@ -13,6 +13,23 @@ document.addEventListener("DOMContentLoaded", function () {
   menuToggle.addEventListener("click", toggleMenu);
 
   links.forEach((link) => {
+    link.addEventListener("mouseenter", (e) => {
+      const description = e.target.getAttribute("data-description");
+      if (description) {
+        const tooltip = document.createElement("div");
+        tooltip.classList.add("tooltip");
+        tooltip.textContent = description;
+        e.target.appendChild(tooltip);
+      }
+    });
+
+    link.addEventListener("mouseleave", (e) => {
+      const tooltip = e.target.querySelector(".tooltip");
+      if (tooltip) {
+        tooltip.remove();
+      }
+    });
+
     link.addEventListener("click", (e) => {
       e.preventDefault();
       closeMenuAndOpenModal(modals[links.indexOf(link)]);
@@ -26,6 +43,9 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("click", (e) => {
     if (!dropdownContent.contains(e.target) && e.target !== menuToggle && isOpen) {
       toggleMenu();
+    }
+    if (e.target.classList.contains("modal")) {
+      closeModal();
     }
   });
 
@@ -71,10 +91,4 @@ document.addEventListener("DOMContentLoaded", function () {
       activeModal = null;
     }
   }
-
-  document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("modal")) {
-      closeModal();
-    }
-  });
 });

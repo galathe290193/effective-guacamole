@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeButtons = document.querySelectorAll(".btn-close");
 
   let isOpen = false;
+  let activeModal = null;
 
   menuToggle.addEventListener("click", toggleMenu);
 
@@ -16,10 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       closeMenuAndOpenModal(modals[links.indexOf(link)]);
     });
-  });
-
-  modals.forEach((modal) => {
-    modal.addEventListener("click", closeModal);
   });
 
   closeButtons.forEach((button) => {
@@ -65,12 +62,19 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdownContent.classList.remove("active");
     menuToggle.classList.remove("active");
     modal.style.display = "block";
+    activeModal = modal;
   }
 
-  function closeModal(e) {
-    if (e.target === this || e.target.classList.contains("btn-close")) {
-      const activeModal = document.querySelector(".modal.display-block");
+  function closeModal() {
+    if (activeModal) {
       activeModal.style.display = "none";
+      activeModal = null;
     }
   }
+
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("modal")) {
+      closeModal();
+    }
+  });
 });

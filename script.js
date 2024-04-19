@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const menuToggle = document.getElementById("menu-toggle");
   const dropdownContent = document.getElementById("dropdown-content");
   const links = Array.from(document.querySelectorAll(".dropdown-content a"));
-  const modals = document.querySelectorAll(".modal");
+  const modals = Array.from(document.querySelectorAll(".modal"));
   const closeButtons = document.querySelectorAll(".btn-close");
 
   let isOpen = false;
@@ -15,9 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
-      if (isOpen) {
-        closeMenuAndOpenModal(modals[links.indexOf(link)]);
-      }
+      closeMenu();
+      openModal(modals[links.indexOf(link)]);
     });
   });
 
@@ -60,9 +59,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function closeMenuAndOpenModal(modal) {
+  function closeMenu() {
     dropdownContent.classList.remove("active");
     menuToggle.classList.remove("active");
+    isOpen = false;
+  }
+
+  function openModal(modal) {
     modal.style.display = "block";
     activeModal = modal;
   }
@@ -80,4 +83,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-

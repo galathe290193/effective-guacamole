@@ -1,31 +1,27 @@
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOMContentLoaded event triggered");
+$(document).ready(function () {
+  console.log("Document is ready");
 
-  const menuToggle = document.getElementById("menu-toggle");
-  const dropdownContent = document.getElementById("dropdown-content");
-  const links = Array.from(document.querySelectorAll(".dropdown-content a"));
-  const modals = Array.from(document.querySelectorAll(".modal"));
-  const closeButtons = document.querySelectorAll(".btn-close");
+  const menuToggle = $("#menu-toggle");
+  const dropdownContent = $("#dropdown-content");
+  const icons = $(".dropdown-content a i");
+  const modals = $(".modal");
+  const closeButtons = $(".btn-close");
 
   let isOpen = false;
   let activeModal = null;
 
-  menuToggle.addEventListener("click", toggleMenu);
+  menuToggle.on("click", toggleMenu);
 
-  links.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      closeMenu();
-      openModal(modals[links.indexOf(link)]);
-    });
+  $(".dropdown-content a").on("click", function (e) {
+    e.preventDefault();
+    const modal = modals.eq($(".dropdown-content a").index(this));
+    closeMenuAndOpenModal(modal);
   });
 
-  closeButtons.forEach((button) => {
-    button.addEventListener("click", closeModal);
-  });
+  closeButtons.on("click", closeModal);
 
-  document.addEventListener("click", (e) => {
-    if (!dropdownContent.contains(e.target) && e.target !== menuToggle && isOpen) {
+  $(document).on("click", function (e) {
+    if (!dropdownContent.is(e.target) && !menuToggle.is(e.target) && isOpen) {
       toggleMenu();
     }
   });
@@ -33,9 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function toggleMenu() {
     console.log("toggleMenu function called");
     isOpen = !isOpen;
-    dropdownContent.classList.toggle("active");
-    menuToggle.classList.toggle("active");
-    
+    dropdownContent.toggleClass("active");
+    menuToggle.toggleClass("active");
+
     if (isOpen) {
       animateIcons();
     } else {
@@ -44,42 +40,35 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function animateIcons() {
-    const icons = document.querySelectorAll(".dropdown-content a i");
-    icons.forEach((icon, index) => {
+    icons.each(function (index) {
       setTimeout(() => {
-        icon.classList.add("animate");
+        $(this).addClass("animate");
       }, index * 200);
     });
   }
 
   function resetIcons() {
-    const icons = document.querySelectorAll(".dropdown-content a i");
-    icons.forEach((icon) => {
-      icon.classList.remove("animate");
-    });
+    icons.removeClass("animate");
   }
 
-  function closeMenu() {
-    dropdownContent.classList.remove("active");
-    menuToggle.classList.remove("active");
-    isOpen = false;
-  }
-
-  function openModal(modal) {
-    modal.style.display = "block";
+  function closeMenuAndOpenModal(modal) {
+    dropdownContent.removeClass("active");
+    menuToggle.removeClass("active");
+    modal.css("display", "block");
     activeModal = modal;
   }
 
   function closeModal() {
     if (activeModal) {
-      activeModal.style.display = "none";
+      activeModal.css("display", "none");
       activeModal = null;
     }
   }
 
-  document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("modal")) {
+  $(document).on("click", function (e) {
+    if ($(e.target).hasClass("modal")) {
       closeModal();
     }
   });
 });
+

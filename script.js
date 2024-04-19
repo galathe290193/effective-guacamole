@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         tooltip.classList.add("tooltip");
         tooltip.textContent = description;
         e.target.appendChild(tooltip);
+        positionTooltip(e.target, tooltip);
       }
     });
 
@@ -90,5 +91,12 @@ document.addEventListener("DOMContentLoaded", function () {
       activeModal.style.display = "none";
       activeModal = null;
     }
+  }
+
+  function positionTooltip(target, tooltip) {
+    const rect = target.getBoundingClientRect();
+    const tooltipRect = tooltip.getBoundingClientRect();
+    tooltip.style.left = `${rect.left + (rect.width / 2) - (tooltipRect.width / 2)}px`;
+    tooltip.style.top = `${rect.top - tooltipRect.height - 5}px`;
   }
 });

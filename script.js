@@ -96,7 +96,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function positionTooltip(target, tooltip) {
     const rect = target.getBoundingClientRect();
     const tooltipRect = tooltip.getBoundingClientRect();
-    tooltip.style.left = `${rect.left + (rect.width / 2) - (tooltipRect.width / 2)}px`;
-    tooltip.style.top = `${rect.top - tooltipRect.height - 5}px`;
+    tooltip.style.left = `${rect.left + rect.width + 10}px`;
+    tooltip.style.top = `${rect.top}px`;
   }
 });
+

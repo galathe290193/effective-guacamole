@@ -68,28 +68,28 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-#home-link i.animate,
-#about-link i.animate,
-#contact-link i.animate {
-  animation: slideIn 0.5s ease forwards;
+#home-link i:hover::after,
+#about-link i:hover::after,
+#contact-link i:hover::after {
+  content: attr(data-description);
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
-#home-link i {
-  animation-delay: 0.2s;
-}
-
-#about-link i {
-  animation-delay: 0.4s;
-}
-
-#contact-link i {
-  animation-delay: 0.6s;
-}
-
-#home-link i:hover,
-#about-link i:hover,
-#contact-link i:hover {
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+#home-link i:hover::after,
+#about-link i:hover::after,
+#contact-link i:hover::after {
+  opacity: 1;
 }
 
 .dropdown-content.active #home-link i,
@@ -130,7 +130,7 @@
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajout de l'ombre pour améliorer le contraste */
-  text-align: center; /* Centrage du texte */
+  text-align: center; /* Centrer le texte */
 }
 
 .modal h2 {
@@ -142,11 +142,10 @@
   display: flex;
   justify-content: space-between; /* Espacement entre le titre et le bouton */
   align-items: center; /* Centrage vertical */
-  text-align: center; /* Centrage du texte */
 }
 
 .btn-close {
-  background-color: #082568;
+  background-color: #e53e3e;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -156,7 +155,7 @@
 }
 
 .btn-close:hover {
-  background-color: #24a6e2;
+  background-color: #c53030;
 }
 
 .card {
@@ -249,6 +248,7 @@
   left: 0;
   clip-path: circle(calc(6.25rem + 7.5vw) at 0% 0%);
 }
+
 .cookie-banner {
 	position: fixed;
 	bottom: 0;

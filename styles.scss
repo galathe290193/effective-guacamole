@@ -65,12 +65,12 @@
   padding: 0;
   opacity: 0;
   color: #fff;
-  transition: opacity 0.3s ease-in-out;
+  position: relative;
 }
 
-#home-link i:hover::after,
-#about-link i:hover::after,
-#contact-link i:hover::after {
+#home-link i:hover::before,
+#about-link i:hover::before,
+#contact-link i:hover::before {
   content: attr(data-description);
   position: absolute;
   bottom: -20px;
@@ -86,9 +86,9 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-#home-link i:hover::after,
-#about-link i:hover::after,
-#contact-link i:hover::after {
+#home-link i:hover::before,
+#about-link i:hover::before,
+#contact-link i:hover::before {
   opacity: 1;
 }
 
@@ -145,7 +145,7 @@
 }
 
 .btn-close {
-  background-color: #e53e3e;
+  background-color: #1f1e6d;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -155,7 +155,7 @@
 }
 
 .btn-close:hover {
-  background-color: #c53030;
+  background-color: #275bc5;
 }
 
 .card {

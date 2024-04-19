@@ -55,6 +55,10 @@
   gap: 1rem;
   transform: translateY(-100%);
   transition: transform 0.3s ease-in-out;
+  
+  .icon {
+    display: none; // Ajout de cette ligne
+  }
 }
 
 #home-link i,

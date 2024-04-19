@@ -48,16 +48,14 @@ document.addEventListener("DOMContentLoaded", function () {
     icons.forEach((icon, index) => {
       setTimeout(() => {
         icon.classList.add("animate");
-        icon.parentElement.classList.add("active"); // Afficher l'icône
       }, index * 200);
     });
   }
-  
+
   function resetIcons() {
     const icons = document.querySelectorAll(".dropdown-content a i");
     icons.forEach((icon) => {
       icon.classList.remove("animate");
-      icon.parentElement.classList.remove("active"); // Masquer l'icône
     });
   }
 

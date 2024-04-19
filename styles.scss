@@ -130,6 +130,7 @@
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajout de l'ombre pour améliorer le contraste */
+  text-align: center; /* Centrage du texte */
 }
 
 .modal h2 {
@@ -141,10 +142,11 @@
   display: flex;
   justify-content: space-between; /* Espacement entre le titre et le bouton */
   align-items: center; /* Centrage vertical */
+  text-align: center; /* Centrage du texte */
 }
 
 .btn-close {
-  background-color: #e53e3e;
+  background-color: #082568;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -154,7 +156,7 @@
 }
 
 .btn-close:hover {
-  background-color: #c53030;
+  background-color: #24a6e2;
 }
 
 .card {

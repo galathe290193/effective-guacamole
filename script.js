@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function closeModal(e) {
     if (e.target === this || e.target.classList.contains("btn-close")) {
-      const activeModal = document.querySelector(".modal");
+      const activeModal = document.querySelector(".modal.display-block");
       activeModal.style.display = "none";
     }
   }

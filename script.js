@@ -1,4 +1,5 @@
 var theToggle = document.getElementById('toggle');
+var theMenu = document.getElementById('menu');
 
 // based on Todd Motto functions
 // https://toddmotto.com/labs/reusable-js/
@@ -38,17 +39,24 @@ function toggleClass(elem, className) {
 
 theToggle.onclick = function() {
    toggleClass(this, 'on');
+   adjustMenuPosition();
    return false;
 }
 
 // Function to set toggle position
 function setTogglePosition() {
   var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  if (scrollTop > 20) { // Vous pouvez ajuster cette valeur selon vos besoins
+  if (scrollTop > 20) { 
       theToggle.style.top = (scrollTop + 20) + 'px';
   } else {
       theToggle.style.top = '20px';
   }
+}
+
+function adjustMenuPosition() {
+  var toggleRect = theToggle.getBoundingClientRect();
+  var topPosition = toggleRect.bottom + 10; // Adjust this value as needed
+  theMenu.style.top = topPosition + 'px';
 }
 
 // Appel de la fonction pour la première fois

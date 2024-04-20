@@ -9,17 +9,16 @@
 
 /* Dropdown Menu Icons */
 #toggle {
+  position: fixed;
+  top: 20px;
+  right: 40px;  // Ajustez cette valeur pour décaler le burger vers la gauche ou la droite
+  z-index: 1000;
   display: block;
   width: 28px;
   height: 30px;
   margin: 30px auto 10px;
 }
-#toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000; // pour s'assurer qu'il est au-dessus des autres éléments
-}
+
 #toggle span:after,
 #toggle span:before {
   content: "";
@@ -27,9 +26,11 @@
   left: 0;
   top: -9px;
 }
-#toggle span:after{
+
+#toggle span:after {
   top: 9px;
 }
+
 #toggle span {
   position: relative;
   display: block;
@@ -50,23 +51,26 @@
 #toggle.on span {
   background-color: transparent;
 }
+
 #toggle.on span:before {
   transform: rotate(45deg) translate(5px, 5px);
 }
+
 #toggle.on span:after {
   transform: rotate(-45deg) translate(7px, -8px);
 }
+
 #toggle.on + #menu {
   opacity: 1;
   visibility: visible;
 }
 
-/* Ajustement de la position du menu déroulant */
+/* menu appearance */
 #menu {
   position: fixed;
   top: 60px;  // Ajustez cette valeur selon la hauteur de votre menu burger
   right: 20px;
-  z-index: 999; // pour s'assurer qu'il est au-dessus des autres éléments
+  z-index: 999;
   color: #999;
   width: 200px;
   padding: 10px;
@@ -76,7 +80,6 @@
   border-radius: 4px;
   background: white;
   box-shadow: 0 1px 8px rgba(0,0,0,0.05);
-  /* just for this demo */
   opacity: 0;
   visibility: hidden;
   transition: opacity .4s;
@@ -101,10 +104,13 @@ ul, li, li a {
 }
 
 li a {
-  padding: 5px;
+  padding: 10px 15px;  // Ajustez ces valeurs selon vos besoins
   color: #888;
   text-decoration: none;
   transition: all .2s;
+  border-radius: 20px;  // Ajout de coins arrondis
+  display: inline-block;
+  background-color: #f4f4f4;  // Couleur de fond
 }
 
 li a:hover,
@@ -112,7 +118,6 @@ li a:focus {
   background: #1ABC9C;
   color: #fff;
 }
-
 
 /* Modales */
 .modal {
@@ -134,19 +139,19 @@ li a:focus {
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajout de l'ombre pour améliorer le contraste */
-  text-align: center; /* Centrer le texte */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
 .modal h2 {
   margin-top: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Fond du titre assombri */
-  color: #fff; /* Couleur du texte du titre */
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
   padding: 10px;
-  border-radius: 5px 5px 0 0; /* Coins arrondis uniquement en haut */
+  border-radius: 5px 5px 0 0;
   display: flex;
-  justify-content: space-between; /* Espacement entre le titre et le bouton */
-  align-items: center; /* Centrage vertical */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .btn-close {

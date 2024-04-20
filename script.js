@@ -40,6 +40,7 @@ theToggle.onclick = function() {
    toggleClass(this, 'on');
    return false;
 }
+
 // Function to set toggle position
 function setTogglePosition() {
   var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -55,3 +56,56 @@ setTogglePosition();
 
 // Gérer le scroll pour ajuster la position du toggle
 window.addEventListener('scroll', setTogglePosition);
+
+document.addEventListener('DOMContentLoaded', function () {
+    var menuLinks = document.querySelectorAll('#menu li a');
+    var homeModal = document.getElementById('home-modal');
+    var aboutModal = document.getElementById('about-modal');
+    var contactModal = document.getElementById('contact-modal');
+    var modals = document.querySelectorAll('.modal');
+
+    // Function to close all modals
+    function closeModal() {
+        modals.forEach(function (modal) {
+            modal.style.display = 'none';
+        });
+    }
+
+    // Open Home Modal
+    menuLinks[0].addEventListener('click', function (e) {
+        e.preventDefault();
+        closeModal();
+        homeModal.style.display = 'block';
+    });
+
+    // Open About Modal
+    menuLinks[1].addEventListener('click', function (e) {
+        e.preventDefault();
+        closeModal();
+        aboutModal.style.display = 'block';
+    });
+
+    // Open Contact Modal
+    menuLinks[2].addEventListener('click', function (e) {
+        e.preventDefault();
+        closeModal();
+        contactModal.style.display = 'block';
+    });
+
+    // Close modal on button click
+    var closeButtons = document.querySelectorAll('.btn-close');
+    closeButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            closeModal();
+        });
+    });
+
+    // Close modal on outside click
+    modals.forEach(function (modal) {
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    });
+});

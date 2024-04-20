@@ -10,8 +10,8 @@
 /* Dropdown Menu Icons */
 #toggle {
   position: fixed;
-  top: 20px;
-  right: 40px;  // Ajustez cette valeur pour décaler le burger vers la gauche ou la droite
+  top: 20px; // Ajustez cette valeur pour déplacer le burger vers le haut ou le bas
+  right: 40px; // Ajustez cette valeur pour décaler le burger vers la gauche ou la droite
   z-index: 1000;
   display: block;
   width: 28px;
@@ -68,7 +68,7 @@
 /* menu appearance */
 #menu {
   position: fixed;
-  top: 60px;  // Ajustez cette valeur selon la hauteur de votre menu burger
+  top: 60px; // Ajustez cette valeur selon la hauteur de votre menu burger
   right: 20px;
   z-index: 999;
   color: #999;
@@ -87,8 +87,8 @@
 
 #menu:after {
   position: absolute;
-  top: -15px;
-  left: 95px;
+  top: -15px; // Ajustez cette valeur pour déplacer la flèche vers le haut ou le bas
+  left: 95px; // Ajustez cette valeur pour déplacer la flèche vers la gauche ou la droite
   content: "";
   display: block;
   border-left: 15px solid transparent;
@@ -104,13 +104,13 @@ ul, li, li a {
 }
 
 li a {
-  padding: 10px 15px;  // Ajustez ces valeurs selon vos besoins
+  padding: 10px 15px;
   color: #888;
   text-decoration: none;
   transition: all .2s;
-  border-radius: 20px;  // Ajout de coins arrondis
+  border-radius: 20px;
   display: inline-block;
-  background-color: #f4f4f4;  // Couleur de fond
+  background-color: #f4f4f4;
 }
 
 li a:hover,

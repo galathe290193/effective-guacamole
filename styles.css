@@ -1,41 +1,6 @@
 @charset "UTF-8";
 /* PEN STYLES */
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap");
-/* Menu Hamburger */
-.menu-toggle {
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  z-index: 1000;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  outline: none;
-  transition: transform 0.5s ease-in-out; /* Animation pour le burger */
-}
-
-.menu-toggle span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin-bottom: 5px;
-  position: relative;
-  background: #fff;
-  transition: transform 0.3s ease-in-out;
-}
-
-.menu-toggle.active span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.active span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
 /* Dropdown Menu Icons */
 #toggle {
   display: block;

@@ -1,85 +1,42 @@
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOMContentLoaded event triggered");
+var theToggle = document.getElementById('toggle');
 
-  const menuToggle = document.getElementById("toggle");
-  const dropdownContent = document.getElementById("menu");
-  const links = Array.from(document.querySelectorAll("#menu ul a"));
-  const modals = Array.from(document.querySelectorAll(".modal"));
-  const closeButtons = document.querySelectorAll(".btn-close");
+// based on Todd Motto functions
+// https://toddmotto.com/labs/reusable-js/
 
-  let isOpen = false;
-  let activeModal = null;
-
-  menuToggle.addEventListener("click", toggleMenu);
-
-  links.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      closeMenu();
-      openModal(modals[links.indexOf(link)]);
-    });
-  });
-
-  closeButtons.forEach((button) => {
-    button.addEventListener("click", closeModal);
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!dropdownContent.contains(e.target) && e.target !== menuToggle && isOpen) {
-      toggleMenu();
+// hasClass
+function hasClass(elem, className) {
+	return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+}
+// addClass
+function addClass(elem, className) {
+    if (!hasClass(elem, className)) {
+    	elem.className += ' ' + className;
     }
-  });
-
-  function toggleMenu() {
-    console.log("toggleMenu function called");
-    isOpen = !isOpen;
-    dropdownContent.classList.toggle("on");
-    menuToggle.classList.toggle("on");
-    
-    if (isOpen) {
-      animateIcons();
+}
+// removeClass
+function removeClass(elem, className) {
+	var newClass = ' ' + elem.className.replace( /[\t\r\n]/g, ' ') + ' ';
+	if (hasClass(elem, className)) {
+        while (newClass.indexOf(' ' + className + ' ') >= 0 ) {
+            newClass = newClass.replace(' ' + className + ' ', ' ');
+        }
+        elem.className = newClass.replace(/^\s+|\s+$/g, '');
+    }
+}
+// toggleClass
+function toggleClass(elem, className) {
+	var newClass = ' ' + elem.className.replace( /[\t\r\n]/g, " " ) + ' ';
+    if (hasClass(elem, className)) {
+        while (newClass.indexOf(" " + className + " ") >= 0 ) {
+            newClass = newClass.replace( " " + className + " " , " " );
+        }
+        elem.className = newClass.replace(/^\s+|\s+$/g, '');
     } else {
-      resetIcons();
+        elem.className += ' ' + className;
     }
-  }
+}
 
-  function animateIcons() {
-    const icons = document.querySelectorAll("#menu ul a i");
-    icons.forEach((icon, index) => {
-      setTimeout(() => {
-        icon.classList.add("animate");
-      }, index * 200);
-    });
-  }
-
-  function resetIcons() {
-    const icons = document.querySelectorAll("#menu ul a i");
-    icons.forEach((icon) => {
-      icon.classList.remove("animate");
-    });
-  }
-
-  function closeMenu() {
-    dropdownContent.classList.remove("on");
-    menuToggle.classList.remove("on");
-    isOpen = false;
-  }
-
-  function openModal(modal) {
-    modal.style.display = "block";
-    activeModal = modal;
-  }
-
-  function closeModal() {
-    if (activeModal) {
-      activeModal.style.display = "none";
-      activeModal = null;
-    }
-  }
-
-  document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("modal")) {
-      closeModal();
-    }
-  });
-});
+theToggle.onclick = function() {
+   toggleClass(this, 'on');
+   return false;
+}

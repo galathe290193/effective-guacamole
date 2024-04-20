@@ -62,9 +62,12 @@
   visibility: visible;
 }
 
-/* menu appearance*/
+/* Ajustement de la position du menu déroulant */
 #menu {
-  position: relative;
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  z-index: 999;
   color: #999;
   width: 200px;
   padding: 10px;

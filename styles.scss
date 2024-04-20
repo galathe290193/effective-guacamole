@@ -61,9 +61,12 @@
   visibility: visible;
 }
 
-/* menu appearance*/
+/* Ajustement de la position du menu déroulant */
 #menu {
-  position: relative;
+  position: fixed;
+  top: 60px;  // Ajustez cette valeur selon la hauteur de votre menu burger
+  right: 20px;
+  z-index: 999; // pour s'assurer qu'il est au-dessus des autres éléments
   color: #999;
   width: 200px;
   padding: 10px;
@@ -78,6 +81,7 @@
   visibility: hidden;
   transition: opacity .4s;
 }
+
 #menu:after {
   position: absolute;
   top: -15px;
@@ -88,23 +92,27 @@
   border-right: 15px solid transparent;
   border-bottom: 20px solid white;
 }
+
 ul, li, li a {
   list-style: none;
   display: block;
   margin: 0;
   padding: 0;
 }
+
 li a {
   padding: 5px;
   color: #888;
   text-decoration: none;
   transition: all .2s;
 }
+
 li a:hover,
 li a:focus {
   background: #1ABC9C;
   color: #fff;
 }
+
 
 /* Modales */
 .modal {

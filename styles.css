@@ -9,6 +9,13 @@
   margin: 30px auto 10px;
 }
 
+#toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
 #toggle span:after,
 #toggle span:before {
   content: "";

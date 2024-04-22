@@ -74,10 +74,22 @@ setTogglePosition();
 // Handle scroll to adjust toggle position
 window.addEventListener('scroll', setTogglePosition);
 
-// Close menu on outside click
+// Open and close modals
 document.addEventListener('click', function(e) {
-  if (!theMenu.contains(e.target) && !theToggle.contains(e.target)) {
+  if (e.target.closest('#menu li a')) {
+    closeModal();
+    var modalId = e.target.closest('#menu li a').getAttribute('data-modal');
+    var modal = document.getElementById(modalId);
+    modal.style.display = 'block';
+  } else if (!theMenu.contains(e.target) && !theToggle.contains(e.target)) {
     removeClass(theToggle, 'on');
     toggleMenu();
   }
 });
+
+function closeModal() {
+  var modals = document.querySelectorAll('.modal');
+  modals.forEach(function(modal) {
+    modal.style.display = 'none';
+  });
+}

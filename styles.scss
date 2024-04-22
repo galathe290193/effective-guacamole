@@ -10,8 +10,8 @@
 /* Dropdown Menu Icons */
 #toggle {
   position: fixed;
-  top: 20px; // Ajustez cette valeur pour déplacer le burger vers le haut ou le bas
-  right: 95px; // Ajustez cette valeur pour décaler le burger vers la gauche ou la droite
+  top: 20px; 
+  right: 95px;
   z-index: 1000;
   display: block;
   width: 28px;
@@ -47,7 +47,6 @@
   border-radius: 2px;
 }
 
-/* on activation */
 #toggle.on span {
   background-color: transparent;
 }
@@ -68,7 +67,7 @@
 /* menu appearance */
 #menu {
   position: fixed;
-  top: 60px; // Ajustez cette valeur selon la hauteur de votre menu burger
+  top: 60px;
   right: 20px;
   z-index: 999;
   color: #999;
@@ -87,8 +86,8 @@
 
 #menu:after {
   position: absolute;
-  top: -15px; // Ajustez cette valeur pour déplacer la flèche vers le haut ou le bas
-  left: 95px; // Ajustez cette valeur pour déplacer la flèche vers la gauche ou la droite
+  top: -15px;
+  left: 95px;
   content: "";
   display: block;
   border-left: 15px solid transparent;
@@ -115,10 +114,11 @@ li a {
 
 li a:hover,
 li a:focus {
-  background: #1ABC9C;
+  background: #0d21d6;
   color: #fff;
 }
-@media (max-width: 768px) { // Pour les tablettes
+
+@media (max-width: 768px) { 
   #toggle {
     right: 10px;
     top: 15px;
@@ -128,11 +128,10 @@ li a:focus {
     right: 10px;
     top: 50px;
     width: 150px;
-    // Autres styles pour les tablettes
   }
 }
 
-@media (max-width: 480px) { // Pour les mobiles
+@media (max-width: 480px) { 
   #toggle {
     right: 5px;
     top: 10px;
@@ -142,13 +141,13 @@ li a:focus {
     right: 5px;
     top: 40px;
     width: 120px;
-    // Autres styles pour les mobiles
   }
 
   ul, li, li a {
-    font-size: 14px; // Réduire la taille de la police pour les mobiles
+    font-size: 14px;
   }
 }
+
 /* Modales */
 .modal {
   display: none;
@@ -197,39 +196,8 @@ li a:focus {
 .btn-close:hover {
   background-color: #275bc5;
 }
-@media (max-width: 768px) { // Pour les tablettes
-  .modal-content {
-    width: 80%; // Ajuster la largeur pour les petits écrans
-    padding: 15px; // Ajuster les espacements intérieurs pour les petits écrans
-  }
 
-  .modal h2 {
-    font-size: 1.5em; // Réduire la taille de la police pour les petits écrans
-  }
-
-  .btn-close {
-    font-size: 0.9em; // Réduire la taille de la police pour les petits écrans
-    padding: 8px 15px; // Ajuster la taille du bouton pour les petits écrans
-  }
-}
-
-@media (max-width: 480px) { // Pour les mobiles
-  .modal-content {
-    width: 90%; // Ajuster la largeur pour les petits écrans
-    padding: 10px; // Ajuster les espacements intérieurs pour les petits écrans
-  }
-
-  .modal h2 {
-    font-size: 1.2em; // Réduire la taille de la police pour les petits écrans
-  }
-
-  .btn-close {
-    font-size: 0.8em; // Réduire la taille de la police pour les petits écrans
-    padding: 6px 12px; // Ajuster la taille du bouton pour les petits écrans
-  }
-}
-
-
+/* Cards */
 .card {
   position: relative;
 

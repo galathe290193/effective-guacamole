@@ -1,9 +1,6 @@
 var theToggle = document.getElementById('toggle');
 var theMenu = document.getElementById('menu');
 
-// based on Todd Motto functions
-// https://toddmotto.com/labs/reusable-js/
-
 // hasClass
 function hasClass(elem, className) {
 	return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');

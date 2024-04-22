@@ -77,10 +77,14 @@ window.addEventListener('scroll', setTogglePosition);
 // Open and close modals
 document.addEventListener('click', function(e) {
   if (e.target.closest('#menu li a')) {
-    closeModal();
     var modalId = e.target.closest('#menu li a').getAttribute('data-modal');
-    var modal = document.getElementById(modalId);
-    modal.style.display = 'block';
+    if (modalId) {
+      closeModal();
+      var modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = 'block';
+      }
+    }
   } else if (!theMenu.contains(e.target) && !theToggle.contains(e.target)) {
     removeClass(theToggle, 'on');
     toggleMenu();
@@ -93,3 +97,4 @@ function closeModal() {
     modal.style.display = 'none';
   });
 }
+

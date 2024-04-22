@@ -112,6 +112,31 @@ li a:focus {
   color: #fff;
 }
 
+@media (max-width: 768px) {
+  #toggle {
+    right: 10px;
+    top: 15px;
+  }
+  #menu {
+    right: 10px;
+    top: 50px;
+    width: 150px;
+  }
+}
+@media (max-width: 480px) {
+  #toggle {
+    right: 5px;
+    top: 10px;
+  }
+  #menu {
+    right: 5px;
+    top: 40px;
+    width: 120px;
+  }
+  ul, li, li a {
+    font-size: 14px;
+  }
+}
 /* Modales */
 .modal {
   display: none;
@@ -161,6 +186,32 @@ li a:focus {
   background-color: #275bc5;
 }
 
+@media (max-width: 768px) {
+  .modal-content {
+    width: 80%;
+    padding: 15px;
+  }
+  .modal h2 {
+    font-size: 1.5em;
+  }
+  .btn-close {
+    font-size: 0.9em;
+    padding: 8px 15px;
+  }
+}
+@media (max-width: 480px) {
+  .modal-content {
+    width: 90%;
+    padding: 10px;
+  }
+  .modal h2 {
+    font-size: 1.2em;
+  }
+  .btn-close {
+    font-size: 0.8em;
+    padding: 6px 12px;
+  }
+}
 .card {
   position: relative;
 }

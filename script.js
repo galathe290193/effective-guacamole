@@ -117,3 +117,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+document.addEventListener('click', function(e) {
+    if (!theMenu.contains(e.target) && !theToggle.contains(e.target)) {
+      removeClass(theToggle, 'on');
+      theMenu.style.opacity = 0;
+      theMenu.style.visibility = 'hidden';
+    }
+  });

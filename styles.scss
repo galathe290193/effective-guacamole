@@ -118,7 +118,37 @@ li a:focus {
   background: #1ABC9C;
   color: #fff;
 }
+@media (max-width: 768px) { // Pour les tablettes
+  #toggle {
+    right: 10px;
+    top: 15px;
+  }
 
+  #menu {
+    right: 10px;
+    top: 50px;
+    width: 150px;
+    // Autres styles pour les tablettes
+  }
+}
+
+@media (max-width: 480px) { // Pour les mobiles
+  #toggle {
+    right: 5px;
+    top: 10px;
+  }
+
+  #menu {
+    right: 5px;
+    top: 40px;
+    width: 120px;
+    // Autres styles pour les mobiles
+  }
+
+  ul, li, li a {
+    font-size: 14px; // Réduire la taille de la police pour les mobiles
+  }
+}
 /* Modales */
 .modal {
   display: none;
@@ -167,6 +197,38 @@ li a:focus {
 .btn-close:hover {
   background-color: #275bc5;
 }
+@media (max-width: 768px) { // Pour les tablettes
+  .modal-content {
+    width: 80%; // Ajuster la largeur pour les petits écrans
+    padding: 15px; // Ajuster les espacements intérieurs pour les petits écrans
+  }
+
+  .modal h2 {
+    font-size: 1.5em; // Réduire la taille de la police pour les petits écrans
+  }
+
+  .btn-close {
+    font-size: 0.9em; // Réduire la taille de la police pour les petits écrans
+    padding: 8px 15px; // Ajuster la taille du bouton pour les petits écrans
+  }
+}
+
+@media (max-width: 480px) { // Pour les mobiles
+  .modal-content {
+    width: 90%; // Ajuster la largeur pour les petits écrans
+    padding: 10px; // Ajuster les espacements intérieurs pour les petits écrans
+  }
+
+  .modal h2 {
+    font-size: 1.2em; // Réduire la taille de la police pour les petits écrans
+  }
+
+  .btn-close {
+    font-size: 0.8em; // Réduire la taille de la police pour les petits écrans
+    padding: 6px 12px; // Ajuster la taille du bouton pour les petits écrans
+  }
+}
+
 
 .card {
   position: relative;

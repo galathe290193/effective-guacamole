@@ -68,7 +68,7 @@ body {
         }
 
         p {
-            @extend .satisfy-regular;
+            @extend .lobster-regular ;
             font-size: 1em; /* Augmenter la taille de la police */
             color: #555; /* Changer la couleur du texte */
             flex-grow: 1; /* Permettre au paragraphe de s'adapter à la hauteur disponible */

@@ -1,13 +1,13 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
-.satisfy-regular, .card .info p {
+.satisfy-regular {
   font-family: "Satisfy", cursive;
   font-weight: 400;
   font-style: normal;
 }
 
-.lobster-regular {
+.lobster-regular, .card .info p {
   font-family: "Lobster", sans-serif;
   font-weight: 400;
   font-style: normal;

@@ -202,6 +202,17 @@ li a:focus {
   margin-bottom: 15px;
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+
 .modal-content {
   position: absolute;
   top: 50%;
@@ -223,6 +234,20 @@ li a:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.btn-close {
+  background-color: #1f1e6d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-close:hover {
+  background-color: #275bc5;
 }
 
 /* Cards */

@@ -149,6 +149,71 @@ li a:focus {
 }
 
 /* Modales */
+.modal-window {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.25);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.modal-window:target {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-window > div {
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2em;
+  background: white;
+}
+
+.modal-window header {
+  font-weight: bold;
+}
+
+.modal-window h1 {
+  font-size: 150%;
+  margin: 0 0 15px;
+}
+
+.modal-close {
+  color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none;
+}
+
+.modal-close:hover {
+  color: black;
+}
+
+/* Styles supplémentaires pour la modal */
+
+.modal-window > div {
+  border-radius: 1rem;
+}
+
+.modal-window div:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -158,15 +223,6 @@ li a:focus {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
-}
-
-.modal:target {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.3s ease-in-out, visibility 0s 0s;
 }
 
 .modal-content {
@@ -179,18 +235,11 @@ li a:focus {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   text-align: center;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.modal:target .modal-content {
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
 }
 
 .modal h2 {
   margin-top: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   padding: 10px;
   border-radius: 5px 5px 0 0;
@@ -207,12 +256,10 @@ li a:focus {
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s;
-  opacity: 0.7;
 }
 
 .btn-close:hover {
   background-color: #275bc5;
-  opacity: 1;
 }
 
 

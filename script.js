@@ -61,8 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function closeModal() {
         modals.forEach(function (modal) {
-            modal.style.opacity = 0;
-            modal.style.visibility = 'hidden';
+            modal.style.display = 'none';
         });
     }
 
@@ -70,8 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
         link.addEventListener('click', function (e) {
             e.preventDefault();
             closeModal();
-            modals[index].style.opacity = 1;
-            modals[index].style.visibility = 'visible';
+            modals[index].style.display = 'block';
         });
     });
 
@@ -88,4 +86,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
 

@@ -389,3 +389,63 @@ li a:focus {
   background-color: #000;
   color: #fff;
 }
+@media (max-width: 768px) {
+  /* Styles pour les écrans de taille moyenne (tablettes) */
+  
+  #toggle {
+    right: 10px;
+    top: 15px;
+  }
+
+  #menu {
+    right: 10px;
+    top: 50px;
+    width: 150px;
+  }
+
+  .modal-window > div {
+    width: 90%; // Ajuster la largeur de la modale
+  }
+
+  .btn-close {
+    padding: 8px 16px; // Ajuster la taille du bouton de fermeture
+  }
+
+  .cookie-banner p {
+    font-size: 12px; // Ajuster la taille de la police du bandeau de cookies
+  }
+}
+
+@media (max-width: 480px) {
+  /* Styles pour les petits écrans (mobiles) */
+  
+  #toggle {
+    right: 5px;
+    top: 10px;
+    width: 20px; // Ajuster la taille du bouton toggle
+    height: 20px;
+  }
+
+  #menu {
+    right: 5px;
+    top: 40px;
+    width: 120px;
+    font-size: 14px; // Ajuster la taille de la police du menu
+  }
+
+  .modal-window > div {
+    width: 80%; // Ajuster la largeur de la modale
+  }
+
+  .btn-close {
+    padding: 6px 12px; // Ajuster la taille du bouton de fermeture
+  }
+
+  .cookie-banner p {
+    font-size: 10px; // Ajuster la taille de la police du bandeau de cookies
+  }
+
+  ul, li, li a {
+    font-size: 12px; // Ajuster la taille de la police des liens du menu
+  }
+}

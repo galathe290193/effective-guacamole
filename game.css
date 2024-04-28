@@ -60,6 +60,14 @@ article span, article span > a {
 	z-index: 9999;
 }
 
+.mobile-message {
+    background-color: #ffcccc;
+    color: #cc0000;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 20px;
+}
 #orientation-message p {
 	color: white;
 	font-size: 20px;

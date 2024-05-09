@@ -72,3 +72,15 @@ footer {
 footer a{
   color: white;
 }
+
+.back-home-button {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: #ffffff;
+	text-decoration: none;
+	border-radius: 5px;
+	z-index: 1000;
+  }

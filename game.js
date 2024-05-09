@@ -290,3 +290,13 @@ window.addEventListener('resize', function(){
   mouse.x = canvas.width/2;
   mouse.y = canvas.height/2;
 });
+
+window.addEventListener('load', function(){
+    if (window.innerWidth < 768) { // Si la largeur de l'écran est inférieure à 768px (typique d'un PC)
+        document.getElementById('popup').style.display = 'block'; // Afficher le pop-up
+    }
+});
+
+function closePopup() {
+    document.getElementById('popup').style.display = 'none'; // Cacher le pop-up lorsque l'utilisateur clique sur le bouton de fermeture
+}

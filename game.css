@@ -92,13 +92,14 @@ footer a{
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
+    padding: 40px; /* Augmentez la valeur pour agrandir le pop-up */
     z-index: 999;
     color: #fff;
 }
 
 .popup-content {
     text-align: center;
+    font-size: 20px; /* Augmentez la taille de la police pour le texte */
 }
 
 .close {

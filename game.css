@@ -60,20 +60,6 @@ article span, article span > a {
 	z-index: 9999;
 }
 
-.mobile-message {
-    background-color: #ffcccc;
-    color: #cc0000;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    margin-top: 20px;
-}
-@media only screen and (max-width: 600px) {
-    .back-home-button {
-        font-size: 24px; /* Augmentez la taille de la police */
-        padding: 10px 20px; /* Ajoutez un peu de rembourrage pour augmenter la taille du bouton */
-    }
-}
 #orientation-message p {
 	color: white;
 	font-size: 20px;

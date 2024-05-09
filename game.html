@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini jeu</title>
+    <title>mini game  </title>
     <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
 </head>
+
 <body>
 
-    <div class="container">
-        <canvas id="canvas1"></canvas>
-        <article><span>Pas de base de données, pas de classement, juste de la détente. <a href="index.html"></a></span></article>
-    </div>
+    <a href="index.html" class="back-home-button">Back Home</a>
     
+    <container>
+        <canvas id="canvas1"></canvas>
+      
+        <article><span>pas de base de donnes , pas de classement , que de la detente.<a href="index.html"></a></span>
+        </article>
+    </container>
+      
     <footer>
         A partir de 10 points la musique permet une meilleure concentration !
         <button onclick="toggleAudio()">Play Music</button>
@@ -33,22 +39,7 @@
                 audio.pause();
             }
         }
-
-        // Fonction pour afficher le message sur les appareils mobiles et tablettes
-        function displayMobileMessage() {
-            const container = document.querySelector('.container');
-            const isMobile = window.matchMedia("(max-width: 600px)").matches;
-
-            if (isMobile) {
-                const message = document.createElement('div');
-                message.classList.add('mobile-message');
-                message.textContent = "Ce jeu n'est pas responsive.sinon ce ne serait pas une démo. Merci de le tester sur un ordinateur pour une meilleure expérience.";
-                container.appendChild(message);
-            }
-        }
-
-        // Appel de la fonction pour afficher le message si nécessaire
-        displayMobileMessage();
     </script>
 </body>
 </html>
+
